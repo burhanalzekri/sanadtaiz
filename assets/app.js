@@ -34,16 +34,72 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 4. الوضع الليلي والنهاري
+  // 4. ميزة تتبع التقدم في المسارات (Progress Tracker)
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  // قائمة الصفحات التي تعتبر "مسارات"
+  const pathwayPages = ['atanafas.html', 'anam.html', 'ahzan.html', 'arabi.html', 'asmod.html', 'salam.html', 'ghadab.html', 'anazih.html'];
+  
+  if (pathwayPages.includes(currentPage)) {
+    const steps = document.querySelectorAll('.step');
+    
+    // إضافة زر الإكمال لكل خطوة
+    steps.forEach((step, index) => {
+      const stepBody = step.querySelector('.step-body');
+      if (!stepBody) return;
+      
+      const stepId = `${currentPage}-step-${index}`;
+      
+      const btn = document.createElement('button');
+      btn.className = 'btn';
+      btn.style.width = '100%';
+      btn.style.marginTop = '20px';
+      btn.style.padding = '10px';
+      btn.style.fontSize = '0.95em';
+      btn.innerText = 'تحديد كخطوة مكتملة';
+      
+      // التحقق من الحالة المحفوظة مسبقاً
+      if (localStorage.getItem(stepId) === 'completed') {
+        btn.innerText = '✅ مكتملة (اضغط للتراجع)';
+        btn.style.background = 'var(--primary)';
+        btn.style.color = '#fff';
+      } else {
+        btn.style.background = 'transparent';
+        btn.style.color = 'var(--text-muted)';
+        btn.style.border = '1px solid var(--border)';
+      }
+
+      // حدث الضغط على الزر
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation(); // منع إغلاق/فتح الأكورديون عند الضغط على الزر
+        if (localStorage.getItem(stepId) === 'completed') {
+          localStorage.removeItem(stepId);
+          btn.innerText = 'تحديد كخطوة مكتملة';
+          btn.style.background = 'transparent';
+          btn.style.color = 'var(--text-muted)';
+          btn.style.border = '1px solid var(--border)';
+        } else {
+          localStorage.setItem(stepId, 'completed');
+          btn.innerText = '✅ مكتملة (اضغط للتراجع)';
+          btn.style.background = 'var(--primary)';
+          btn.style.color = '#fff';
+          btn.style.border = 'none';
+        }
+      });
+      
+      stepBody.appendChild(btn);
+    });
+  }
+
+  // 5. الوضع الليلي والنهاري
   const themeBtn = document.getElementById('themeToggle');
-  const currentTheme = localStorage.getItem('theme') || 'dark'; // الافتراضي داكن
+  const currentTheme = localStorage.getItem('theme') || 'light'; 
   
   if (currentTheme === 'dark') {
     document.documentElement.setAttribute('data-theme', 'dark');
-    if (themeBtn) themeBtn.innerText = '☀️'; // إذا كان داكناً، اعرض شمس للتبديل للنهاري
+    if (themeBtn) themeBtn.innerText = '☀️';
   } else {
     document.documentElement.removeAttribute('data-theme');
-    if (themeBtn) themeBtn.innerText = '🌙'; // إذا كان نهاري، اعرض قمر
+    if (themeBtn) themeBtn.innerText = '🌙';
   }
 
   if (themeBtn) {

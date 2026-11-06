@@ -3,23 +3,61 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>تقييم ذكي سريع · سند تعز</title>
-<link rel="stylesheet" href="assets/style.css?v=4">
+<title>اكتشف مسارك · سند تعز</title>
+<link rel="stylesheet" href="assets/style.css?v=5">
 <style>
-  .quiz-box { background: var(--surface); border: 1px solid var(--border); border-radius: 24px; padding: 40px 30px; max-width: 600px; margin: 0 auto; box-shadow: 0 15px 40px var(--shadow-color); text-align: center; }
-  .quiz-btn { display: block; width: 100%; padding: 15px; margin-bottom: 15px; background: var(--surface-hover); border: 1px solid var(--border); border-radius: 12px; font-family: inherit; font-size: 1.1em; color: var(--text); cursor: pointer; transition: 0.3s; }
-  .quiz-btn:hover { background: var(--primary-glow); border-color: var(--primary); transform: scale(1.02); }
-  #resultArea { display: none; }
-  #resultArea h2 { color: var(--primary); margin-bottom: 15px; }
+  .quiz-container {
+    max-width: 600px;
+    margin: 40px auto;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 30px;
+    padding: 40px 30px;
+    box-shadow: 0 20px 50px -10px var(--shadow-color), 0 0 30px var(--accent-glow);
+    position: relative;
+    overflow: hidden;
+  }
+  [data-theme="dark"] .quiz-container {
+    background: rgba(20, 30, 45, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .progress-bar-container { width: 100%; height: 8px; background: var(--surface-hover); border-radius: 10px; margin-bottom: 30px; overflow: hidden; }
+  .progress-bar { height: 100%; background: linear-gradient(to right, var(--primary), var(--accent)); width: 0%; transition: width 0.5s ease; border-radius: 10px; }
+
+  .quiz-step { display: none; }
+  .quiz-step.active { display: block; animation: fadeIn 0.4s; }
+  
+  .quiz-question { font-size: 1.3em; font-weight: bold; color: var(--text); margin-bottom: 25px; text-align: center; }
+  .quiz-options { display: flex; flex-direction: column; gap: 12px; }
+  .quiz-btn {
+    background: var(--surface); border: 2px solid var(--border); padding: 15px 20px;
+    border-radius: 16px; font-size: 1em; font-family: inherit; color: var(--text);
+    text-align: right; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; gap: 12px;
+  }
+  .quiz-btn:hover { background: var(--surface-hover); border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 8px 15px var(--shadow-color); }
+
+  .result-screen { text-align: center; display: none; }
+  .result-screen.active { display: block; animation: zoomIn 0.6s; }
+  .result-icon { font-size: 4em; margin-bottom: 15px; display: inline-block; }
+  .result-title { font-size: 1.6em; color: var(--primary); margin-bottom: 15px; }
+  .result-desc { font-size: 1.1em; color: var(--text-muted); margin-bottom: 25px; }
+  .result-actions { display: flex; flex-direction: column; gap: 12px; }
+
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes zoomIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
 </style>
 </head>
 <body>
+
 <header class="topbar">
   <div class="wrap">
     <div class="brand"><span class="logo">س</span> سند تعز</div>
     <nav class="nav">
       <a href="index.html">الرئيسية</a>
-      <a href="assessments.html" class="active">التقييمات</a>
+      <a href="quick_assessment.html" class="active">التقييم السريع</a>
       <a href="emergency.html" style="color: var(--danger-br);">الطوارئ</a>
       <button id="themeToggle" class="theme-btn">🌙</button>
     </nav>
@@ -27,53 +65,164 @@
 </header>
 
 <main class="wrap">
-  <section class="hero">
-    <h1>اكتشف المسار المناسب لك</h1>
-    <p>3 أسئلة سريعة تساعدنا على توجيهك</p>
-  </section>
-
-  <div class="quiz-box" id="quizBox">
-    <h2 id="qTitle">السؤال 1</h2>
-    <p id="qText" style="margin-bottom: 20px; font-size: 1.1em;">كيف تشعر في معظم الأوقات مؤخراً؟</p>
-    <div id="optionsContainer">
-      <button class="quiz-btn" onclick="selectAnswer(1)">عصبي، قلبي يدق بسرعة، ولا أستطيع التوقف عن التفكير (قلق)</button>
-      <button class="quiz-btn" onclick="selectAnswer(2)">حزين، أفقد الاهتمام بالأشياء، وأشعر بالذنب (اكتئاب/حزن)</button>
-      <button class="quiz-btn" onclick="selectAnswer(3)">خائف، تأتيني ذكريات مزعجة ولا أنام جيداً (صدمة)</button>
+  <div class="quiz-container">
+    <div class="progress-bar-container">
+      <div class="progress-bar" id="progressBar"></div>
     </div>
-  </div>
 
-  <div class="quiz-box" id="resultArea">
-    <h2>✨ المسار المقترح لك</h2>
-    <p id="resultText" style="font-size: 1.2em; margin-bottom: 20px;"></p>
-    <a href="#" id="resultLink" class="btn" style="width: 100%; display: block; padding: 15px;">ابدأ المسار الآن</a>
-    <br>
-    <a href="booking.html" class="btn ghost" style="width: 100%; display: block; padding: 15px;">أريد التحدث مع مختص</a>
+    <!-- السؤال 1 -->
+    <div class="quiz-step active" id="step1">
+      <div class="quiz-question">1. كيف تشعر في معظم الأوقات مؤخراً؟</div>
+      <div class="quiz-options">
+        <button class="quiz-btn" onclick="nextStep(1, 1)">😰 عصبي، قلبي يدق بسرعة، ولا أستطيع التوقف عن التفكير</button>
+        <button class="quiz-btn" onclick="nextStep(2, 1)">😔 حزين، أفقد الاهتمام بالأشياء، وأشعر بالذنب</button>
+        <button class="quiz-btn" onclick="nextStep(3, 1)">😨 خائف، تأتيني ذكريات مزعجة ولا أنام جيداً</button>
+      </div>
+    </div>
+
+    <!-- السؤال 2 -->
+    <div class="quiz-step" id="step2">
+      <div class="quiz-question">2. هل يؤثر هذا الشعور على نومك أو عملك؟</div>
+      <div class="quiz-options">
+        <button class="quiz-btn" onclick="nextStep(1, 2)">نعم، بشكل كبير جداً (لا أنام، لا أعمل)</button>
+        <button class="quiz-btn" onclick="nextStep(2, 2)">أحياناً، في بعض الأيام فقط</button>
+        <button class="quiz-btn" onclick="nextStep(3, 2)">قليلاً، لكنني أستطيع التعايش معه</button>
+      </div>
+    </div>
+
+    <!-- السؤال 3 -->
+    <div class="quiz-step" id="step3">
+      <div class="quiz-question">3. منذ متى وأنت تشعر بهذه الحالة؟</div>
+      <div class="quiz-options">
+        <button class="quiz-btn" onclick="nextStep(1, 3)">أكثر من شهر (مزمن)</button>
+        <button class="quiz-btn" onclick="nextStep(2, 3)">بضعة أسابيع</button>
+        <button class="quiz-btn" onclick="nextStep(3, 3)">أيام قليلة فقط</button>
+      </div>
+    </div>
+
+    <!-- النتيجة -->
+    <div class="result-screen" id="resultScreen">
+      <div class="result-icon" id="resultIcon">✨</div>
+      <div class="result-title" id="resultTitle"></div>
+      <div class="result-desc" id="resultDesc"></div>
+      
+      <div class="result-actions">
+        <a href="#" id="resultLink" class="btn" style="padding: 15px; font-size: 1.1em; background: var(--primary);">ابدأ المسار المقترح الآن</a>
+        <a href="booking.html" class="btn-3d green" style="padding: 15px; justify-content: center;">تحدث مع مختص مباشرة</a>
+        <a href="index.html" class="btn ghost" style="padding: 15px;">العودة للرئيسية</a>
+      </div>
+    </div>
+
   </div>
 </main>
 
-<footer class="wrap"><p>سند تعز · <a href="emergency.html">صفحة الطوارئ</a></p></footer>
+<footer class="wrap" style="text-align:center; margin-top:20px;"><p>سند تعز · <a href="emergency.html">صفحة الطوارئ</a></p><a href="admin.html" style="color: var(--text-muted); font-size: 0.8em;">لوحة التحكم</a>
+</footer>
 
 <script>
-  function selectAnswer(type) {
-    document.getElementById('quizBox').style.display = 'none';
-    const resultArea = document.getElementById('resultArea');
-    const resultText = document.getElementById('resultText');
+  let scores = { anxiety: 0, depression: 0, trauma: 0 };
+  let currentStep = 1;
+
+  function nextStep(type, step) {
+    // تحديث النقاط
+    if (type === 1) scores.anxiety += 1;
+    if (type === 2) scores.depression += 1;
+    if (type === 3) scores.trauma += 1;
+
+    // تحديث شريط التقدم
+    document.getElementById('progressBar').style.width = (step / 3) * 100 + '%';
+
+    // إخفاء الخطوة الحالية
+    document.getElementById('step' + step).classList.remove('active');
+
+    if (step < 3) {
+      // إظهار الخطوة التالية
+      document.getElementById('step' + (step + 1)).classList.add('active');
+    } else {
+      // إظهار النتيجة النهائية
+      showResult();
+    }
+  }
+
+  function showResult() {
+    const resultScreen = document.getElementById('resultScreen');
+    resultScreen.classList.add('active');
+    
+    const resultTitle = document.getElementById('resultTitle');
+    const resultDesc = document.getElementById('resultDesc');
     const resultLink = document.getElementById('resultLink');
-    
-    resultArea.style.display = 'block';
-    
-    if (type === 1) {
-      resultText.innerText = 'نوصي بمسار "أتنفّس" لإدارة القلق والتوتر.';
+    const resultIcon = document.getElementById('resultIcon');
+
+    let maxScore = Math.max(scores.anxiety, scores.depression, scores.trauma);
+
+    if (maxScore === scores.anxiety) {
+      resultIcon.innerText = '🌿';
+      resultTitle.innerText = 'مسار "أتنفّس" (القلق)';
+      resultDesc.innerText = 'إجاباتك تشير إلى أن القلق هو المسيطر. مسار "أتنفّس" سيعلمك كيف تهدئ جهازك العصبي وتعيد ضبط أفكارك.';
       resultLink.href = 'atanafas.html';
-    } else if (type === 2) {
-      resultText.innerText = 'نوصي بمسار "أحزن" أو "أتصالح مع نفسي" للتعامل مع المشاعر.';
+    } else if (maxScore === scores.depression) {
+      resultIcon.innerText = '💙';
+      resultTitle.innerText = 'مسار "أحزن" (الفقد/الاكتئاب)';
+      resultDesc.innerText = 'يبدو أن الحزن يثقل صدرك. مسار "أحزن" سيساعدك على تفريغ المشاعر والعودة التدريجية للحياة.';
       resultLink.href = 'ahzan.html';
-    } else if (type === 3) {
-      resultText.innerText = 'نوصي بمسار "أصمد" للتعامل مع الصدمة والذكريات.';
+    } else {
+      resultIcon.innerText = '🛡️';
+      resultTitle.innerText = 'مسار "أصمد" (الصدمة)';
+      resultDesc.innerText = 'الذكريات والخوف يحتاجان لدعم. مسار "أصمد" سيقدم لك تثبيتاً أولياً للتعامل مع الصدمة.';
       resultLink.href = 'asmod.html';
     }
   }
 </script>
 <script src="assets/app.js"></script>
+<!-- المساعد الآلي -->
+<div class="chatbot-toggle" id="chatbotToggle" onclick="toggleChatbot()">🤖</div>
+<div class="chatbot-window" id="chatbotWindow">
+  <div class="chatbot-header">مساعد سند</div>
+  <div class="chatbot-messages" id="chatbotMessages">
+    <div class="bot-msg">مرحباً! أنا مساعدك في سند. كيف يمكنني مساعدتك اليوم؟ (أشعر بالقلق، لا أنام، أحتاج مساعدة)</div>
+  </div>
+  <div class="chatbot-input-area">
+    <input type="text" id="chatInput" placeholder="اكتب سؤالك..." onkeypress="handleChatEnter(event)">
+    <button onclick="sendChatMessage()">إرسال</button>
+  </div>
+</div>
+<script>
+  function toggleChatbot() {
+    document.getElementById('chatbotWindow').classList.toggle('show');
+  }
+  function handleChatEnter(e) {
+    if (e.key === 'Enter') sendChatMessage();
+  }
+  function sendChatMessage() {
+    const input = document.getElementById('chatInput');
+    const msg = input.value.trim();
+    if (!msg) return;
+    const container = document.getElementById('chatbotMessages');
+    const userDiv = document.createElement('div');
+    userDiv.className = 'user-msg';
+    userDiv.innerText = msg;
+    container.appendChild(userDiv);
+    input.value = '';
+    container.scrollTop = container.scrollHeight;
+    setTimeout(() => {
+      const botDiv = document.createElement('div');
+      botDiv.className = 'bot-msg';
+      if (msg.includes('قلق') || msg.includes('خوف') || msg.includes('توتر')) {
+        botDiv.innerHTML = 'أشعر بك. هل جربت تمرين التنفس المربع؟ <a href="skills.html">اضغط هنا لفتح صندوق المهارات</a>.';
+      } else if (msg.includes('نوم') || msg.includes('أرق')) {
+        botDiv.innerHTML = 'الأرق شائع في ظروفنا. ننصحك بمسار "أنام". <a href="anam.html">اضغط هنا لبدء المسار</a>.';
+      } else if (msg.includes('حزن') || msg.includes('فقد')) {
+        botDiv.innerHTML = 'الحزن ليس ضعفاً. قد يفيدك مسار "أحزن". <a href="ahzan.html">اضغط هنا</a>.';
+      } else if (msg.includes('مساعدة') || msg.includes('مختص')) {
+        botDiv.innerHTML = 'نحن هنا. يمكنك حجز جلسة مجانية مع مختص <a href="booking.html">من هنا</a>.';
+      } else {
+        botDiv.innerHTML = 'أنا هنا لأسمعك. يمكنك استكشاف <a href="library.html">المكتبة</a> أو <a href="quick_assessment.html">التقييم السريع</a>.';
+      }
+      container.appendChild(botDiv);
+      container.scrollTop = container.scrollHeight;
+    }, 1000);
+  }
+</script>
+
 </body>
 </html>

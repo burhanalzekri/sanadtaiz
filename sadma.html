@@ -121,5 +121,55 @@
   if (localStorage.getItem('theme') === 'dark') { document.body.setAttribute('data-theme', 'dark'); document.querySelector('.theme-toggle').innerText = '☀️'; }
 </script>
 <a href="https://wa.me/967771234567" class="floating-whatsapp" title="تحدث مع مختص">💬</a>
+<!-- المساعد الآلي -->
+<div class="chatbot-toggle" id="chatbotToggle" onclick="toggleChatbot()">🤖</div>
+<div class="chatbot-window" id="chatbotWindow">
+  <div class="chatbot-header">مساعد سند</div>
+  <div class="chatbot-messages" id="chatbotMessages">
+    <div class="bot-msg">مرحباً! أنا مساعدك في سند. كيف يمكنني مساعدتك اليوم؟ (أشعر بالقلق، لا أنام، أحتاج مساعدة)</div>
+  </div>
+  <div class="chatbot-input-area">
+    <input type="text" id="chatInput" placeholder="اكتب سؤالك..." onkeypress="handleChatEnter(event)">
+    <button onclick="sendChatMessage()">إرسال</button>
+  </div>
+</div>
+<script>
+  function toggleChatbot() {
+    document.getElementById('chatbotWindow').classList.toggle('show');
+  }
+  function handleChatEnter(e) {
+    if (e.key === 'Enter') sendChatMessage();
+  }
+  function sendChatMessage() {
+    const input = document.getElementById('chatInput');
+    const msg = input.value.trim();
+    if (!msg) return;
+    const container = document.getElementById('chatbotMessages');
+    const userDiv = document.createElement('div');
+    userDiv.className = 'user-msg';
+    userDiv.innerText = msg;
+    container.appendChild(userDiv);
+    input.value = '';
+    container.scrollTop = container.scrollHeight;
+    setTimeout(() => {
+      const botDiv = document.createElement('div');
+      botDiv.className = 'bot-msg';
+      if (msg.includes('قلق') || msg.includes('خوف') || msg.includes('توتر')) {
+        botDiv.innerHTML = 'أشعر بك. هل جربت تمرين التنفس المربع؟ <a href="skills.html">اضغط هنا لفتح صندوق المهارات</a>.';
+      } else if (msg.includes('نوم') || msg.includes('أرق')) {
+        botDiv.innerHTML = 'الأرق شائع في ظروفنا. ننصحك بمسار "أنام". <a href="anam.html">اضغط هنا لبدء المسار</a>.';
+      } else if (msg.includes('حزن') || msg.includes('فقد')) {
+        botDiv.innerHTML = 'الحزن ليس ضعفاً. قد يفيدك مسار "أحزن". <a href="ahzan.html">اضغط هنا</a>.';
+      } else if (msg.includes('مساعدة') || msg.includes('مختص')) {
+        botDiv.innerHTML = 'نحن هنا. يمكنك حجز جلسة مجانية مع مختص <a href="booking.html">من هنا</a>.';
+      } else {
+        botDiv.innerHTML = 'أنا هنا لأسمعك. يمكنك استكشاف <a href="library.html">المكتبة</a> أو <a href="quick_assessment.html">التقييم السريع</a>.';
+      }
+      container.appendChild(botDiv);
+      container.scrollTop = container.scrollHeight;
+    }, 1000);
+  }
+</script>
+
 </body>
 </html>
