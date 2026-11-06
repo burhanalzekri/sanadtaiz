@@ -1,4 +1,4 @@
-const CACHE_NAME = 'sana-taiz-v3';
+const CACHE_NAME = 'sana-taiz-v4';
 const urlsToCache = [
   './',
   './index.html',
@@ -7,9 +7,16 @@ const urlsToCache = [
   './ahzan.html',
   './arabi.html',
   './asmod.html',
+  './salam.html',
+  './ghadab.html',
   './skills.html',
   './library.html',
   './articles.html',
+  './assessments.html',
+  './wellbeing.html',
+  './gad7.html',
+  './phq9.html',
+  './pcl5.html',
   './emergency.html',
   './assets/style.css',
   './assets/app.js',

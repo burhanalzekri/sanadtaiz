@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>مقياس الاكتئاب PHQ-9 · سند تعز</title>
+<link rel="stylesheet" href="assets/style.css?v=3">
+<style>
+  .question-block { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 20px; margin-bottom: 15px; box-shadow: 0 5px 15px var(--shadow-color); }
+  .question-block p { font-weight: bold; margin-bottom: 15px; color: var(--text); }
+  .options label { display: block; padding: 10px; margin-bottom: 5px; border: 1px solid var(--border); border-radius: 8px; cursor: pointer; transition: 0.2s; }
+  .options label:hover { background: var(--primary-glow); border-color: var(--primary); }
+  .options input[type="radio"] { margin-left: 10px; accent-color: var(--primary); }
+  #resultBox { display: none; margin-top: 30px; padding: 25px; border-radius: 16px; text-align: center; }
+  #resultBox h2 { margin-bottom: 10px; }
+  .score-low { background: rgba(16, 185, 129, 0.1); border: 1px solid var(--primary); color: var(--primary); }
+  .score-mild { background: rgba(212, 175, 55, 0.1); border: 1px solid var(--gold); color: var(--gold); }
+  .score-high { background: rgba(220, 38, 38, 0.1); border: 1px solid var(--danger-br); color: var(--danger-br); }
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap">
+    <div class="brand"><span class="logo">س</span> سند تعز</div>
+    <nav class="nav">
+      <a href="index.html">الرئيسية</a>
+      <a href="assessments.html">التقييمات</a>
+      <a href="wellbeing.html">الرفاهية</a>
+      <a href="wellbeing.html">الرفاهية</a>
+      <a href="skills.html">المهارات</a>
+      <a href="emergency.html" style="color: var(--danger-br);">الطوارئ</a>
+      <button id="themeToggle" class="theme-btn">🌙</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <h1>مقياس الاكتئاب PHQ-9</h1>
+    <p>خلال الأسبوعين الماضيين، كم مرة أزعجتك المشاكل التالية؟</p>
+  </section>
+
+  <div class="disclaimer">
+    <strong>تنبيه:</strong> هذا المقياس للتثقيف وتقدير الحالة، وليس تشخيصاً طبياً.
+  </div>
+
+  <form id="phq9Form">
+    <div class="question-block">
+      <p>1. قلة الاهتمام أو المتعة في القيام بالأشياء.</p>
+      <div class="options">
+        <label><input type="radio" name="q1" value="0" required> أبداً (0)</label>
+        <label><input type="radio" name="q1" value="1"> عدة أيام (1)</label>
+        <label><input type="radio" name="q1" value="2"> أكثر من نصف الأيام (2)</label>
+        <label><input type="radio" name="q1" value="3"> تقريباً كل يوم (3)</label>
+      </div>
+    </div>
+    <div class="question-block">
+      <p>2. الشعور بالحزن أو اليأس أو فقدان الأمل.</p>
+      <div class="options">
+        <label><input type="radio" name="q2" value="0" required> أبداً (0)</label>
+        <label><input type="radio" name="q2" value="1"> عدة أيام (1)</label>
+        <label><input type="radio" name="q2" value="2"> أكثر من نصف الأيام (2)</label>
+        <label><input type="radio" name="q2" value="3"> تقريباً كل يوم (3)</label>
+      </div>
+    </div>
+    <div class="question-block">
+      <p>3. صعوبة في النوم، أو النوم الزائد عن الحاجة.</p>
+      <div class="options">
+        <label><input type="radio" name="q3" value="0" required> أبداً (0)</label>
+        <label><input type="radio" name="q3" value="1"> عدة أيام (1)</label>
+        <label><input type="radio" name="q3" value="2"> أكثر من نصف الأيام (2)</label>
+        <label><input type="radio" name="q3" value="3"> تقريباً كل يوم (3)</label>
+      </div>
+    </div>
+    <div class="question-block">
+      <p>4. الشعور بالتعب أو قلة الطاقة.</p>
+      <div class="options">
+        <label><input type="radio" name="q4" value="0" required> أبداً (0)</label>
+        <label><input type="radio" name="q4" value="1"> عدة أيام (1)</label>
+        <label><input type="radio" name="q4" value="2"> أكثر من نصف الأيام (2)</label>
+        <label><input type="radio" name="q4" value="3"> تقريباً كل يوم (3)</label>
+      </div>
+    </div>
+    <div class="question-block">
+      <p>5. ضعف الشهية أو الأكل الزائد.</p>
+      <div class="options">
+        <label><input type="radio" name="q5" value="0" required> أبداً (0)</label>
+        <label><input type="radio" name="q5" value="1"> عدة أيام (1)</label>
+        <label><input type="radio" name="q5" value="2"> أكثر من نصف الأيام (2)</label>
+        <label><input type="radio" name="q5" value="3"> تقريباً كل يوم (3)</label>
+      </div>
+    </div>
+    <div class="question-block">
+      <p>6. الشعور بعدم الرضا عن نفسك، أو أنك فاشل، أو أنك خذلت نفسك أو عائلتك.</p>
+      <div class="options">
+        <label><input type="radio" name="q6" value="0" required> أبداً (0)</label>
+        <label><input type="radio" name="q6" value="1"> عدة أيام (1)</label>
+        <label><input type="radio" name="q6" value="2"> أكثر من نصف الأيام (2)</label>
+        <label><input type="radio" name="q6" value="3"> تقريباً كل يوم (3)</label>
+      </div>
+    </div>
+    <div class="question-block">
+      <p>7. صعوبة في التركيز (مثلاً عند القراءة أو مشاهدة التلفاز).</p>
+      <div class="options">
+        <label><input type="radio" name="q7" value="0" required> أبداً (0)</label>
+        <label><input type="radio" name="q7" value="1"> عدة أيام (1)</label>
+        <label><input type="radio" name="q7" value="2"> أكثر من نصف الأيام (2)</label>
+        <label><input type="radio" name="q7" value="3"> تقريباً كل يوم (3)</label>
+      </div>
+    </div>
+    <div class="question-block">
+      <p>8. التحرك أو التحدث ببطء ملحوظ، أو العكس (التململ وعدم القدرة على الجلوس).</p>
+      <div class="options">
+        <label><input type="radio" name="q8" value="0" required> أبداً (0)</label>
+        <label><input type="radio" name="q8" value="1"> عدة أيام (1)</label>
+        <label><input type="radio" name="q8" value="2"> أكثر من نصف الأيام (2)</label>
+        <label><input type="radio" name="q8" value="3"> تقريباً كل يوم (3)</label>
+      </div>
+    </div>
+    <div class="question-block">
+      <p>9. أفكار بأنك ستكون أفضل حالاً إذا كنت ميتاً، أو أفكار بإيذاء نفسك.</p>
+      <div class="options">
+        <label><input type="radio" name="q9" value="0" required> أبداً (0)</label>
+        <label><input type="radio" name="q9" value="1"> عدة أيام (1)</label>
+        <label><input type="radio" name="q9" value="2"> أكثر من نصف الأيام (2)</label>
+        <label><input type="radio" name="q9" value="3"> تقريباً كل يوم (3)</label>
+      </div>
+    </div>
+
+    <button type="submit" class="btn" style="width: 100%; font-size: 1.2em; padding: 15px;">احسب النتيجة</button>
+  </form>
+
+  <div id="resultBox">
+    <h2>النتيجة: <span id="scoreSpan"></span> / 27</h2>
+    <p id="resultText"></p>
+    <a href="salam.html" class="btn" style="background: var(--primary); color: #000;">ابدأ مسار أتصالح مع نفسي</a>
+    <br><br>
+    <a href="emergency.html" class="btn ghost" style="border-color: var(--danger-br); color: var(--danger-br);">أحتاج مساعدة عاجلة</a>
+  </div>
+</main>
+
+<footer class="wrap"><p>سند تعز · <a href="emergency.html">صفحة الطوارئ</a></p></footer>
+
+<script>
+  document.getElementById('phq9Form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    let total = 0;
+    const formData = new FormData(this);
+    for (let value of formData.values()) { total += parseInt(value); }
+    
+    document.getElementById('scoreSpan').innerText = total;
+    const resultBox = document.getElementById('resultBox');
+    const resultText = document.getElementById('resultText');
+    
+    resultBox.className = ''; 
+    resultBox.style.display = 'block';
+    
+    // التحقق من السؤال التاسع (أفكار إيذاء النفس) أولاً
+    const q9 = parseInt(formData.get('q9'));
+    
+    if (q9 > 0) {
+      resultBox.classList.add('score-high');
+      resultText.innerHTML = '<b>تنبيه عاجل:</b> أجبت بأن لديك أفكار بإيذاء نفسك. هذا يتطلب دعماً فورياً. لا تبق وحدك، وتواصل مع مختص أو خط الطوارئ الآن.';
+    } else if (total <= 4) {
+      resultBox.classList.add('score-low');
+      resultText.innerText = 'الاكتئاب لديك في المستوى الطبيعي. استمر في الاعتناء بنفسك.';
+    } else if (total <= 9) {
+      resultBox.classList.add('score-mild');
+      resultText.innerText = 'لديك اكتئاب خفيف. قد يكون من المفيد تجربة مسار "أتصالح مع نفسي" و"صندوق المهارات".';
+    } else if (total <= 14) {
+      resultBox.classList.add('score-high');
+      resultText.innerText = 'لديك اكتئاب متوسط. نوصي بشدة بطلب الدعم من مختص، وبدء مسار "أتصالح مع نفسي".';
+    } else {
+      resultBox.classList.add('score-high');
+      resultText.innerText = 'الاكتئاب لديك شديد. يُرجى التواصل مع مختص في أقرب وقت. أنت لست وحدك.';
+    }
+    resultBox.scrollIntoView({ behavior: 'smooth' });
+  });
+</script>
+<script src="assets/app.js"></script>
+</body>
+</html>

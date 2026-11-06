@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>مقياس الصدمة PCL-5 · سند تعز</title>
+<link rel="stylesheet" href="assets/style.css?v=3">
+<style>
+  .question-block { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 20px; margin-bottom: 15px; box-shadow: 0 5px 15px var(--shadow-color); }
+  .question-block p { font-weight: bold; margin-bottom: 15px; color: var(--text); }
+  .options label { display: block; padding: 10px; margin-bottom: 5px; border: 1px solid var(--border); border-radius: 8px; cursor: pointer; transition: 0.2s; }
+  .options label:hover { background: var(--primary-glow); border-color: var(--primary); }
+  .options input[type="radio"] { margin-left: 10px; accent-color: var(--primary); }
+  #resultBox { display: none; margin-top: 30px; padding: 25px; border-radius: 16px; text-align: center; }
+  #resultBox h2 { margin-bottom: 10px; }
+  .score-low { background: rgba(16, 185, 129, 0.1); border: 1px solid var(--primary); color: var(--primary); }
+  .score-mild { background: rgba(212, 175, 55, 0.1); border: 1px solid var(--gold); color: var(--gold); }
+  .score-high { background: rgba(220, 38, 38, 0.1); border: 1px solid var(--danger-br); color: var(--danger-br); }
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap">
+    <div class="brand"><span class="logo">س</span> سند تعز</div>
+    <nav class="nav">
+      <a href="index.html">الرئيسية</a>
+      <a href="assessments.html">التقييمات</a>
+      <a href="wellbeing.html">الرفاهية</a>
+      <a href="wellbeing.html">الرفاهية</a>
+      <a href="skills.html">المهارات</a>
+      <a href="emergency.html" style="color: var(--danger-br);">الطوارئ</a>
+      <button id="themeToggle" class="theme-btn">🌙</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <h1>مقياس الصدمة (PCL-5 مختصر)</h1>
+    <p>خلال الشهر الماضي، إلى أي مدى أزعجتك الأعراض التالية المتعلقة بتجربة صادمة؟</p>
+  </section>
+
+  <div class="disclaimer">
+    <strong>تنبيه:</strong> هذا المقياس للتثقيف وتقدير الحالة، وليس تشخيصاً طبياً.
+  </div>
+
+  <form id="pclForm">
+    <div class="question-block">
+      <p>1. ذكريات أو صور أو أحلام متكررة ومزعجة عن التجربة الصادمة.</p>
+      <div class="options">
+        <label><input type="radio" name="q1" value="0" required> أبداً (0)</label>
+        <label><input type="radio" name="q1" value="1"> قليلاً (1)</label>
+        <label><input type="radio" name="q1" value="2"> متوسطاً (2)</label>
+        <label><input type="radio" name="q1" value="3"> كثيراً (3)</label>
+        <label><input type="radio" name="q1" value="4"> شديداً جداً (4)</label>
+      </div>
+    </div>
+    <div class="question-block">
+      <p>2. الشعور وكأن التجربة الصادمة تتكرر الآن (فلاش باك).</p>
+      <div class="options">
+        <label><input type="radio" name="q2" value="0" required> أبداً (0)</label>
+        <label><input type="radio" name="q2" value="1"> قليلاً (1)</label>
+        <label><input type="radio" name="q2" value="2"> متوسطاً (2)</label>
+        <label><input type="radio" name="q2" value="3"> كثيراً (3)</label>
+        <label><input type="radio" name="q2" value="4"> شديداً جداً (4)</label>
+      </div>
+    </div>
+    <div class="question-block">
+      <p>3. تجنب الذكريات أو الأفكار أو المشاعر المرتبطة بالتجربة الصادمة.</p>
+      <div class="options">
+        <label><input type="radio" name="q3" value="0" required> أبداً (0)</label>
+        <label><input type="radio" name="q3" value="1"> قليلاً (1)</label>
+        <label><input type="radio" name="q3" value="2"> متوسطاً (2)</label>
+        <label><input type="radio" name="q3" value="3"> كثيراً (3)</label>
+        <label><input type="radio" name="q3" value="4"> شديداً جداً (4)</label>
+      </div>
+    </div>
+    <div class="question-block">
+      <p>4. الشعور بالتوتر الشديد أو الحذر الزائد (مثل التحقق من محيطك باستمرار).</p>
+      <div class="options">
+        <label><input type="radio" name="q4" value="0" required> أبداً (0)</label>
+        <label><input type="radio" name="q4" value="1"> قليلاً (1)</label>
+        <label><input type="radio" name="q4" value="2"> متوسطاً (2)</label>
+        <label><input type="radio" name="q4" value="3"> كثيراً (3)</label>
+        <label><input type="radio" name="q4" value="4"> شديداً جداً (4)</label>
+      </div>
+    </div>
+    <div class="question-block">
+      <p>5. الشعور بالخدر العاطفي أو الانفصال عن الآخرين.</p>
+      <div class="options">
+        <label><input type="radio" name="q5" value="0" required> أبداً (0)</label>
+        <label><input type="radio" name="q5" value="1"> قليلاً (1)</label>
+        <label><input type="radio" name="q5" value="2"> متوسطاً (2)</label>
+        <label><input type="radio" name="q5" value="3"> كثيراً (3)</label>
+        <label><input type="radio" name="q5" value="4"> شديداً جداً (4)</label>
+      </div>
+    </div>
+
+    <button type="submit" class="btn" style="width: 100%; font-size: 1.2em; padding: 15px;">احسب النتيجة</button>
+  </form>
+
+  <div id="resultBox">
+    <h2>النتيجة: <span id="scoreSpan"></span> / 20</h2>
+    <p id="resultText"></p>
+    <a href="asmod.html" class="btn" style="background: var(--primary); color: #000;">ابدأ مسار أصمد</a>
+    <br><br>
+    <a href="emergency.html" class="btn ghost" style="border-color: var(--danger-br); color: var(--danger-br);">أحتاج مساعدة عاجلة</a>
+  </div>
+</main>
+
+<footer class="wrap"><p>سند تعز · <a href="emergency.html">صفحة الطوارئ</a></p></footer>
+
+<script>
+  document.getElementById('pclForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    let total = 0;
+    const formData = new FormData(this);
+    for (let value of formData.values()) { total += parseInt(value); }
+    
+    document.getElementById('scoreSpan').innerText = total;
+    const resultBox = document.getElementById('resultBox');
+    const resultText = document.getElementById('resultText');
+    
+    resultBox.className = ''; 
+    resultBox.style.display = 'block';
+    
+    if (total <= 5) {
+      resultBox.classList.add('score-low');
+      resultText.innerText = 'الأعراض منخفضة. يبدو أنك تتكيف بشكل جيد.';
+    } else if (total <= 10) {
+      resultBox.classList.add('score-mild');
+      resultText.innerText = 'لديك بعض أعراض الصدمة. قد يفيدك مسار "أصمد" وصندوق المهارات.';
+    } else {
+      resultBox.classList.add('score-high');
+      resultText.innerText = 'لديك أعراض صدمة ملحوظة. نوصي بمراجعة مختص، مع استخدام مسار "أصمد" كدعم أولي.';
+    }
+    resultBox.scrollIntoView({ behavior: 'smooth' });
+  });
+</script>
+<script src="assets/app.js"></script>
+</body>
+</html>
