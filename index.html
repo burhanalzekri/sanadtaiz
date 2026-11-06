@@ -3,11 +3,33 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>سند تعز — لوحة التحكم</title>
-<link rel="stylesheet" href="assets/style.css?v=4">
+<title>سند تعز — منصة الدعم النفسي الأولى في اليمن</title>
+<link rel="stylesheet" href="assets/style.css?v=5">
+<style>
+  /* تنسيقات خاصة بالصفحة التسويقية */
+  .marketing-section { margin-bottom: 50px; text-align: center; }
+  .marketing-section h2 { font-size: 2em; color: var(--text); margin-bottom: 15px; font-weight: 800; }
+  .marketing-section p.subtitle { color: var(--text-muted); font-size: 1.1em; margin-bottom: 30px; max-width: 600px; margin-inline: auto; }
+  
+  /* قسم لماذا نحن */
+  .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+  .feature-box { background: var(--surface); padding: 25px; border-radius: 20px; border: 1px solid var(--border); box-shadow: 0 10px 20px var(--shadow-color); text-align: center; }
+  .feature-box .icon { font-size: 2.5em; margin-bottom: 15px; display: inline-block; }
+  .feature-box h3 { color: var(--primary); margin-bottom: 10px; font-size: 1.2em; }
+  
+  /* قسم الإحصائيات (Social Proof) */
+  .stats-bar { display: flex; justify-content: space-around; background: var(--surface); padding: 20px; border-radius: 20px; margin-bottom: 40px; border: 1px solid var(--border); box-shadow: 0 10px 20px var(--shadow-color); flex-wrap: wrap; gap: 15px; }
+  .stat-item { text-align: center; }
+  .stat-item .number { font-size: 2em; font-weight: 900; color: var(--accent); display: block; }
+  .stat-item .label { font-size: 0.9em; color: var(--text-muted); }
+  
+  /* أزرار اتخاذ إجراء ضخمة */
+  .cta-banner { background: linear-gradient(135deg, var(--primary), #0f766e); color: white; padding: 40px 20px; border-radius: 24px; text-align: center; margin-bottom: 40px; box-shadow: 0 20px 40px -10px var(--accent-glow); }
+  .cta-banner h2 { color: white; margin-bottom: 15px; }
+  .cta-banner p { font-size: 1.1em; margin-bottom: 25px; opacity: 0.9; }
+</style>
 </head>
 <body>
-<div class="particles"></div>
 
 <div class="modal-bg" id="consentModal">
   <div class="modal" role="dialog" aria-modal="true">
@@ -28,8 +50,6 @@
     <div class="brand"><span class="logo">س</span> سند تعز</div>
     <nav class="nav">
       <a href="index.html" class="active">الرئيسية</a>
-      
-      <!-- قائمة المسارات المنسدلة -->
       <div class="dropdown">
         <a href="#" style="cursor: pointer;">المسارات ▼</a>
         <div class="dropdown-content">
@@ -42,20 +62,19 @@
           <a href="ghadab.html">أهدّئ غضبي (الغضب)</a>
         </div>
       </div>
-
-      <!-- قائمة التقييمات المنسدلة -->
       <div class="dropdown">
         <a href="#" style="cursor: pointer;">التقييمات ▼</a>
         <div class="dropdown-content">
+          <a href="quick_assessment.html">تقييم سريع (3 أسئلة)</a>
           <a href="gad7.html">مقياس القلق GAD-7</a>
           <a href="phq9.html">مقياس الاكتئاب PHQ-9</a>
           <a href="pcl5.html">مقياس الصدمة PCL-5</a>
           <a href="wellbeing.html">مقياس الرفاهية WHO-5</a>
         </div>
       </div>
-
-      <a href="skills.html">صندوق المهارات</a>
+      <a href="skills.html">المهارات</a>
       <a href="library.html">المكتبة</a>
+      <a href="awareness.html">التوعية</a>
       <a href="emergency.html" style="color: var(--danger-br);">الطوارئ</a>
       <button id="themeToggle" class="theme-btn">🌙</button>
     </nav>
@@ -63,128 +82,126 @@
 </header>
 
 <main class="wrap">
-  <!-- قسم الترحيب السينمائي -->
-    
-    
-    <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-top: 20px;">
+  
+  <!-- 1. قسم الترحيب (The Hook) -->
+  <section class="hero-3d-container">
+    <div class="hero-3d-glow"></div>
+    <div class="hero-3d-card capsule">
+      <h1 class="hero-3d-title">سند تعز</h1>
+      <p class="hero-3d-subtitle">مساحتك الآمنة للتعافي من آثار الحرب والضغوط النفسية.</p>
+      <p style="margin-bottom: 20px; color: var(--text-muted); font-size: 0.95em;">خطوات صغيرة يومية تعيد لك الإحساس بالأمان، بخصوصية تامة ومجاناً.</p>
+      <div class="hero-3d-buttons">
+        <a href="quick_assessment.html" class="btn-3d green">🧠 اكتشف حالتك الآن (مجاناً)</a>
+        <a href="booking.html" class="btn-3d gold">🗓️ تحدث مع مختص</a>
+      </div>
     </div>
-
   </section>
 
-  <section class="hero-3d-container"><div class="hero-3d-glow"></div><div class="hero-3d-card capsule"><h1 class="hero-3d-title">سند تعز</h1><p class="hero-3d-subtitle">خطوات صغيرة يومية تعيد لك الإحساس بالأمان.</p><div class="hero-3d-buttons"><a href="skills.html" class="btn-3d gold">⚡ تحتاج تهدئة الآن؟</a><a href="booking.html" class="btn-3d green">🗓️ احجز جلسة مع مختص</a></div></div></section>
-  <div class="disclaimer">
-    <strong>تنويه:</strong> هذه المنصة تقدّم تثقيفاً ودعماً نفسياً أوّلياً، وليست بديلاً عن العلاج الطبي أو التشخيص المتخصص. إذا كنت في خطر مباشر، <a href="emergency.html">اذهب لصفحة الطوارئ فوراً</a>.
+  <div class="disclaimer" style="text-align:center; font-size: 1em;">
+    <strong>تنويه:</strong> هذه المنصة تقدّم تثقيفاً ودعماً نفسياً أوّلياً، وليست بديلاً عن العلاج الطبي. <a href="emergency.html">صفحة الطوارئ</a>.
   </div>
 
-  <!-- قسم المسارات العلاجية -->
-  <div class="section-header">
-    <h2>المسارات العلاجية</h2>
-    <p>خطوات عملية مبنية على العلاج المعرفي السلوكي</p>
-  </div>
-  <div class="grid">
-    <a class="card has-image" href="atanafas.html">
-      <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=800&auto=format&fit=crop');"></div>
-      <div class="card-content">
-        <h3>مسار أتنفّس</h3>
-        <p>خمس خطوات صغيرة لإدارة القلق.</p>
-      </div>
-    </a>
-    <a class="card has-image" href="anam.html">
-      <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?q=80&w=800&auto=format&fit=crop');"></div>
-      <div class="card-content">
-        <h3>مسار أنام</h3>
-        <p>خطوات علمية لاستعادة نومك.</p>
-      </div>
-    </a>
-    <a class="card has-image" href="ahzan.html">
-      <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?q=80&w=800&auto=format&fit=crop');"></div>
-      <div class="card-content">
-        <h3>مسار أحزن</h3>
-        <p>خطوات للعبور من الفقد والنزوح.</p>
-      </div>
-    </a>
-    <a class="card has-image" href="arabi.html">
-      <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=800&auto=format&fit=crop');"></div>
-      <div class="card-content">
-        <h3>مسار أربّي</h3>
-        <p>كيف تحتوي طفلك وتدعمه.</p>
-      </div>
-    </a>
-  </div>
-  
-  <!-- زر "عرض المزيد" للمسارات -->
-  <div style="text-align: center; margin-top: 20px;">
-    <a href="library.html" class="btn ghost">عرض جميع المسارات ←</a>
+  <!-- 2. شريط الإحصائيات والثقة (Social Proof) -->
+  <div class="stats-bar">
+    <div class="stat-item"><span class="number">+8</span><span class="label">مسارات علاجية</span></div>
+    <div class="stat-item"><span class="number">4</span><span class="label">أدوات تقييم علمية</span></div>
+    <div class="stat-item"><span class="number">100%</span><span class="label">خصوصية وأمان</span></div>
+    <div class="stat-item"><span class="number">0</span><span class="label">تكلفة (مجاني)</span></div>
   </div>
 
-  <!-- قسم أدوات التقييم -->
-  <div class="section-header">
-    <h2>أدوات التقييم</h2>
-    <p>اكتشف مستوى القلق، الاكتئاب، والصدمة لديك</p>
-  </div>
-  <div class="mini-grid">
-    
-    <a href="quick_assessment.html" class="mini-card" style="border-color: var(--accent);">
-      <span class="icon">🧠</span>
-      <h4>تقييم سريع</h4>
-    </a>
-<a href="gad7.html" class="mini-card">
-      <span class="icon">📊</span>
-      <h4>مقياس القلق</h4>
-    </a>
-    <a href="phq9.html" class="mini-card">
-      <span class="icon">🧠</span>
-      <h4>مقياس الاكتئاب</h4>
-    </a>
-    <a href="pcl5.html" class="mini-card">
-      <span class="icon">🛡️</span>
-      <h4>مقياس الصدمة</h4>
-    </a>
-    <a href="wellbeing.html" class="mini-card">
-      <span class="icon">🌱</span>
-      <h4>مقياس الرفاهية</h4>
-    </a>
+  <!-- 3. لماذا سند تعز؟ (Value Proposition) -->
+  <div class="marketing-section">
+    <h2>لماذا "سند تعز"؟</h2>
+    <p class="subtitle">لأننا نفهم ظروفك، ونقدم لك دعماً مبنياً على أسس علمية، بعيداً عن التعقيد.</p>
+    <div class="features-grid">
+      <div class="feature-box">
+        <span class="icon">🔒</span>
+        <h3>خصوصية مطلقة</h3>
+        <p>لا نطلب هويتك. ما تكتبه يبقى على جهازك فقط.</p>
+      </div>
+      <div class="feature-box">
+        <span class="icon">📶</span>
+        <h3>يعمل بدون إنترنت</h3>
+        <p>صُمم ليعمل في أصعب الظروف، حتى مع انقطاع الشبكة.</p>
+      </div>
+      <div class="feature-box">
+        <span class="icon">🧠</span>
+        <h3>أسس علمية (CBT)</h3>
+        <p>محتوى يقدمه مختصان في علم النفس، بلغة بسيطة وقريبة.</p>
+      </div>
+      <div class="feature-box">
+        <span class="icon">🤝</span>
+        <h3>دعم بشري</h3>
+        <p>عندما تحتاج للتحدث، فريقنا (مختص ومختصة) هنا للاستماع.</p>
+      </div>
+    </div>
   </div>
 
-  <!-- قسم الرفاهية والمحتوى -->
-  <div class="section-header">
-    <h2>الرفاهية والمحتوى</h2>
-    <p>مهارات سريعة، مقالات توعوية، ومكتبة شاملة</p>
+  <!-- 4. قسم المسارات (Product Showcase) -->
+  <div class="marketing-section">
+    <h2>رحلتك نحو التعافي تبدأ من هنا</h2>
+    <p class="subtitle">اختر المسار الذي يناسب حالتك، وابدأ بخطوات عملية اليوم.</p>
+    <div class="grid">
+      <a class="card has-image" href="atanafas.html">
+        <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=800&auto=format&fit=crop');"></div>
+        <div class="card-content">
+          <h3>مسار أتنفّس</h3>
+          <p>لإدارة القلق والتوتر، واستعادة الهدوء الداخلي.</p>
+          <span class="pill">ابدأ الآن</span>
+        </div>
+      </a>
+      <a class="card has-image" href="ahzan.html">
+        <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?q=80&w=800&auto=format&fit=crop');"></div>
+        <div class="card-content">
+          <h3>مسار أحزن</h3>
+          <p>للتعامل مع الفقد، النزوح، ومشاعر الحزن العميقة.</p>
+          <span class="pill">ابدأ الآن</span>
+        </div>
+      </a>
+    </div>
+    <div style="margin-top: 25px;">
+      <a href="library.html" class="btn ghost">عرض جميع المسارات (8 مسارات) ←</a>
+    </div>
   </div>
-  <div class="grid">
-    <a class="card has-image" href="skills.html">
-      <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=800&auto=format&fit=crop');"></div>
-      <div class="card-content">
-        <h3>صندوق المهارات</h3>
-        <p>تمارين قصيرة تلجأ إليها في أي لحظة.</p>
-      </div>
-    </a>
-    
-    <a class="card has-image" href="awareness.html">
-      <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1499209974431-9dddcece7f88?q=80&w=800&auto=format&fit=crop');"></div>
-      <div class="card-content">
-        <h3>ركن التوعية</h3>
-        <p>أعراض نفسية، كسر الوصمة، وحقائق علمية.</p>
-        <span class="pill">جديد</span>
-      </div>
-    </a>
-<a class="card has-image" href="articles.html">
-      <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1500673922987-e212871fec22?q=80&w=800&auto=format&fit=crop');"></div>
-      <div class="card-content">
-        <h3>مقالات توعوية</h3>
-        <p>نكسر الوصمة ونفهم أنفسنا أكثر.</p>
-      </div>
-    </a>
+
+  <!-- 5. قسم التقييمات (Interactive Tool) -->
+  <div class="marketing-section">
+    <h2>لا تخمّن.. اكتشف حالتك بعلم</h2>
+    <p class="subtitle">أدوات تقييم سريعة تساعدك على فهم ما تشعر به.</p>
+    <div class="mini-grid">
+      <a href="quick_assessment.html" class="mini-card" style="border-color: var(--accent);">
+        <span class="icon">🧠</span>
+        <h4>تقييم سريع<br><small>(3 أسئلة)</small></h4>
+      </a>
+      <a href="gad7.html" class="mini-card">
+        <span class="icon">📊</span>
+        <h4>مقياس القلق</h4>
+      </a>
+      <a href="phq9.html" class="mini-card">
+        <span class="icon">💡</span>
+        <h4>مقياس الاكتئاب</h4>
+      </a>
+      <a href="pcl5.html" class="mini-card">
+        <span class="icon">🛡️</span>
+        <h4>مقياس الصدمة</h4>
+      </a>
+    </div>
+  </div>
+
+  <!-- 6. قسم النداء الأخير (Final CTA) -->
+  <div class="cta-banner">
+    <h2>أنت لست وحدك.. خطوة واحدة تكفي.</h2>
+    <p>ابدأ رحلتك نحو السلام النفسي الآن. الدعم متاح ومجاني للجميع.</p>
+    <a href="booking.html" class="btn" style="background: white; color: var(--primary); font-size: 1.2em; padding: 15px 40px;">احجز جلستك الأولى مجاناً</a>
   </div>
 
 </main>
 
-<footer class="wrap">
-  <p>سند تعز · دعم نفسي أوّلي مجاني · بخصوصية تامة<br>
-  لست وحدك. <a href="emergency.html">صفحة الطوارئ</a></p>
+<footer class="wrap" style="text-align: center; padding: 30px 20px;">
+  <p><b>سند تعز</b> · منصة يمنية للدعم النفسي الاجتماعي</p>
+  <p style="font-size: 0.9em; color: var(--text-muted);">صُنع بحب لأهل تعز واليمن 🇾🇪</p>
 </footer>
 
 <script src="assets/app.js"></script>
-<a href="https://wa.me/967771234567" class="floating-whatsapp" title="تحدث مع مختص">💬</a>
 </body>
 </html>
