@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ركن التوعية النفسية · سند تعز</title>
+<link rel="stylesheet" href="assets/style.css?v=4">
+<style>
+  .awareness-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 20px;
+    padding: 25px; margin-bottom: 20px; box-shadow: 0 10px 25px var(--shadow-color);
+    transition: 0.3s;
+  }
+  .awareness-card:hover { border-color: var(--primary); transform: translateY(-3px); }
+  .awareness-card h3 { color: var(--primary); margin-bottom: 15px; font-size: 1.3em; display: flex; align-items: center; gap: 10px; }
+  .awareness-card p { color: var(--text); margin-bottom: 10px; }
+  .awareness-card ul { padding-right: 20px; color: var(--text-muted); }
+  .awareness-card li { margin-bottom: 8px; }
+  
+  .highlight-box { background: var(--primary-glow); border-right: 4px solid var(--primary); padding: 15px; border-radius: 8px; margin-top: 15px; font-weight: bold; color: var(--text); }
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap">
+    <div class="brand"><span class="logo">س</span> سند تعز</div>
+    <nav class="nav">
+      <a href="index.html">الرئيسية</a>
+      <div class="dropdown">
+        <a href="#" style="cursor: pointer;">المسارات ▼</a>
+        <div class="dropdown-content">
+          <a href="atanafas.html">أتنفّس (القلق)</a>
+          <a href="anam.html">أنام (الأرق)</a>
+          <a href="ahzan.html">أحزن (الفقد)</a>
+          <a href="arabi.html">أربّي (الأطفال)</a>
+          <a href="asmod.html">أصمد (الصدمة)</a>
+          <a href="salam.html">أتصالح (الذنب)</a>
+          <a href="ghadab.html">أهدّئ غضبي (الغضب)</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <a href="#" style="cursor: pointer;">التقييمات ▼</a>
+        <div class="dropdown-content">
+          <a href="gad7.html">مقياس القلق GAD-7</a>
+          <a href="phq9.html">مقياس الاكتئاب PHQ-9</a>
+          <a href="pcl5.html">مقياس الصدمة PCL-5</a>
+          <a href="wellbeing.html">مقياس الرفاهية WHO-5</a>
+        </div>
+      </div>
+      <a href="skills.html">المهارات</a>
+      <a href="library.html">المكتبة</a>
+      <a href="awareness.html" class="active">التوعية</a>
+      <a href="emergency.html" style="color: var(--danger-br);">الطوارئ</a>
+      <button id="themeToggle" class="theme-btn">🌙</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <h1>ركن التوعية النفسية</h1>
+    <p>المعرفة هي أول خطوة نحو الشفاء</p>
+  </section>
+
+  <div class="disclaimer">
+    <strong>تنويه:</strong> هذه المعلومات للتثقيف الصحي النفسي. إذا كنت تعاني من أعراض شديدة، يُرجى مراجعة مختص.
+  </div>
+
+  <!-- 1. أعراض جسدية -->
+  <div class="awareness-card">
+    <h3>🩺 أعراض جسدية.. لا تعلم أن سببها نفسي!</h3>
+    <p>كثيراً ما نذهب لطبيب الباطنية ونفحص القلب والمعدة، والنتائج سليمة، لكن الألم مستمر. هذا يسمى "الجسدنة" (Somatization)، حيث يعبر الجسد عن الضغط النفسي الذي لا يستطيع العقل التعبير عنه.</p>
+    <ul>
+      <li><b>القولون العصبي:</b> انتفاخ وألم متكرر مرتبط بالتوتر.</li>
+      <li><b>الخفقان وضيق التنفس:</b> أعراض نوبات الهلع.</li>
+      <li><b>الصداع المزمن والتوتر العضلي:</b> شد الرقبة والكتفين.</li>
+      <li><b>الدوخة وطنين الأذن:</b> من القلق المزمن.</li>
+    </ul>
+    <div class="highlight-box">💡 الخلاصة: إذا فحصت جسدك ولم تجد سبباً طبياً، فربما يحتاج "عقلك" إلى رعاية، وليس جسدك فقط.</div>
+  </div>
+
+  <!-- 2. الوصمة -->
+  <div class="awareness-card">
+    <h3>🧠 كسر الوصمة: 3 خرافات شائعة</h3>
+    <ul>
+      <li><b>"العلاج النفسي للمجانين فقط":</b> خطأ. الأخصائي النفسي يعالج القلق، ضغوط العمل، مشاكل العلاقات، والأطفال، تماماً كطبيب الباطنية.</li>
+      <li><b>"الرجل القوي لا يبكي ولا يطلب مساعدة":</b> خطأ. كبت المشاعر يؤدي للانفجار أو الأمراض الجسدية. القوة الحقيقية هي الاعتراف بالألم وطلب الدعم.</li>
+      <li><b>"الصبر كافٍ لعلاج كل شيء":</b> خطأ. الصبر نعمة، لكنه ليس بديلاً عن العلاج. إذا كسرت يدك، فأنت تصبر وتذهب للطبيب معاً.</li>
+    </ul>
+  </div>
+
+  <!-- 3. هل تعلم -->
+  <div class="awareness-card">
+    <h3>💡 هل تعلم؟ (حقائق نفسية سريعة)</h3>
+    <ul>
+      <li>البكاء يفرز هرمونات التوتر (الكورتيزول) ويهدئ الجهاز العصبي. البكاء ليس ضعفاً، بل آلية تنظيف.</li>
+      <li>العناق لمدة 20 ثانية يفرز هرمون "الأوكسيتوسين" (هرمون الحب والأمان)، ويقلل من ضغط الدم.</li>
+      <li>القلق يجعلك تتنفس من صدرك بسرعة. التنفس البطني (من البطن) يخدع عقلك بأنك هادئ.</li>
+      <li>الصدمة لا تنسى، بل تعالج. ذكرى الحرب قد تظل، لكنها يمكن أن تتحول من ذكرى مؤلمة إلى ذكرى تمنحك قوة.</li>
+    </ul>
+  </div>
+
+  <!-- زر التحدث مع مختص -->
+  <section class="block" style="text-align: center; background: rgba(16, 185, 129, 0.1); border-color: var(--primary);">
+    <h2>هل تحتاج للتحدث مع مختص؟</h2>
+    <p>أنت لست وحدك. فريق سند تعز (مختصان في علم النفس) هنا للاستماع إليك.</p>
+    <!-- استبدل الرقم 967771234567 برقمك الحقيقي -->
+    <a href="https://wa.me/967771234567" class="btn" style="margin-top: 15px; background: #25D366; color: #fff; font-size: 1.1em; padding: 15px 30px;">💬 تواصل معنا عبر واتساب</a>
+  </section>
+</main>
+
+<footer class="wrap"><p>سند تعز · <a href="emergency.html">صفحة الطوارئ</a></p></footer>
+<script src="assets/app.js"></script>
+<a href="https://wa.me/967771234567" class="floating-whatsapp" title="تحدث مع مختص">💬</a>
+</body>
+</html>
