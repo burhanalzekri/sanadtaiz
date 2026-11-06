@@ -146,3 +146,60 @@ th { background: var(--surface-hover); color: var(--primary); font-weight: bold;
 .list-check li::before { content: '✓'; position: absolute; right: 0; color: var(--primary); font-weight: bold; }
 
 footer { text-align: center; padding: 40px 20px; border-top: 1px solid var(--border); margin-top: 50px; color: var(--text-muted); }
+
+/* --- تحديثات الصور (Cover Images) --- */
+
+/* تنسيق البطاقة لتحتوي على صورة */
+.card.has-image {
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-image {
+  width: 100%;
+  height: 160px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  border-bottom: 1px solid var(--border);
+}
+
+.card-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, var(--surface) 0%, transparent 80%);
+}
+
+.card-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+/* صورة الغلاف في صفحات المسارات */
+.hero-image {
+  width: 100%;
+  height: 200px;
+  border-radius: 20px;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 20px;
+  box-shadow: 0 10px 30px var(--shadow-color);
+  border: 1px solid var(--border);
+  position: relative;
+}
+.hero-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, var(--bg) 0%, transparent 50%);
+  border-radius: 20px;
+}
+@media (min-width: 768px) {
+  .card-image { height: 200px; }
+  .hero-image { height: 300px; }
+}

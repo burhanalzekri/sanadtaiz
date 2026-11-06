@@ -5,45 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>سند تعز — منصة يمنية للدعم النفسي</title>
 <link rel="stylesheet" href="assets/style.css">
-<style>
-  /* تنسيقات خاصة بالصفحة الرئيسية لتعزيز الفخامة */
-  .hero-buttons { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 20px; }
-  
-  /* شريط التمرير السينمائي (CSS Scroll Snap) */
-  .cinematic-slider {
-    display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 15px;
-    padding-bottom: 20px; margin-bottom: 30px;
-    scrollbar-width: none; /* إخفاء شريط التمرير في فايرفوكس */
-  }
-  .cinematic-slider::-webkit-scrollbar { display: none; /* إخفاء شريط التمرير في كروم */ }
-  
-  .c-slide {
-    flex: 0 0 100%; scroll-snap-align: center; position: relative;
-    border-radius: 20px; overflow: hidden; height: 250px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.6); border: 1px solid var(--border);
-    background-size: cover; background-position: center;
-  }
-  .c-slide::before {
-    content: ''; position: absolute; inset: 0;
-    background: linear-gradient(to top, rgba(5,5,5,1) 0%, rgba(5,5,5,0.4) 60%, transparent 100%);
-  }
-  .c-slide-content {
-    position: absolute; bottom: 0; right: 0; left: 0; padding: 25px;
-    color: white; z-index: 2;
-  }
-  .c-slide-content h3 { font-size: 1.5em; margin-bottom: 5px; color: var(--primary); text-shadow: 0 2px 10px rgba(0,0,0,0.8); }
-  .c-slide-content p { font-size: 0.95em; color: #e5e7eb; text-shadow: 0 1px 5px rgba(0,0,0,0.8); margin-bottom: 10px; }
-  .c-slide-content a { display: inline-block; background: rgba(16,185,129,0.2); border: 1px solid var(--primary); padding: 6px 15px; border-radius: 8px; font-size: 0.85em; color: var(--primary); font-weight: bold; backdrop-filter: blur(5px); }
-
-  @media (min-width: 768px) {
-    .cinematic-slider { gap: 20px; }
-    .c-slide { flex: 0 0 calc(50% - 10px); height: 300px; }
-  }
-</style>
 </head>
 <body>
 
-<!-- بوابة الموافقة المستنيرة -->
 <div class="modal-bg" id="consentModal">
   <div class="modal" role="dialog" aria-modal="true">
     <h2>أهلاً بك في سند تعز</h2>
@@ -72,7 +36,7 @@
       <a href="library.html">المكتبة</a>
       <a href="articles.html">المقالات</a>
       <a href="emergency.html" style="color: var(--danger-br);">الطوارئ</a>
-    <button id="themeToggle" class="theme-btn" title="تبديل الوضع">🌙</button>
+      <button id="themeToggle" class="theme-btn">🌙</button>
     </nav>
   </div>
 </header>
@@ -81,9 +45,8 @@
   <section class="hero">
     <h1>سند تعز</h1>
     <p>خطوات صغيرة يومية تعيد لك الإحساس بالأمان.</p>
-    <div class="hero-buttons">
+    <div style="margin-top: 20px;">
       <a href="skills.html" class="btn" style="background: linear-gradient(135deg, #d4af37, #b8912a); color:#000;">⚡ تحتاج تهدئة الآن؟</a>
-      <a href="assessment.html" class="btn ghost" style="display:none;">التقييم الذكي</a>
     </div>
   </section>
 
@@ -91,62 +54,67 @@
     <strong>تنويه:</strong> هذه المنصة تقدّم تثقيفاً ودعماً نفسياً أوّلياً، وليست بديلاً عن العلاج الطبي أو التشخيص المتخصص. إذا كنت في خطر مباشر، <a href="emergency.html">اذهب لصفحة الطوارئ فوراً</a>.
   </div>
 
-  <!-- شريط التمرير السينمائي -->
-  <div class="cinematic-slider">
-    <div class="c-slide" style="background-image: url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=1000&auto=format&fit=crop');">
-      <div class="c-slide-content">
-        <h3>مسار أتنفّس</h3>
-        <p>هل يعتصرك القلق؟ تعلم كيف تهدئ جهازك العصبي وتعيد ضبط أفكارك.</p>
-        <a href="atanafas.html">ابدأ المسار ←</a>
-      </div>
-    </div>
-    <div class="c-slide" style="background-image: url('https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?q=80&w=1000&auto=format&fit=crop');">
-      <div class="c-slide-content">
-        <h3>مسار أنام</h3>
-        <p>خطوات علمية لاستعادة نومك بعد التوتر والحرب والأرق.</p>
-        <a href="anam.html">ابدأ المسار ←</a>
-      </div>
-    </div>
-    <div class="c-slide" style="background-image: url('https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?q=80&w=1000&auto=format&fit=crop');">
-      <div class="c-slide-content">
-        <h3>مسار أحزن</h3>
-        <p>فقدت عزيزاً؟ الحزن ليس ضعفاً. خطوات للعبور من الفقد والنزوح.</p>
-        <a href="ahzan.html">ابدأ المسار ←</a>
-      </div>
-    </div>
-  </div>
-
   <h2 style="color:var(--ink); margin: 20px 0 15px; font-size: 1.5em;">المسارات العلاجية</h2>
   <div class="grid">
-    <a class="card" href="atanafas.html">
-      <h3>مسار أتنفّس</h3>
-      <p>خمس خطوات صغيرة لإدارة القلق، كل خطوة في يوم.</p>
-      <span class="pill">متاح الآن</span>
+    
+    <!-- مسار أتنفس -->
+    <a class="card has-image" href="atanafas.html">
+      <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=800&auto=format&fit=crop');"></div>
+      <div class="card-content">
+        <h3>مسار أتنفّس</h3>
+        <p>خمس خطوات صغيرة لإدارة القلق، كل خطوة في يوم.</p>
+        <span class="pill">متاح الآن</span>
+      </div>
     </a>
-    <a class="card" href="anam.html">
-      <h3>مسار أنام</h3>
-      <p>خطوات علمية لاستعادة نومك بعد التوتر والحرب.</p>
-      <span class="pill">متاح الآن</span>
+
+    <!-- مسار أنام -->
+    <a class="card has-image" href="anam.html">
+      <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?q=80&w=800&auto=format&fit=crop');"></div>
+      <div class="card-content">
+        <h3>مسار أنام</h3>
+        <p>خطوات علمية لاستعادة نومك بعد التوتر والحرب.</p>
+        <span class="pill">متاح الآن</span>
+      </div>
     </a>
-    <a class="card" href="ahzan.html">
-      <h3>مسار أحزن</h3>
-      <p>خمس خطوات للعبور من الفقد والنزوح.</p>
-      <span class="pill">متاح الآن</span>
+
+    <!-- مسار أحزن -->
+    <a class="card has-image" href="ahzan.html">
+      <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?q=80&w=800&auto=format&fit=crop');"></div>
+      <div class="card-content">
+        <h3>مسار أحزن</h3>
+        <p>خمس خطوات للعبور من الفقد والنزوح.</p>
+        <span class="pill">متاح الآن</span>
+      </div>
     </a>
-    <a class="card" href="skills.html">
-      <h3>صندوق المهارات</h3>
-      <p>تمارين قصيرة تلجأ إليها في أي لحظة.</p>
-      <span class="pill">أدوات سريعة</span>
+
+    <!-- مسار أربي -->
+    <a class="card has-image" href="arabi.html">
+      <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=800&auto=format&fit=crop');"></div>
+      <div class="card-content">
+        <h3>مسار أربّي</h3>
+        <p>كيف تحتوي طفلك وتدعمه في ظل الحرب والنزوح.</p>
+        <span class="pill">متاح الآن</span>
+      </div>
     </a>
-    <a class="card" href="arabi.html">
-      <h3>مسار أربّي</h3>
-      <p>كيف تحتوي طفلك وتدعمه في ظل الحرب والنزوح.</p>
-      <span class="pill">متاح الآن</span>
+
+    <!-- مسار أصمد -->
+    <a class="card has-image" href="asmod.html">
+      <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1476610182048-b716b8518aae?q=80&w=800&auto=format&fit=crop');"></div>
+      <div class="card-content">
+        <h3>مسار أصمد</h3>
+        <p>خطوات للتعامل مع صدمة الحرب والذكريات المتطفلة.</p>
+        <span class="pill">متاح الآن</span>
+      </div>
     </a>
-    <a class="card" href="asmod.html">
-      <h3>مسار أصمد</h3>
-      <p>خطوات للتعامل مع صدمة الحرب والذكريات المتطفلة.</p>
-      <span class="pill">متاح الآن</span>
+
+    <!-- صندوق المهارات -->
+    <a class="card has-image" href="skills.html">
+      <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1499209974431-9dddcece7f88?q=80&w=800&auto=format&fit=crop');"></div>
+      <div class="card-content">
+        <h3>صندوق المهارات</h3>
+        <p>تمارين قصيرة تلجأ إليها في أي لحظة.</p>
+        <span class="pill">أدوات سريعة</span>
+      </div>
     </a>
 
   </div>
