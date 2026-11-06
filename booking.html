@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>احجز جلستك · سند تعز</title>
+<link rel="stylesheet" href="assets/style.css?v=4">
+<style>
+  .booking-form { background: var(--surface); border: 1px solid var(--border); border-radius: 24px; padding: 30px; box-shadow: 0 15px 40px var(--shadow-color); max-width: 600px; margin: 0 auto; }
+  .form-group { margin-bottom: 20px; }
+  .form-group label { display: block; margin-bottom: 8px; font-weight: bold; color: var(--text); }
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 10px;
+    background: var(--surface-hover); color: var(--text); font-family: inherit; font-size: 1em;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 10px var(--primary-glow); }
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap">
+    <div class="brand"><span class="logo">س</span> سند تعز</div>
+    <nav class="nav">
+      <a href="index.html">الرئيسية</a>
+      <a href="booking.html" class="active">احجز جلستك</a>
+      <a href="skills.html">المهارات</a>
+      <a href="awareness.html">التوعية</a>
+      <a href="emergency.html" style="color: var(--danger-br);">الطوارئ</a>
+      <button id="themeToggle" class="theme-btn">🌙</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <h1>احجز جلستك</h1>
+    <p>خطوة شجاعة نحو التعافي · نحن هنا للاستماع</p>
+  </section>
+
+  <div class="disclaimer" style="text-align: center;">
+    <strong>خصوصية تامة:</strong> جميع البيانات تُعامل بسرية مطلقة. يمكنك استخدام اسم مستعار.
+  </div>
+
+  <form class="booking-form" id="bookingForm">
+    <div class="form-group">
+      <label for="name">الاسم (أو اسم مستعار):</label>
+      <input type="text" id="name" required placeholder="مثال: أحمد / أو أي اسم تفضله">
+    </div>
+    <div class="form-group">
+      <label for="contact">رقم الواتساب للتواصل:</label>
+      <input type="tel" id="contact" required placeholder="مثال: 77XXXXXXX">
+    </div>
+    <div class="form-group">
+      <label for="topic">ما هو الموضوع الأقرب لحالتك؟</label>
+      <select id="topic">
+        <option>القلق والتوتر</option>
+        <option>الحزن والفقد</option>
+        <option>صدمة الحرب</option>
+        <option>مشاكل النوم</option>
+        <option>الغضب والانفعال</option>
+        <option>دعم الأطفال</option>
+        <option>لست متأكداً، أحتاج توجيهاً</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="gender">هل تفضل التحدث مع:</label>
+      <select id="gender">
+        <option>مختص (رجل)</option>
+        <option>مختصة (امرأة)</option>
+        <option>لا يهم</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="message">هل تود إضافة شيء قبل الجلسة؟ (اختياري)</label>
+      <textarea id="message" rows="3" placeholder="اكتب ما تشعر به بحرية..."></textarea>
+    </div>
+    <button type="submit" class="btn" style="width: 100%; font-size: 1.2em; padding: 15px;">إرسال طلب الحجز</button>
+  </form>
+
+  <div id="successMessage" style="display:none; text-align:center; margin-top:20px; padding:20px; background:var(--primary-glow); border-radius:16px; color:var(--primary);">
+    <h3>تم استلام طلبك بنجاح!</h3>
+    <p>سيتواصل معك فريق سند تعز عبر الواتساب خلال 24 ساعة لجدولة الموعد. شكراً لثقتك بنا.</p>
+  </div>
+</main>
+
+<footer class="wrap"><p>سند تعز · <a href="emergency.html">صفحة الطوارئ</a></p></footer>
+
+<script>
+  document.getElementById('bookingForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    // هنا يمكنك برمجة إرسال البيانات إلى واتساب أو بريد إلكتروني
+    // حالياً سنعرض رسالة نجاح فقط
+    document.getElementById('bookingForm').style.display = 'none';
+    document.getElementById('successMessage').style.display = 'block';
+  });
+</script>
+<script src="assets/app.js"></script>
+</body>
+</html>
