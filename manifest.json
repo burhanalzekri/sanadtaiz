@@ -1,0 +1,19 @@
+{
+  "name": "سند تعز — الدعم النفسي",
+  "short_name": "سند تعز",
+  "description": "منصة تعزية للدعم النفسي الاجتماعي",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#050505",
+  "theme_color": "#10b981",
+  "dir": "rtl",
+  "lang": "ar",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/3576/3576626.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

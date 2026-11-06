@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>سند تعز — منصة للدعم النفسي الاجتماعي</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#10b981">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<!-- بوابة الموافقة المستنيرة -->
+<div class="modal-bg" id="consentModal" style="display:none;">
+  <div class="modal" role="dialog" aria-modal="true">
+    <h2>أهلاً بك في سند تعز</h2>
+    <p>قبل أن تبدأ، نحب أن تعرف:</p>
+    <ul class="list-check">
+      <li>هذا دعم نفسي أوّلي وتثقيف، وليس علاجاً طبياً ولا تشخيصاً.</li>
+      <li>لا نطلب اسمك الحقيقي ولا هويتك — اسم مستعار يكفي.</li>
+      <li>ما تكتبه في مساحة التفريغ يبقى على جهازك فقط ولا يُرسل لأحد.</li>
+      <li>إن كنت في خطر مباشر، توجّه فوراً لصفحة الطوارئ.</li>
+    </ul>
+    <button class="btn block" id="consentBtn">أفهم وأوافق، ابدأ</button>
+  </div>
+</div>
+
+<header class="topbar">
+  <div class="wrap">
+    <div class="brand"><span class="logo">س</span> سند تعز</div>
+    <nav class="nav">
+      <a href="index.html" class="active">الرئيسية</a>
+      <a href="atanafas.html">مسار أتنفّس</a>
+      <a href="library.html">المكتبة</a>
+      <a href="emergency.html">الطوارئ</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <h1>سند</h1>
+    <p>خطوات صغيرة يومية تعيد لك الإحساس بالأمان.</p>
+  </section>
+
+  <div class="disclaimer">
+    <strong>تنويه:</strong> هذه المنصة تقدّم تثقيفاً ودعماً نفسياً أوّلياً، وليست بديلاً عن العلاج الطبي أو التشخيص المتخصص. إذا كنت في خطر مباشر، <a href="emergency.html">اذهب لصفحة الطوارئ فوراً</a>.
+  </div>
+
+  <section class="block">
+    <h2>ما هي سند تعز؟</h2>
+    <p class="lead">منصة يمنية للدعم النفسي الاجتماعي، يقدّمها مختصّان في علم النفس. محتوى علمي موثّق (CBT والإسعاف النفسي الأوّلي)، بلغة قريبة، مجاناً، وبخصوصية تامة، وخفيفة تعمل حتى على أضعف الأجهزة والإنترنت.</p>
+  </section>
+
+  <h2 style="color:white; margin-bottom: 20px; border-right: 4px solid var(--primary); padding-right: 15px;">ابدأ من هنا</h2>
+  <div class="grid">
+    <a class="card" href="atanafas.html">
+      <h3>مسار أتنفّس</h3>
+      <p>خمس خطوات صغيرة لإدارة القلق، كل خطوة في يوم.</p>
+      <span class="pill">متاح الآن</span>
+    </a>
+    <a class="card" href="library.html">
+      <h3>المكتبة التوعوية</h3>
+      <p>مقالات وتمارين قصيرة تقرأها في دقائق.</p>
+      <span class="pill">تثقيف نفسي</span>
+    </a>
+    <a class="card" href="emergency.html">
+      <h3>الطوارئ</h3>
+      <p>إن كنت في خطر أو تحتاج مساعدة عاجلة.</p>
+      <span class="pill">مهم</span>
+    </a>
+    <a class="card" href="atanafas.html#vent">
+      <h3>مساحة التفريغ</h3>
+      <p>اكتب ما تشعر به بحرية — لا يُحفظ ولا يُرسل.</p>
+      <span class="pill">خاص بك</span>
+    </a>
+  </div>
+</main>
+
+<footer class="wrap">
+  <p>سند تعز · دعم نفسي أوّلي مجاني · بخصوصية تامة<br>
+  لست وحدك. <a href="emergency.html">صفحة الطوارئ</a></p>
+</footer>
+
+<script src="assets/app.js"></script>
+<script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("sw.js");
+}
+</script>
+</body>
+</html>

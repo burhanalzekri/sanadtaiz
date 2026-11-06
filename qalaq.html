@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>أتنفس — مسار القلق</title>
+<style>
+  :root { --primary: #2c7a6f; --primary-light: #e0f2ef; --bg: #eef2f5; --card-bg: rgba(255, 255, 255, 0.7); --text: #1a2b2b; --text-muted: #555555; --shadow-color: rgba(0, 0, 0, 0.1); --glass-border: rgba(255, 255, 255, 0.5); }
+  [data-theme="dark"] { --primary: #4db6ac; --primary-light: #1e3b36; --bg: #0f172a; --card-bg: rgba(30, 41, 59, 0.7); --text: #f8fafc; --text-muted: #94a3b8; --shadow-color: rgba(0, 0, 0, 0.5); --glass-border: rgba(255, 255, 255, 0.1); }
+  * { box-sizing: border-box; margin: 0; padding: 0; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+  body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--bg); color: var(--text); line-height: 1.9; min-height: 100vh; }
+  body::before { content: ''; position: fixed; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle at 50% 50%, rgba(44,122,111,0.15) 0%, transparent 60%); z-index: -1; pointer-events: none; animation: rotateBg 20s linear infinite; }
+  @keyframes rotateBg { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+  nav { background: var(--card-bg); backdrop-filter: blur(15px); padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--glass-border); position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 30px var(--shadow-color); }
+  nav .logo { font-size: 1.6em; font-weight: 900; color: var(--primary); text-decoration: none; text-shadow: 0 2px 10px rgba(44,122,111,0.3); }
+  nav a { color: var(--text-muted); text-decoration: none; font-weight: bold; margin-left: 15px; }
+  .theme-toggle { background: var(--primary-light); color: var(--primary); border: none; padding: 10px 15px; border-radius: 20px; cursor: pointer; font-weight: bold; box-shadow: 0 4px 15px var(--shadow-color); }
+  .container { max-width: 800px; margin: 0 auto; padding: 30px 20px; }
+  h1 { color: var(--primary); margin: 20px 0 40px; text-align: center; font-size: 2.2em; text-shadow: 0 5px 15px var(--shadow-color); }
+  
+  .step { background: var(--card-bg); backdrop-filter: blur(20px); border-radius: 24px; padding: 35px; margin-bottom: 30px; border: 1px solid var(--glass-border); box-shadow: 0 15px 35px -5px var(--shadow-color), inset 0 1px 0 rgba(255,255,255,0.4); position: relative; overflow: hidden; }
+  .step:hover { transform: translateY(-5px) scale(1.01); box-shadow: 0 25px 45px -5px rgba(44, 122, 111, 0.3); border-color: var(--primary); }
+  .step h2 { color: var(--primary); font-size: 1.6em; margin-bottom: 15px; text-shadow: 0 2px 5px var(--shadow-color); }
+  .step .badge { display: inline-block; background: linear-gradient(135deg, var(--primary), #23635a); color: white; padding: 6px 18px; border-radius: 20px; font-size: 0.85em; margin-bottom: 20px; font-weight: bold; box-shadow: 0 4px 10px rgba(44,122,111,0.3); }
+  
+  /* نصوص التثقيف النفسي */
+  .education-text { background: rgba(0,0,0,0.03); padding: 25px; border-radius: 16px; font-size: 1.05em; margin-top: 15px; border-right: 5px solid var(--primary); box-shadow: inset 0 2px 10px rgba(0,0,0,0.02); }
+  [data-theme="dark"] .education-text { background: rgba(255,255,255,0.05); }
+  .education-text strong { color: var(--primary); font-size: 1.1em; }
+  .education-text ul { margin-top: 10px; margin-right: 20px; }
+  .education-text li { margin-bottom: 8px; }
+
+  .exercise { background: var(--primary-light); padding: 25px; border-radius: 20px; margin-top: 25px; box-shadow: inset 0 2px 15px rgba(44,122,111,0.1), 0 5px 15px rgba(0,0,0,0.05); border: 1px solid var(--glass-border); }
+  .exercise h3 { color: var(--primary); margin-bottom: 15px; font-size: 1.2em; }
+  
+  textarea { width: 100%; padding: 18px; border: 1px solid var(--glass-border); border-radius: 14px; font-family: inherit; font-size: 1em; margin-top: 15px; background: var(--card-bg); color: var(--text); resize: vertical; box-shadow: inset 0 4px 10px rgba(0,0,0,0.05); }
+  textarea:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 15px rgba(44,122,111,0.3); }
+  .save-status { font-size: 0.9em; color: var(--primary); margin-top: 10px; display: none; font-weight: bold; }
+  
+  .btn { display: inline-block; background: linear-gradient(135deg, #c62828, #8e0000); color: white; padding: 16px 24px; border-radius: 16px; text-decoration: none; font-weight: bold; margin-top: 25px; text-align: center; width: 100%; border: none; cursor: pointer; font-size: 1.1em; box-shadow: 0 10px 20px -5px rgba(198, 40, 40, 0.5); }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">سند</a>
+  <div style="display:flex; gap:10px; align-items:center;">
+    <a href="index.html">الرئيسية</a>
+    <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+  </div>
+</nav>
+
+<div class="container">
+  <h1>أتنفس — إدارة القلق</h1>
+
+  <!-- الخطوة 1 -->
+  <div class="step">
+    <span class="badge">الخطوة 1: فهم العدو</span>
+    <h2>ما هو القلق حقاً؟</h2>
+    <div class="education-text">
+      <strong>القلق ليس ضعفاً، بل هو جهاز إنذار.</strong><br><br>
+      تخيل أن جسمك مجهز بجهاز إنذار (جهاز عصبي سمبثاوي). وظيفته الوحيدة هي حمايتك من الخطر. عندما يرى خطراً، يضرب الإنذار: يزيد ضربات القلب (ليهرب الدم للعضلات)، يتسارع التنفس (لتوصيل أكسجين أكثر)، وتتوقف المعدة عن الهضم (لأن الهضم ليس أولوية وقت الهروب).<br><br>
+      في ظروف الحرب، هذا الجهاز يعمل <strong>بشكل مفرط (Hyper-vigilance)</strong>. هو لا يتوقف لأن الخطر لم يتوقف. النتيجة؟ إرهاق دائم، أرق، وتوتر.<br><br>
+      <strong>المهارة الأولى:</strong> أن تدرك أن هذه الأعراض ليست "مرضاً"، بل جسمك يحاول حمايتك بطريقة مبالغ فيها. الطريق للتعافي يبدأ بتهدئة هذا الجهاز.
+    </div>
+  </div>
+
+  <!-- الخطوة 2 -->
+  <div class="step">
+    <span class="badge">الخطوة 2: تفعيل المكابح</span>
+    <h2>مهارة التنفس البطني (الفرملة)</h2>
+    <div class="education-text">
+      <strong>كيف نطفئ جهاز الإنذار؟</strong><br><br>
+      هناك جهاز آخر في جسمك يسمى الجهاز العصبي <strong>الباراسمبثاوي</strong> (جهاز الراحة والهضم). لا يمكنك إجباره على العمل بالعقل، لكن هناك مفتاح سري يفعله: <strong>التنفس البطيء والعميق.</strong><br><br>
+      عندما تتنفس ببطء (شهيق 4 ثوان، زفير 6 ثوان)، أنت ترسل رسالة لعقلك: "نحن نتنفس ببطء، إذن نحن آمنون". فيخفف العقل من إفراز هرمونات التوتر (الكورتيزول والأدرينالين).<br><br>
+      <strong>المهارة الثانية:</strong> اجعل التنفس البطني عادة. لا تنتظر حتى يأتي القلق، تدرب عليه في الأوقات الهادئة، حتى تصبح قادراً على استخدامه وقت الأزمة.
+    </div>
+  </div>
+
+  <!-- الخطوة 3 -->
+  <div class="step">
+    <span class="badge">الخطوة 3: إعادة برمجة العقل</span>
+    <h2>مهارة التعرف على التشوهات المعرفية</h2>
+    <div class="education-text">
+      <strong>الفكرة ليست حقيقة.</strong><br><br>
+      في العلاج المعرفي السلوكي (CBT)، نعلم أن القلق يغذي نفسه بأفكار مشوهة. هذه ليست أفكارك الحقيقية، بل أخطاء في معالجة المعلومات:<br><br>
+      <ul>
+        <li><strong>التهويل (Catastrophizing):</strong> "إذا تأخرت، سأفقد عملي وسأفلس".</li>
+        <li><strong>قراءة الأفكار (Mind Reading):</strong> "أنا أعرف أنهم يكرهونني".</li>
+        <li><strong>التفكير الثنائي (All or Nothing):</strong> "إذا لم أكن مثالياً، فأنا فاشل".</li>
+      </ul><br>
+      <strong>المهارة الثالثة:</strong> عندما تأتي فكرة مخيفة، لا تصدقها فوراً. اسألها:<br>
+      1. ما الدليل المادي على هذه الفكرة؟<br>
+      2. هل هناك تفسير آخر ممكن؟<br>
+      3. لو صديقك قال لك هذه الفكرة، بماذا كنت سترد عليه؟
+    </div>
+    
+    <div class="exercise">
+      <h3>تطبيق المهارة (احفظ إجاباتك في هاتفك)</h3>
+      <textarea id="exerciseBox" rows="6" placeholder="اكتب أسوأ فكرة تلاحقك الآن، ثم اكتب التفسير البديل الأكثر واقعية..."></textarea>
+      <div class="save-status" id="saveStatus">✓ تم الحفظ تلقائياً على جهازك</div>
+    </div>
+  </div>
+
+  <!-- الخطوة 4 -->
+  <div class="step">
+    <span class="badge">الخطوة 4: كسر الحلقة</span>
+    <h2>مهارة التعرض التدريجي (المواجهة)</h2>
+    <div class="education-text">
+      <strong>التجنب يغذي القلق.</strong><br><br>
+      عندما تخاف من شيء، تتجنبه. التجنب يريحك فوراً (مكسب قصير المدى)، لكنه يخبر عقلك: "أنت محق، هذا الشيء خطير جداً، أنقذتك هذه المرة". فيكبر القلق.<br><br>
+      الحل هو <strong>التعرض التدريجي (Exposure)</strong>:
+      <ul>
+        <li>اختر موقفاً تخافه (مثلاً: الخروج للشارع).</li>
+        <li>قسّمه لسلالم صغيرة جداً (1. الوقوف عند الباب. 2. الخروج خطوتين. 3. الوقوف 5 دقائق).</li>
+        <li>ابدأ بأصغر خطوة. ابقَ فيها حتى يهبط القلق، ثم ارتقِ.</li>
+      </ul><br>
+      <strong>المهارة الرابعة:</strong> لا تنتظر اختفاء الخوف لتفعل. افعل، وسيختفي الخوف تدريجياً.
+    </div>
+  </div>
+
+  <!-- الخطوة 5 -->
+  <div class="step">
+    <span class="badge">الخطوة 5: المراقبة الذاتية</span>
+    <h2>مهارة الوعي والرصد (Self-Monitoring)</h2>
+    <div class="education-text">
+      <strong>ما لا يمكن قياسه، لا يمكن التحكم به.</strong><br><br>
+      أحياناً نعيش يومنا كله ونحن في حالة توتر، ولا نعرف لماذا. العلاج السلوكي يعتمد على "سجل المزاج" (Mood Diary).<br><br>
+      <strong>المهارة الخامسة:</strong> قيّم قلقك يومياً من 1-10. لاحظ: ماذا كنت تفعل؟ مع من؟ ماذا كنت تأكل؟ هل نمت جيداً؟ هذه الأنماط ستكشف لك محفزات القلق (Triggers) الخاصة بك، مما يمنحك القوة للتحكم بها بدلاً من أن تتحكم هي بك.
+    </div>
+    <a href="https://wa.me/967XXXXXXXXX" class="btn">أحتاج مساعدة من مختص</a>
+  </div>
+</div>
+
+<script>
+  function toggleTheme() {
+    const body = document.body;
+    if (body.getAttribute('data-theme') === 'dark') { body.removeAttribute('data-theme'); localStorage.setItem('theme', 'light'); document.querySelector('.theme-toggle').innerText = '🌙'; } 
+    else { body.setAttribute('data-theme', 'dark'); localStorage.setItem('theme', 'dark'); document.querySelector('.theme-toggle').innerText = '☀️'; }
+  }
+  if (localStorage.getItem('theme') === 'dark') { document.body.setAttribute('data-theme', 'dark'); document.querySelector('.theme-toggle').innerText = '☀️'; }
+
+  const box = document.getElementById('exerciseBox');
+  const status = document.getElementById('saveStatus');
+  const savedText = localStorage.getItem('sana_qalaq_ex1');
+  if (savedText) { box.value = savedText; }
+  box.addEventListener('input', function() {
+    localStorage.setItem('sana_qalaq_ex1', this.value);
+    status.style.display = 'block';
+    setTimeout(() => { status.style.display = 'none'; }, 2000);
+  });
+</script>
+</body>
+</html>

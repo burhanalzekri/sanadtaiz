@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>أصمد — صدمة الحرب</title>
+<style>
+  :root { --primary: #2c7a6f; --primary-light: #e0f2ef; --bg: #eef2f5; --card-bg: rgba(255, 255, 255, 0.7); --text: #1a2b2b; --text-muted: #555555; --shadow-color: rgba(0, 0, 0, 0.1); --glass-border: rgba(255, 255, 255, 0.5); }
+  [data-theme="dark"] { --primary: #4db6ac; --primary-light: #1e3b36; --bg: #0f172a; --card-bg: rgba(30, 41, 59, 0.7); --text: #f8fafc; --text-muted: #94a3b8; --shadow-color: rgba(0, 0, 0, 0.5); --glass-border: rgba(255, 255, 255, 0.1); }
+  * { box-sizing: border-box; margin: 0; padding: 0; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+  body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--bg); color: var(--text); line-height: 1.9; min-height: 100vh; }
+  body::before { content: ''; position: fixed; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle at 50% 50%, rgba(44,122,111,0.15) 0%, transparent 60%); z-index: -1; pointer-events: none; animation: rotateBg 20s linear infinite; }
+  @keyframes rotateBg { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+  nav { background: var(--card-bg); backdrop-filter: blur(15px); padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--glass-border); position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 30px var(--shadow-color); }
+  nav .logo { font-size: 1.6em; font-weight: 900; color: var(--primary); text-decoration: none; }
+  nav a { color: var(--text-muted); text-decoration: none; font-weight: bold; margin-left: 15px; }
+  .theme-toggle { background: var(--primary-light); color: var(--primary); border: none; padding: 10px 15px; border-radius: 20px; cursor: pointer; font-weight: bold; }
+  .container { max-width: 800px; margin: 0 auto; padding: 30px 20px; }
+  h1 { color: var(--primary); margin: 20px 0 40px; text-align: center; font-size: 2.2em; }
+  
+  .step { background: var(--card-bg); backdrop-filter: blur(20px); border-radius: 24px; padding: 35px; margin-bottom: 30px; border: 1px solid var(--glass-border); box-shadow: 0 15px 35px -5px var(--shadow-color); position: relative; }
+  .step:hover { transform: translateY(-5px); border-color: var(--primary); }
+  .step h2 { color: var(--primary); font-size: 1.6em; margin-bottom: 15px; }
+  .step .badge { display: inline-block; background: linear-gradient(135deg, var(--primary), #23635a); color: white; padding: 6px 18px; border-radius: 20px; font-size: 0.85em; margin-bottom: 20px; font-weight: bold; }
+  
+  .education-text { background: rgba(0,0,0,0.03); padding: 25px; border-radius: 16px; font-size: 1.05em; margin-top: 15px; border-right: 5px solid var(--primary); }
+  [data-theme="dark"] .education-text { background: rgba(255,255,255,0.05); }
+  .education-text strong { color: var(--primary); font-size: 1.1em; }
+  
+  .exercise { background: var(--primary-light); padding: 25px; border-radius: 20px; margin-top: 25px; border: 1px solid var(--glass-border); }
+  .exercise h3 { color: var(--primary); margin-bottom: 15px; font-size: 1.2em; }
+  
+  .btn { display: inline-block; background: linear-gradient(135deg, #c62828, #8e0000); color: white; padding: 16px 24px; border-radius: 16px; text-decoration: none; font-weight: bold; margin-top: 25px; text-align: center; width: 100%; border: none; cursor: pointer; font-size: 1.1em; box-shadow: 0 10px 20px -5px rgba(198, 40, 40, 0.5); }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">سند</a>
+  <div style="display:flex; gap:10px; align-items:center;">
+    <a href="index.html">الرئيسية</a>
+    <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+  </div>
+</nav>
+
+<div class="container">
+  <h1>أصمد — صدمة الحرب</h1>
+
+  <div class="step">
+    <span class="badge">الخطوة 1: الأمان</span>
+    <h2>مهارة تثبيت الأمان (Safety Anchoring)</h2>
+    <div class="education-text">
+      <strong>الدماغ لا يفرق بين الماضي والحاضر.</strong><br><br>
+      في الصدمة، يتجمد جزء من الدماغ (اللوزة الدماغية) في لحظة الحدث الصادم. لذلك، عندما تسمع صوت طائرة أو انفجار، يستجيب جسمك وكأن الحرب الآن، وليس ذكرى.<br><br>
+      <strong>المهارة الأولى:</strong> نحتاج أن نخبر الدماغ: "نحن في عام 2025، أنت الآن في غرفة آمنة". كيف؟ من خلال الحواس. المس شيئاً بارداً، اشمم رائحة قوية (قهوة)، انظر لشيء ثابت. هذا يفعّل قشرة الفص الجبهي (منطق العقل) ويطفئ اللوزة الدماغية (الخوف).
+    </div>
+  </div>
+
+  <div class="step">
+    <span class="badge">الخطوة 2: الارتجاع العصبي</span>
+    <h2>مهارة 5-4-3-2-1 (Grounding)</h2>
+    <div class="education-text">
+      <strong>عندما يهاجمك الخوف، افصل نفسك عن الذكرى.</strong><br><br>
+      تقنية التثبيت (Grounding) هي من أقوى مهارات الإسعاف النفسي الأولي. عندما تأتي ذكرى متطفلة، لا تقل "توقف"، بل انقل انتباهك للحاضر عبر الحواس الخمس:<br><br>
+      <ul>
+        <li>5 أشياء تراها (تفاصيل دقيقة).</li>
+        <li>4 أشياء تلمسها (ملمس الكرسي، الملابس).</li>
+        <li>3 أشياء تسمعها (صوت المروحة، الطيور).</li>
+        <li>2 تشمها (عطر، هواء).</li>
+        <li>1 تتذوقه (رشفة ماء).</li>
+      </ul><br>
+      <strong>المهارة الثانية:</strong> هذا ليس هروباً، بل هو تدريب للدماغ على العودة للحظة الحالية.
+    </div>
+  </div>
+
+  <div class="step">
+    <span class="badge">الخطوة 3: إعادة المعالجة</span>
+    <h2>مهارة المراقبة المنفصلة (Cognitive Defusion)</h2>
+    <div class="education-text">
+      <strong>الذكرى ليست أنت.</strong><br><br>
+      الذكريات المتطفلة (Flashbacks) مخيفة لأنها تأتي بكل تفاصيلها (الصوت، الرائحة، الخوف). إذا حاولت كتمها، ستقوى. الحل هو <strong>الانفصال المعرفي</strong>.<br><br>
+      تخيل أنك تشاهد التلفاز. أنت لست داخل الشاشة، أنت المشاهد. عندما تأتي ذكرى، قل لنفسك بصوت هادئ: "أنا ألاحظ الآن أن عقلي يعيد ذكرى قديمة". أضف بعداً زمنياً: "هذا حدث في الماضي، أنا الآن بأمان".<br><br>
+      <strong>المهارة الثالثة:</strong> لا تصارع الفكرة، بل أضف لها لقب "فكرة عن الماضي"، وستفقد قوتها تدريجياً.
+    </div>
+  </div>
+
+  <div class="step">
+    <span class="badge">الخطوة 4: الاسترخاء العميق</span>
+    <h2>مهارة النوم والاسترخاء العضلي</h2>
+    <div class="education-text">
+      <strong>الصدمة تسكن في الجسد.</strong><br><br>
+      بعد الصدمة، يبقى الجسم في حالة شد عضلي دائم استعداداً للهروب. هذا يمنع النوم ويسبب آلاماً جسدية. تقنية "الاسترخاء العضلي التدريجي" (PMR) تعتمد على شد مجموعة عضلية (مثل قبضة اليد) لـ 5 ثوانٍ، ثم إرخائها فجأة لـ 10 ثوانٍ. هذا يرسل إشارة للدماغ بالفرق بين التوتر والاسترخاء.<br><br>
+      <strong>المهارة الرابعة:</strong> قبل النوم، ابدأ بشد وإرخاء عضلاتك من القدمين حتى الوجه. هذا يفرغ الشحنات العصبية العالقة في الجسم.
+    </div>
+  </div>
+
+  <div class="step">
+    <span class="badge">الخطوة 5: طلب الدعم</span>
+    <h2>متى تطلب المساعدة المتخصصة؟</h2>
+    <div class="education-text">
+      <strong>طلب المساعدة هو مهارة وليس ضعفاً.</strong><br><br>
+      الصدمة النفسية (PTSD) تحدث عندما تظل الأعراض لأكثر من شهر وتؤثر على حياتك اليومية (لا تنام، لا تأكل، تتجنب الناس، تفقد المتعة).<br><br>
+      <strong>متى تطلب الدعم؟</strong>
+      <ul>
+        <li>إذا استمرت الكوابيس لأكثر من شهر.</li>
+        <li>إذا بدأت تؤذي نفسك أو تفكر في ذلك.</li>
+        <li>إذا لم تستطع العودة لعملك أو دراستك.</li>
+      </ul><br>
+      المختص النفسي يستخدم تقنيات متقدمة (مثل EMDR أو العلاج المعرفي للصدمة) لمساعدتك على معالجة الذكرى وليس مجرد التعايش معها.
+    </div>
+    <a href="https://wa.me/967XXXXXXXXX" class="btn">أحتاج مساعدة من مختص</a>
+  </div>
+</div>
+
+<script>
+  function toggleTheme() {
+    const body = document.body;
+    if (body.getAttribute('data-theme') === 'dark') { body.removeAttribute('data-theme'); localStorage.setItem('theme', 'light'); document.querySelector('.theme-toggle').innerText = '🌙'; } 
+    else { body.setAttribute('data-theme', 'dark'); localStorage.setItem('theme', 'dark'); document.querySelector('.theme-toggle').innerText = '☀️'; }
+  }
+  if (localStorage.getItem('theme') === 'dark') { document.body.setAttribute('data-theme', 'dark'); document.querySelector('.theme-toggle').innerText = '☀️'; }
+</script>
+</body>
+</html>

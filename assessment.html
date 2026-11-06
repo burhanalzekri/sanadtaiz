@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>التقييم السريع — سند</title>
+<style>
+  :root { --primary: #2c7a6f; --primary-light: #e0f2ef; --bg: #eef2f5; --card-bg: rgba(255, 255, 255, 0.7); --text: #1a2b2b; --shadow-color: rgba(0, 0, 0, 0.1); --glass-border: rgba(255, 255, 255, 0.5); }
+  [data-theme="dark"] { --primary: #4db6ac; --primary-light: #1e3b36; --bg: #0f172a; --card-bg: rgba(30, 41, 59, 0.7); --text: #f8fafc; --shadow-color: rgba(0, 0, 0, 0.5); --glass-border: rgba(255, 255, 255, 0.1); }
+  * { box-sizing: border-box; margin: 0; padding: 0; transition: all 0.4s ease; }
+  body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--bg); color: var(--text); line-height: 1.8; min-height: 100vh; display: flex; flex-direction: column; }
+  body::before { content: ''; position: fixed; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle at 50% 50%, rgba(44,122,111,0.15) 0%, transparent 60%); z-index: -1; pointer-events: none; }
+  
+  .container { max-width: 600px; margin: auto; padding: 30px 20px; width: 100%; }
+  .box { background: var(--card-bg); backdrop-filter: blur(20px); border-radius: 24px; padding: 40px 30px; border: 1px solid var(--glass-border); box-shadow: 0 20px 50px -10px var(--shadow-color); text-align: center; }
+  
+  h2 { color: var(--primary); margin-bottom: 20px; font-size: 1.6em; }
+  p { margin-bottom: 30px; font-size: 1.1em; color: var(--text); }
+  
+  .options { display: flex; flex-direction: column; gap: 15px; }
+  .option-btn { background: var(--primary-light); color: var(--primary); border: 2px solid transparent; padding: 15px; border-radius: 14px; font-size: 1.1em; font-weight: bold; cursor: pointer; transition: 0.3s; }
+  .option-btn:hover { border-color: var(--primary); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+  
+  .result-box { display: none; }
+  .result-box.active { display: block; animation: fadeIn 0.5s; }
+  @keyframes fadeIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+  
+  .btn-go { display: inline-block; background: linear-gradient(135deg, var(--primary), #23635a); color: white; padding: 16px 30px; border-radius: 16px; text-decoration: none; font-weight: bold; font-size: 1.2em; margin-top: 20px; box-shadow: 0 10px 20px rgba(44,122,111,0.4); }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="box">
+    <!-- السؤال -->
+    <div id="questionBox">
+      <h2 id="qTitle">السؤال 1 من 3</h2>
+      <p id="qText">كيف تشعر في معظم الأوقات مؤخراً؟</p>
+      <div class="options" id="optionsBox">
+        <button class="option-btn" onclick="nextStep(1)">عصبي، قلبي يدق بسرعة، ولا أستطيع التوقف عن التفكير.</button>
+        <button class="option-btn" onclick="nextStep(2)">أشعر بخوف شديد، وكأن الماضي يعود لي، ولا أستطيع النوم.</button>
+      </div>
+    </div>
+
+    <!-- النتيجة -->
+    <div class="result-box" id="resultBox">
+      <h2>✨ المسار المقترح لك</h2>
+      <p id="resultText" style="font-size: 1.2em; font-weight: bold; color: var(--primary); margin-bottom: 15px;"></p>
+      <p style="font-size: 0.95em; color: var(--text-muted);">هذا ليس تشخيصاً طبياً، بل اقتراح لبدء رحلتك. يمكنك استكشاف باقي المسارات في أي وقت.</p>
+      <a href="#" id="resultLink" class="btn-go">ابدأ المسار الآن</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  function nextStep(type) {
+    // إخفاء السؤال وإظهار النتيجة
+    document.getElementById('questionBox').style.display = 'none';
+    document.getElementById('resultBox').classList.add('active');
+
+    if(type === 1) {
+      document.getElementById('resultText').innerText = 'مسار "أتنفس" — للتعامل مع القلق والتوتر.';
+      document.getElementById('resultLink').href = 'qalaq.html';
+    } else {
+      document.getElementById('resultText').innerText = 'مسار "أصمد" — للتعامل مع صدمة الحرب والخوف.';
+      document.getElementById('resultLink').href = 'sadma.html';
+    }
+  }
+</script>
+</body>
+</html>
