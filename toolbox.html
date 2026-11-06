@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>صندوق المهارات · سند تعز</title>
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  .skill-grid { display: grid; grid-template-columns: 1fr; gap: 15px; margin-top: 20px; }
+  @media (min-width: 768px) { .skill-grid { grid-template-columns: repeat(2, 1fr); } }
+  
+  .skill-card {
+    background: rgba(16, 185, 129, 0.05);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    transition: 0.3s;
+  }
+  .skill-card:hover {
+    border-color: var(--primary);
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.1);
+    transform: translateY(-3px);
+  }
+  .skill-card h3 {
+    color: var(--primary);
+    font-size: 1.15em;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .skill-card p {
+    color: var(--text-muted);
+    font-size: 0.95em;
+    margin-bottom: 15px;
+  }
+  .skill-details {
+    display: none;
+    background: rgba(0,0,0,0.3);
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 10px;
+    color: #d1d5db;
+    font-size: 0.95em;
+    border-right: 3px solid var(--primary);
+    line-height: 1.9;
+  }
+  .skill-details.show { display: block; animation: fadeIn 0.3s; }
+  .toggle-btn {
+    background: transparent; border: 1px solid var(--primary); color: var(--primary);
+    padding: 8px 15px; border-radius: 8px; cursor: pointer; font-weight: bold; font-family: inherit;
+    transition: 0.3s; width: 100%;
+  }
+  .toggle-btn:hover { background: var(--primary); color: #000; }
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap">
+    <div class="brand"><span class="logo">س</span> سند تعز</div>
+    <nav class="nav">
+      <a href="index.html">الرئيسية</a>
+      <a href="atanafas.html">مسار أتنفّس</a>
+      <a href="anam.html">مسار أنام</a>
+      <a href="toolbox.html" class="active">صندوق المهارات</a>
+      <a href="library.html">المكتبة</a>
+      <a href="emergency.html">الطوارئ</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <h1>صندوق المهارات</h1>
+    <p>مهارات قصيرة (دقيقة إلى دقيقتين) لمساعدتك في أي لحظة صعبة</p>
+  </section>
+
+  <div class="disclaimer">
+    <strong>تنويه:</strong> هذه المهارات أدوات دعم ذاتي. إذا استمر الضيق، يُرجى مراجعة مختص أو <a href="emergency.html">الذهاب لصفحة الطوارئ</a>.
+  </div>
+
+  <div class="skill-grid">
+    <!-- المهارة 1 -->
+    <div class="skill-card">
+      <h3>🛡️ تثبيت الأرضية (5-4-3-2-1)</h3>
+      <p>عندما تشعر بالخوف أو الاجتياح، استخدم حواسك للعودة للحاضر.</p>
+      <button class="toggle-btn" onclick="toggleSkill(this)">اعرض الخطوات</button>
+      <div class="skill-details">
+        1. سمِّ <b>5 أشياء</b> تراها حولك الآن.<br>
+        2. لاحظ <b>4 أشياء</b> تلمسها (ملمس ملابسك، الكرسي).<br>
+        3. استمع إلى <b>3 أصوات</b> (المروحة، الشارع).<br>
+        4. اشتم <b>رائحتين</b> (عطر، هواء).<br>
+        5. تذوق <b>شيئاً واحداً</b> (رشفة ماء، قطعة حلوى).<br>
+        <br><em>*هذا يخبر عقلك أنك هنا والآن، ولسنوات في الماضي.*</em>
+      </div>
+    </div>
+
+    <!-- المهارة 2 -->
+    <div class="skill-card">
+      <h3>🌬️ التنفس المربّع</h3>
+      <p>تمرين تنفس سريع لتخفيف التوتر وتهدئة نبضات القلب.</p>
+      <button class="toggle-btn" onclick="toggleSkill(this)">اعرض الخطوات</button>
+      <div class="skill-details">
+        1. <b>شهيق</b> من الأنف لمدة 4 ثوانٍ.<br>
+        2. <b>احبس</b> النفس لمدة 4 ثوانٍ.<br>
+        3. <b>زفير</b> من الفم لمدة 4 ثوانٍ.<br>
+        4. <b>احبس</b> النفس لمدة 4 ثوانٍ.<br>
+        <br><em>*كرر الدورة 4 مرات. تخيل أنك ترسم مربعاً في الهواء مع كل نفس.*</em>
+      </div>
+    </div>
+
+    <!-- المهارة 3 -->
+    <div class="skill-card">
+      <h3>🏝️ المكان الآمن</h3>
+      <p>تمرين تخيّل موجّه لخلق مساحة أمان داخلية.</p>
+      <button class="toggle-btn" onclick="toggleSkill(this)">اعرض الخطوات</button>
+      <div class="skill-details">
+        أغمض عينيك وتخيل مكاناً تشعر فيه بالأمان (شاطئ، غرفة، حديقة).<br>
+        ماذا ترى؟ ما الألوان؟<br>
+        ماذا تسمع؟ (أمواج، طيور)<br>
+        ماذا تشم؟<br>
+        ابقَ في هذا المكان في خيالك لمدة دقيقة. <em>*عندما تعود، ستأخذ هذا الأمان معك.*</em>
+      </div>
+    </div>
+
+    <!-- المهارة 4 -->
+    <div class="skill-card">
+      <h3>⏰ وقت القلق المؤجَّل</h3>
+      <p>عندما تلاحقك الأفكار في وقت غير مناسب.</p>
+      <button class="toggle-btn" onclick="toggleSkill(this)">اعرض الخطوات</button>
+      <div class="skill-details">
+        خصص <b>15 دقيقة</b> يومياً (مثلاً 6 مساءً) لتكون "وقت القلق".<br>
+        عندما تأتي فكرة قلق في أي وقت آخر، قل لنفسك: <em>"ليس الآن، سأفكر فيك في وقت القلق"</em>.<br>
+        اكتبها في ورقة أو في هاتفك حتى لا تنساها.<br>
+        <em>*هذا يمنع القلق من سرقة يومك بالكامل.*</em>
+      </div>
+    </div>
+
+    <!-- المهارة 5 -->
+    <div class="skill-card">
+      <h3>✋ توقف (STOP) للغضب</h3>
+      <p>عندما تشعر أن الغضب سيسيطر عليك.</p>
+      <button class="toggle-btn" onclick="toggleSkill(this)">اعرض الخطوات</button>
+      <div class="skill-details">
+        <b>S</b> (Stop): توقف عن الحركة والكلام.<br>
+        <b>T</b> (Take a breath): خذ نفساً عميقاً.<br>
+        <b>O</b> (Observe): لاحظ جسمك (قلبك، يديك) وأفكارك دون حكم.<br>
+        <b>P</b> (Proceed): اختر رد فعلك بوعي، أو انسحب من الموقف.<br>
+        <em>*الغضب ليس عيباً، لكن رد الفعل غير المنضبط قد يؤذيك.*</em>
+      </div>
+    </div>
+
+    <!-- المهارة 6 -->
+    <div class="skill-card">
+      <h3>💚 التعاطف مع الذات</h3>
+      <p>عندما تلوم نفسك على شيء حدث (ذنب الناجي أو الفشل).</p>
+      <button class="toggle-btn" onclick="toggleSkill(this)">اعرض الخطوات</button>
+      <div class="skill-details">
+        تخيل أن صديقك المقرب في نفس موقفك بالضبط.<br>
+        ماذا كنت ستقول له؟ (لن تقسو عليه).<br>
+        الآن، <b>قل هذه الكلمات لنفسك</b>.<br>
+        ضع يدك على قلبك وقل: <em>"أنا أفعل ما أستطيع، ويومي هذا صعب. أنا أستحق اللطف".</em>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="wrap">
+  <p>سند تعز · <a href="emergency.html">صفحة الطوارئ</a></p>
+</footer>
+
+<script>
+  function toggleSkill(btn) {
+    const details = btn.nextElementSibling;
+    if (details.classList.contains('show')) {
+      details.classList.remove('show');
+      btn.innerText = 'اعرض الخطوات';
+    } else {
+      details.classList.add('show');
+      btn.innerText = 'إخفاء';
+    }
+  }
+</script>
+</body>
+</html>
