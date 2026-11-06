@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>تقييم ذكي سريع · سند تعز</title>
+<link rel="stylesheet" href="assets/style.css?v=4">
+<style>
+  .quiz-box { background: var(--surface); border: 1px solid var(--border); border-radius: 24px; padding: 40px 30px; max-width: 600px; margin: 0 auto; box-shadow: 0 15px 40px var(--shadow-color); text-align: center; }
+  .quiz-btn { display: block; width: 100%; padding: 15px; margin-bottom: 15px; background: var(--surface-hover); border: 1px solid var(--border); border-radius: 12px; font-family: inherit; font-size: 1.1em; color: var(--text); cursor: pointer; transition: 0.3s; }
+  .quiz-btn:hover { background: var(--primary-glow); border-color: var(--primary); transform: scale(1.02); }
+  #resultArea { display: none; }
+  #resultArea h2 { color: var(--primary); margin-bottom: 15px; }
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap">
+    <div class="brand"><span class="logo">س</span> سند تعز</div>
+    <nav class="nav">
+      <a href="index.html">الرئيسية</a>
+      <a href="assessments.html" class="active">التقييمات</a>
+      <a href="emergency.html" style="color: var(--danger-br);">الطوارئ</a>
+      <button id="themeToggle" class="theme-btn">🌙</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <h1>اكتشف المسار المناسب لك</h1>
+    <p>3 أسئلة سريعة تساعدنا على توجيهك</p>
+  </section>
+
+  <div class="quiz-box" id="quizBox">
+    <h2 id="qTitle">السؤال 1</h2>
+    <p id="qText" style="margin-bottom: 20px; font-size: 1.1em;">كيف تشعر في معظم الأوقات مؤخراً؟</p>
+    <div id="optionsContainer">
+      <button class="quiz-btn" onclick="selectAnswer(1)">عصبي، قلبي يدق بسرعة، ولا أستطيع التوقف عن التفكير (قلق)</button>
+      <button class="quiz-btn" onclick="selectAnswer(2)">حزين، أفقد الاهتمام بالأشياء، وأشعر بالذنب (اكتئاب/حزن)</button>
+      <button class="quiz-btn" onclick="selectAnswer(3)">خائف، تأتيني ذكريات مزعجة ولا أنام جيداً (صدمة)</button>
+    </div>
+  </div>
+
+  <div class="quiz-box" id="resultArea">
+    <h2>✨ المسار المقترح لك</h2>
+    <p id="resultText" style="font-size: 1.2em; margin-bottom: 20px;"></p>
+    <a href="#" id="resultLink" class="btn" style="width: 100%; display: block; padding: 15px;">ابدأ المسار الآن</a>
+    <br>
+    <a href="booking.html" class="btn ghost" style="width: 100%; display: block; padding: 15px;">أريد التحدث مع مختص</a>
+  </div>
+</main>
+
+<footer class="wrap"><p>سند تعز · <a href="emergency.html">صفحة الطوارئ</a></p></footer>
+
+<script>
+  function selectAnswer(type) {
+    document.getElementById('quizBox').style.display = 'none';
+    const resultArea = document.getElementById('resultArea');
+    const resultText = document.getElementById('resultText');
+    const resultLink = document.getElementById('resultLink');
+    
+    resultArea.style.display = 'block';
+    
+    if (type === 1) {
+      resultText.innerText = 'نوصي بمسار "أتنفّس" لإدارة القلق والتوتر.';
+      resultLink.href = 'atanafas.html';
+    } else if (type === 2) {
+      resultText.innerText = 'نوصي بمسار "أحزن" أو "أتصالح مع نفسي" للتعامل مع المشاعر.';
+      resultLink.href = 'ahzan.html';
+    } else if (type === 3) {
+      resultText.innerText = 'نوصي بمسار "أصمد" للتعامل مع الصدمة والذكريات.';
+      resultLink.href = 'asmod.html';
+    }
+  }
+</script>
+<script src="assets/app.js"></script>
+</body>
+</html>
