@@ -1,8 +1,15 @@
-const CACHE_NAME = 'sana-v1';
+const CACHE_NAME = 'sana-taiz-v3';
 const urlsToCache = [
+  './',
   './index.html',
   './atanafas.html',
+  './anam.html',
+  './ahzan.html',
+  './arabi.html',
+  './asmod.html',
+  './skills.html',
   './library.html',
+  './articles.html',
   './emergency.html',
   './assets/style.css',
   './assets/app.js',
