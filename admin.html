@@ -20,7 +20,7 @@
 <main class="wrap">
   <section class="hero">
     <h1>لوحة تحكم المختص</h1>
-    <p>إحصائيات المنصة (تجريبية - محلية)</p>
+    <p>إحصائيات المنصة (محلية - على هذا الجهاز)</p>
   </section>
 
   <div class="grid">
@@ -30,9 +30,9 @@
       <small>إجمالي زياراتك لهذا الجهاز</small>
     </div>
     <div class="card" style="padding: 20px; text-align: center;">
-      <h3>المسارات المكتملة</h3>
+      <h3>الخطوات المكتملة</h3>
       <p style="font-size: 2em; color: var(--accent); font-weight: bold;" id="completed">0</p>
-      <small>عدد الخطوات التي أكملتها</small>
+      <small>إجمالي الخطوات التي أكملتها</small>
     </div>
     <div class="card" style="padding: 20px; text-align: center;">
       <h3>الوضع الحالي</h3>
@@ -41,76 +41,23 @@
   </div>
 </main>
 
-<footer class="wrap"><p>سند تعز · لوحة خاصة</p></footer>
+<footer class="wrap" style="text-align:center; padding: 30px;"><p>سند تعز · لوحة خاصة</p></footer>
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    // إحصائيات من ذاكرة الهاتف
     let visits = parseInt(localStorage.getItem('sana_visits') || '0') + 1;
     localStorage.setItem('sana_visits', visits);
     document.getElementById('visits').innerText = visits;
 
-    // عدد الخطوات المكتملة
     let count = 0;
     for (let i = 0; i < localStorage.length; i++) {
       if (localStorage.getItem(localStorage.key(i)) === 'completed') count++;
     }
     document.getElementById('completed').innerText = count;
 
-    // الوضع
     const theme = localStorage.getItem('theme') === 'dark' ? 'ليلي' : 'نهاري';
     document.getElementById('themeState').innerText = theme;
   });
 </script>
 <script src="assets/app.js"></script>
-<!-- المساعد الآلي -->
-<div class="chatbot-toggle" id="chatbotToggle" onclick="toggleChatbot()">🤖</div>
-<div class="chatbot-window" id="chatbotWindow">
-  <div class="chatbot-header">مساعد سند</div>
-  <div class="chatbot-messages" id="chatbotMessages">
-    <div class="bot-msg">مرحباً! أنا مساعدك في سند. كيف يمكنني مساعدتك اليوم؟ (أشعر بالقلق، لا أنام، أحتاج مساعدة)</div>
-  </div>
-  <div class="chatbot-input-area">
-    <input type="text" id="chatInput" placeholder="اكتب سؤالك..." onkeypress="handleChatEnter(event)">
-    <button onclick="sendChatMessage()">إرسال</button>
-  </div>
-</div>
-<script>
-  function toggleChatbot() {
-    document.getElementById('chatbotWindow').classList.toggle('show');
-  }
-  function handleChatEnter(e) {
-    if (e.key === 'Enter') sendChatMessage();
-  }
-  function sendChatMessage() {
-    const input = document.getElementById('chatInput');
-    const msg = input.value.trim();
-    if (!msg) return;
-    const container = document.getElementById('chatbotMessages');
-    const userDiv = document.createElement('div');
-    userDiv.className = 'user-msg';
-    userDiv.innerText = msg;
-    container.appendChild(userDiv);
-    input.value = '';
-    container.scrollTop = container.scrollHeight;
-    setTimeout(() => {
-      const botDiv = document.createElement('div');
-      botDiv.className = 'bot-msg';
-      if (msg.includes('قلق') || msg.includes('خوف') || msg.includes('توتر')) {
-        botDiv.innerHTML = 'أشعر بك. هل جربت تمرين التنفس المربع؟ <a href="skills.html">اضغط هنا لفتح صندوق المهارات</a>.';
-      } else if (msg.includes('نوم') || msg.includes('أرق')) {
-        botDiv.innerHTML = 'الأرق شائع في ظروفنا. ننصحك بمسار "أنام". <a href="anam.html">اضغط هنا لبدء المسار</a>.';
-      } else if (msg.includes('حزن') || msg.includes('فقد')) {
-        botDiv.innerHTML = 'الحزن ليس ضعفاً. قد يفيدك مسار "أحزن". <a href="ahzan.html">اضغط هنا</a>.';
-      } else if (msg.includes('مساعدة') || msg.includes('مختص')) {
-        botDiv.innerHTML = 'نحن هنا. يمكنك حجز جلسة مجانية مع مختص <a href="booking.html">من هنا</a>.';
-      } else {
-        botDiv.innerHTML = 'أنا هنا لأسمعك. يمكنك استكشاف <a href="library.html">المكتبة</a> أو <a href="quick_assessment.html">التقييم السريع</a>.';
-      }
-      container.appendChild(botDiv);
-      container.scrollTop = container.scrollHeight;
-    }, 1000);
-  }
-</script>
-
 </body>
 </html>
