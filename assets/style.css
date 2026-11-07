@@ -908,3 +908,221 @@ body {
 .wrap {
   padding: 0 15px; /* إضافة مساحة جانبية للبطاقات */
 }
+
+/* =========================================
+   الهيدر الجديد والشريط المتحرك والقائمة الجانبية
+   ========================================= */
+
+/* شريط التنقل القديم مخفي */
+.topbar { display: none !important; }
+
+/* الهيدر الجديد */
+.new-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--surface);
+  padding: 15px 20px;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 9000;
+  box-shadow: 0 4px 20px var(--shadow-color);
+}
+.menu-btn {
+  background: transparent; border: none; font-size: 1.5em; color: var(--text); cursor: pointer;
+}
+.header-brand {
+  font-weight: 900; font-size: 1.2em; color: var(--text); display: flex; align-items: center; gap: 8px;
+}
+.header-brand .logo {
+  width: 30px; height: 30px; background: var(--primary); color: white; border-radius: 8px;
+  display: flex; justify-content: center; align-items: center; font-weight: bold;
+}
+
+/* الشريط المتحرك للنصائح */
+.ticker-wrap {
+  width: 100%; overflow: hidden; background: var(--accent); color: white; padding: 8px 0;
+  white-space: nowrap; font-size: 0.9em; font-weight: bold;
+}
+.ticker {
+  display: inline-block; animation: ticker 30s linear infinite;
+}
+.ticker span { padding-right: 50px; }
+@keyframes ticker {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+/* القائمة الجانبية */
+.sidebar-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(5px);
+  z-index: 9998; display: none;
+}
+.sidebar-overlay.show { display: block; animation: fadeIn 0.3s; }
+
+.sidebar {
+  position: fixed; top: 0; right: -320px; width: 300px; height: 100vh;
+  background: var(--surface); border-left: 1px solid var(--border);
+  z-index: 9999; transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: flex; flex-direction: column; box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+  overflow-y: auto;
+}
+.sidebar.open { right: 0; }
+
+.sidebar-header {
+  display: flex; justify-content: space-between; align-items: center; padding: 20px;
+  border-bottom: 1px solid var(--border);
+}
+.sidebar-header h2 { color: var(--primary); font-size: 1.3em; }
+
+.sidebar-nav { padding: 15px; display: flex; flex-direction: column; gap: 5px; }
+.side-group-title {
+  color: var(--accent); font-size: 0.85em; font-weight: bold; margin-top: 15px; margin-bottom: 5px;
+  padding-right: 10px; text-transform: uppercase; border-right: 3px solid var(--accent);
+}
+.side-link {
+  padding: 12px 10px; color: var(--text); text-decoration: none; border-radius: 8px;
+  font-size: 0.95em; transition: 0.2s; display: flex; align-items: center; gap: 10px;
+}
+.side-link:hover { background: var(--surface-hover); color: var(--accent); padding-right: 15px; }
+
+/* =========================================
+   تخطيط الشريط الجانبي الثابت (Desktop)
+   ========================================= */
+
+body {
+  transition: padding-right 0.3s ease;
+}
+
+/* على الشاشات الكبيرة (لابتوب/تابلت) */
+@media (min-width: 1025px) {
+  /* إزاحة المحتوى لليمين لترك مساحة للقائمة */
+  body.sidebar-open-desktop {
+    padding-right: 300px;
+  }
+  
+  /* القائمة الثابتة */
+  .sidebar {
+    position: fixed !important;
+    right: 0 !important;
+    top: 0 !important;
+    height: 100vh !important;
+    transform: none !important;
+    display: flex !important;
+    z-index: 9000;
+  }
+  
+  /* عند الإغلاق، تختفي القائمة ويتوسع المحتوى */
+  body.sidebar-collapsed .sidebar {
+    right: -300px !important;
+  }
+  body.sidebar-collapsed {
+    padding-right: 0 !important;
+  }
+  
+  /* إخفاء زر الإغلاق على اللابتوب */
+  .sidebar-header button {
+    display: none;
+  }
+  
+  /* إخفاء الخلفية المعتمة على اللابتوب */
+  .sidebar-overlay {
+    display: none !important;
+  }
+}
+
+/* على الجوال (أقل من 1024) */
+@media (max-width: 1024px) {
+  body.sidebar-open-desktop {
+    padding-right: 0;
+  }
+}
+
+/* =========================================
+   تخطيط الشريط الجانبي الدائم (Persistent Sidebar)
+   ========================================= */
+
+/* إعدادات عامة */
+body {
+  margin: 0;
+  padding: 0;
+  transition: padding-right 0.3s ease;
+}
+
+/* الهيدر الجديد (يمتد بعرض الشاشة) */
+.new-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--surface);
+  padding: 15px 20px;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 9000;
+  box-shadow: 0 4px 20px var(--shadow-color);
+}
+.menu-btn { background: transparent; border: none; font-size: 1.5em; color: var(--text); cursor: pointer; }
+.header-brand { font-weight: 900; font-size: 1.2em; color: var(--text); display: flex; align-items: center; gap: 8px; }
+.header-brand .logo { width: 30px; height: 30px; background: var(--primary); color: white; border-radius: 8px; display: flex; justify-content: center; align-items: center; font-weight: bold; }
+
+/* الشريط المتحرك */
+.ticker-wrap { width: 100%; overflow: hidden; background: var(--accent); color: white; padding: 8px 0; white-space: nowrap; font-size: 0.9em; font-weight: bold; }
+.ticker { display: inline-block; animation: ticker 30s linear infinite; }
+.ticker span { padding-right: 50px; }
+@keyframes ticker { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+
+/* القائمة الجانبية (ثابتة على اليمين) */
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 260px;
+  height: 100vh;
+  background: var(--surface);
+  border-left: 1px solid var(--border);
+  z-index: 9999;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+}
+
+/* إزاحة المحتوى الرئيسي لليسار لترك مساحة للقائمة */
+.main-content, main, .container, .wrap {
+  padding-right: 280px !important; /* مساحة القائمة + مسافة صغيرة */
+  transition: padding-right 0.4s ease;
+}
+
+/* الحالة عند إخفاء القائمة */
+body.sidebar-collapsed .sidebar {
+  transform: translateX(100%);
+}
+body.sidebar-collapsed .main-content, 
+body.sidebar-collapsed main, 
+body.sidebar-collapsed .container,
+body.sidebar-collapsed .wrap {
+  padding-right: 20px !important; /* المحتوى يتوسع لملء الشاشة */
+}
+
+/* تنسيقات القائمة الداخلية */
+.sidebar-header { padding: 20px; border-bottom: 1px solid var(--border); }
+.sidebar-header h2 { color: var(--primary); font-size: 1.3em; margin: 0; }
+.sidebar-nav { padding: 15px; display: flex; flex-direction: column; gap: 5px; }
+.side-group-title { color: var(--accent); font-size: 0.85em; font-weight: bold; margin-top: 15px; margin-bottom: 5px; padding-right: 10px; text-transform: uppercase; border-right: 3px solid var(--accent); }
+.side-link { padding: 12px 10px; color: var(--text); text-decoration: none; border-radius: 8px; font-size: 0.95em; transition: 0.2s; display: flex; align-items: center; gap: 10px; }
+.side-link:hover { background: var(--surface-hover); color: var(--accent); padding-right: 15px; }
+
+/* على الجوال (تصغير القائمة قليلاً) */
+@media (max-width: 768px) {
+  .sidebar { width: 220px; }
+  .main-content, main, .container, .wrap { padding-right: 240px !important; }
+  body.sidebar-collapsed .main-content, 
+  body.sidebar-collapsed main, 
+  body.sidebar-collapsed .container,
+  body.sidebar-collapsed .wrap {
+    padding-right: 15px !important;
+  }
+}
