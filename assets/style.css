@@ -497,3 +497,258 @@ body::before {
   cursor: pointer !important;
   font-size: 30px !important;
 }
+
+/* =========================================
+   شريط التنقل السفلي العائم (Floating Bottom Nav)
+   ========================================= */
+.bottom-nav {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(20, 30, 45, 0.85); /* كحلي داكن شفاف */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 20px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 20px var(--accent-glow);
+  z-index: 9999;
+}
+
+[data-theme="light"] .bottom-nav {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.bottom-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.75em;
+  font-weight: bold;
+  transition: 0.3s;
+  cursor: pointer;
+  position: relative;
+}
+
+.bottom-nav-item .icon {
+  font-size: 1.5em;
+  margin-bottom: 4px;
+  transition: 0.3s;
+}
+
+.bottom-nav-item:hover, .bottom-nav-item.active {
+  color: var(--accent);
+  transform: translateY(-5px);
+}
+
+.bottom-nav-item.active .icon {
+  text-shadow: 0 0 15px var(--accent-glow);
+}
+
+/* إخفاء شريط التنقل العلوي القديم على الجوال لتقليل الازدحام */
+@media (max-width: 768px) {
+  .topbar .nav {
+    display: none; /* إخفاء القائمة العلوية القديمة */
+  }
+}
+
+/* القائمة المنسدلة للشريط السفلي */
+.bottom-dropdown {
+  position: fixed;
+  bottom: 90px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 10px;
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  z-index: 9998;
+  width: 200px;
+  opacity: 0;
+  transition: 0.3s;
+}
+.bottom-dropdown.show {
+  display: flex;
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+.bottom-dropdown a {
+  padding: 10px;
+  border-radius: 8px;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.9em;
+  transition: 0.2s;
+}
+.bottom-dropdown a:hover {
+  background: var(--accent-glow);
+  color: var(--accent);
+}
+
+/* إضافة مساحة أسفل الصفحة حتى لا يغطي الشريط المحتوى */
+body {
+  padding-bottom: 100px;
+}
+
+/* =========================================
+   إصلاحات شريط التنقل العلوي (Sticky Top Bar)
+   ========================================= */
+
+/* جعل الشريط العلوي ثابتاً دائماً */
+.topbar {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 9999 !important;
+  background: rgba(var(--bg), 0.95) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-bottom: 1px solid var(--border) !important;
+  box-shadow: 0 4px 20px var(--shadow-color) !important;
+}
+
+/* إظهار القوائم في الشريط العلوي على الجوال */
+@media (max-width: 768px) {
+  .topbar .nav {
+    display: flex !important; /* إعادة إظهار القائمة */
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 0;
+  }
+  .topbar .wrap {
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
+  }
+  .brand {
+    margin-bottom: 10px;
+  }
+}
+
+/* إخفاء الشريط السفلي القديم (لأننا سنستخدم العلوي) */
+.bottom-nav, .bottom-dropdown {
+  display: none !important;
+}
+
+/* إزالة المسافة السفلية الإضافية */
+body {
+  padding-bottom: 20px !important;
+}
+
+/* =========================================
+   تحسين الشريط العلوي على الجوال (Pro Max)
+   ========================================= */
+
+@media (max-width: 768px) {
+  /* جعل الشريط العلوي أنيقاً وسطر واحد */
+  .topbar .wrap {
+    flex-direction: row !important;
+    height: 60px !important;
+    padding: 0 10px !important;
+    justify-content: space-between !important;
+    flex-wrap: nowrap !important;
+  }
+  
+  .brand {
+    margin-bottom: 0 !important;
+    font-size: 1.2em !important;
+  }
+  
+  .nav {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important; /* السماح بالتمرير الأفقي */
+    gap: 5px !important;
+    padding: 5px 0 !important;
+    -ms-overflow-style: none;  /* إخفاء شريط التمرير */
+    scrollbar-width: none;
+  }
+  .nav::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .nav a, .nav .dropdown > a {
+    font-size: 0.8em !important;
+    padding: 5px 8px !important;
+    white-space: nowrap !important;
+    background: var(--surface) !important;
+    border-radius: 15px !important;
+    border: 1px solid var(--border) !important;
+  }
+  
+  .theme-btn {
+    font-size: 0.9em !important;
+    padding: 5px 8px !important;
+    border-radius: 15px !important;
+  }
+}
+
+/* =========================================
+   قسم الإعلان (Announcement Banner)
+   ========================================= */
+.announcement-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, rgba(234, 88, 12, 0.15), rgba(15, 118, 110, 0.15));
+  border: 1px solid var(--accent);
+  border-radius: 20px;
+  padding: 20px 25px;
+  margin: 20px 0 30px;
+  box-shadow: 0 10px 30px -5px var(--shadow-hover);
+  position: relative;
+  overflow: hidden;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+.announcement-banner::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 50%; height: 100%;
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.2), transparent);
+  transform: skewX(-25deg);
+  animation: shineBanner 4s infinite;
+}
+@keyframes shineBanner {
+  0% { left: -100%; }
+  100% { left: 200%; }
+}
+.banner-content h2 {
+  font-size: 1.4em;
+  color: var(--text);
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+.banner-content p {
+  color: var(--text-muted);
+  font-size: 0.95em;
+  margin: 0;
+}
+.banner-tag {
+  background: var(--accent);
+  color: white;
+  padding: 3px 12px;
+  border-radius: 20px;
+  font-size: 0.8em;
+  font-weight: bold;
+  display: inline-block;
+}
+.banner-cta a {
+  white-space: nowrap;
+}

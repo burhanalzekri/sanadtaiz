@@ -34,21 +34,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 4. ميزة تتبع التقدم في المسارات (Progress Tracker)
+  // 4. ميزة تتبع التقدم
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-  // قائمة الصفحات التي تعتبر "مسارات"
   const pathwayPages = ['atanafas.html', 'anam.html', 'ahzan.html', 'arabi.html', 'asmod.html', 'salam.html', 'ghadab.html', 'anazih.html'];
   
   if (pathwayPages.includes(currentPage)) {
     const steps = document.querySelectorAll('.step');
-    
-    // إضافة زر الإكمال لكل خطوة
     steps.forEach((step, index) => {
       const stepBody = step.querySelector('.step-body');
       if (!stepBody) return;
-      
       const stepId = `${currentPage}-step-${index}`;
-      
       const btn = document.createElement('button');
       btn.className = 'btn';
       btn.style.width = '100%';
@@ -57,7 +52,6 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.style.fontSize = '0.95em';
       btn.innerText = 'تحديد كخطوة مكتملة';
       
-      // التحقق من الحالة المحفوظة مسبقاً
       if (localStorage.getItem(stepId) === 'completed') {
         btn.innerText = '✅ مكتملة (اضغط للتراجع)';
         btn.style.background = 'var(--primary)';
@@ -68,9 +62,8 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.style.border = '1px solid var(--border)';
       }
 
-      // حدث الضغط على الزر
       btn.addEventListener('click', (e) => {
-        e.stopPropagation(); // منع إغلاق/فتح الأكورديون عند الضغط على الزر
+        e.stopPropagation();
         if (localStorage.getItem(stepId) === 'completed') {
           localStorage.removeItem(stepId);
           btn.innerText = 'تحديد كخطوة مكتملة';
@@ -85,7 +78,6 @@ document.addEventListener('DOMContentLoaded', () => {
           btn.style.border = 'none';
         }
       });
-      
       stepBody.appendChild(btn);
     });
   }
@@ -115,5 +107,79 @@ document.addEventListener('DOMContentLoaded', () => {
         themeBtn.innerText = '☀️';
       }
     });
+  }
+
+  // 6. إنشاء شريط التنقل السفلي تلقائياً في كل صفحة
+  if (!document.querySelector('.bottom-nav')) {
+    const bottomNavHTML = `
+      <div class="bottom-dropdown" id="pathwaysDropdown">
+        <a href="atanafas.html">🌿 أتنفّس (القلق)</a>
+        <a href="anam.html">🌙 أنام (الأرق)</a>
+        <a href="ahzan.html">💙 أحزن (الفقد)</a>
+        <a href="arabi.html">👨‍👩‍👧 أربّي (الأطفال)</a>
+        <a href="asmod.html">🛡️ أصمد (الصدمة)</a>
+        <a href="salam.html">🕊️ أتصالح (الذنب)</a>
+        <a href="ghadab.html">🔥 أهدّئ غضبي</a>
+        <a href="anazih.html">🏠 أنزح (النزوح)</a>
+      </div>
+      <div class="bottom-dropdown" id="assessmentsDropdown">
+        <a href="quick_assessment.html">🧠 تقييم سريع</a>
+        <a href="gad7.html">📊 مقياس القلق</a>
+        <a href="phq9.html">💡 مقياس الاكتئاب</a>
+        <a href="pcl5.html">🛡️ مقياس الصدمة</a>
+        <a href="wellbeing.html">🌱 مقياس الرفاهية</a>
+      </div>
+      
+      <div class="bottom-nav">
+        <a href="index.html" class="bottom-nav-item" id="nav-home">
+          <span class="icon">🏠</span>
+          <span>الرئيسية</span>
+        </a>
+        <div class="bottom-nav-item" id="nav-pathways" onclick="toggleBottomDropdown('pathwaysDropdown')">
+          <span class="icon">🧭</span>
+          <span>المسارات</span>
+        </div>
+        <div class="bottom-nav-item" id="nav-assessments" onclick="toggleBottomDropdown('assessmentsDropdown')">
+          <span class="icon">📊</span>
+          <span>التقييمات</span>
+        </div>
+        <a href="library.html" class="bottom-nav-item" id="nav-library">
+          <span class="icon">📚</span>
+          <span>المكتبة</span>
+        </a>
+        <a href="emergency.html" class="bottom-nav-item" id="nav-emergency" style="color: var(--danger-br);">
+          <span class="icon">🚨</span>
+          <span>الطوارئ</span>
+        </a>
+      </div>
+    `;
+    document.body.insertAdjacentHTML('beforeend', bottomNavHTML);
+
+    // تفعيل حالة النشاط (Active) للصفحة الحالية
+    const page = window.location.pathname.split('/').pop() || 'index.html';
+    if (page === 'index.html' || page === '') document.getElementById('nav-home').classList.add('active');
+    if (pathwayPages.includes(page)) document.getElementById('nav-pathways').classList.add('active');
+    if (['gad7.html', 'phq9.html', 'pcl5.html', 'wellbeing.html', 'quick_assessment.html'].includes(page)) document.getElementById('nav-assessments').classList.add('active');
+    if (page === 'library.html' || page === 'articles.html' || page === 'awareness.html') document.getElementById('nav-library').classList.add('active');
+    if (page === 'emergency.html') document.getElementById('nav-emergency').classList.add('active');
+  }
+});
+
+// دالة فتح/إغلاق القوائم المنسدلة السفلية
+function toggleBottomDropdown(id) {
+  const dropdown = document.getElementById(id);
+  const allDropdowns = document.querySelectorAll('.bottom-dropdown');
+  
+  allDropdowns.forEach(d => {
+    if (d.id !== id) d.classList.remove('show');
+  });
+  
+  dropdown.classList.toggle('show');
+}
+
+// إغلاق القوائم عند النقر في أي مكان آخر
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.bottom-nav-item') && !e.target.closest('.bottom-dropdown')) {
+    document.querySelectorAll('.bottom-dropdown').forEach(d => d.classList.remove('show'));
   }
 });
