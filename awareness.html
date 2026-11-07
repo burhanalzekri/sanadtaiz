@@ -3,24 +3,45 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ركن التوعية النفسية · سند تعز</title>
-<link rel="stylesheet" href="assets/style.css?v=4">
+<title>الموسوعة النفسية والتوعية · سند تعز</title>
+<link rel="stylesheet" href="assets/style.css?v=5">
 <style>
-  .awareness-card {
-    background: var(--surface); border: 1px solid var(--border); border-radius: 20px;
-    padding: 25px; margin-bottom: 20px; box-shadow: 0 10px 25px var(--shadow-color);
-    transition: 0.3s;
+  .encyclopedia-section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px var(--shadow-color);
   }
-  .awareness-card:hover { border-color: var(--primary); transform: translateY(-3px); }
-  .awareness-card h3 { color: var(--primary); margin-bottom: 15px; font-size: 1.3em; display: flex; align-items: center; gap: 10px; }
-  .awareness-card p { color: var(--text); margin-bottom: 10px; }
-  .awareness-card ul { padding-right: 20px; color: var(--text-muted); }
-  .awareness-card li { margin-bottom: 8px; }
-  
-  .highlight-box { background: var(--primary-glow); border-right: 4px solid var(--primary); padding: 15px; border-radius: 8px; margin-top: 15px; font-weight: bold; color: var(--text); }
+  .encyclopedia-header {
+    background: var(--surface-hover);
+    padding: 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.2em;
+    color: var(--text);
+    border-bottom: 1px solid var(--border);
+  }
+  .encyclopedia-header:hover { color: var(--primary); }
+  .encyclopedia-content {
+    display: none;
+    padding: 20px;
+    color: var(--text-muted);
+    line-height: 1.9;
+  }
+  .encyclopedia-content.open { display: block; animation: fadeIn 0.3s; }
+  .encyclopedia-content h4 { color: var(--primary); margin: 15px 0 10px; font-size: 1.1em; }
+  .encyclopedia-content ul { padding-right: 20px; margin-bottom: 15px; }
+  .encyclopedia-content li { margin-bottom: 8px; }
+  .highlight-box { background: var(--accent-glow); padding: 15px; border-radius: 12px; border-right: 4px solid var(--accent); margin-top: 15px; color: var(--text); }
 </style>
 </head>
 <body>
+
 <header class="topbar">
   <div class="wrap">
     <div class="brand"><span class="logo">س</span> سند تعز</div>
@@ -39,19 +60,8 @@
           <a href="anazih.html">أنزح (النزوح)</a>
         </div>
       </div>
-      <div class="dropdown">
-        <a href="#" style="cursor: pointer;">التقييمات ▼</a>
-        <div class="dropdown-content">
-          <a href="gad7.html">مقياس القلق GAD-7</a>
-          <a href="phq9.html">مقياس الاكتئاب PHQ-9</a>
-          <a href="pcl5.html">مقياس الصدمة PCL-5</a>
-          <a href="wellbeing.html">مقياس الرفاهية WHO-5</a>
-        </div>
-      </div>
-      <a href="skills.html">المهارات</a>
       <a href="library.html">المكتبة</a>
-      <a href="awareness.html" class="active">التوعية</a>
-      <a href="booking.html" style="color: #25D366; font-weight: bold;">احجز جلستك</a>
+      <a href="awareness.html" class="active">الموسوعة النفسية</a>
       <a href="emergency.html" style="color: var(--danger-br);">الطوارئ</a>
       <button id="themeToggle" class="theme-btn">🌙</button>
     </nav>
@@ -59,111 +69,193 @@
 </header>
 
 <main class="wrap">
-  <section class="hero">
-    <h1>ركن التوعية النفسية</h1>
-    <p>المعرفة هي أول خطوة نحو الشفاء</p>
-  </section>
+  <section class="hero" style="padding: 40px 20px;">
+    <h1>الموسوعة النفسية</h1>
+    <p>كل ما تحتاج معرفته عن الصحة النفسية، مبسطاً وبأسلوب يناسب واقعنا.</p>
+  </div>
 
   <div class="disclaimer">
     <strong>تنويه:</strong> هذه المعلومات للتثقيف الصحي النفسي. إذا كنت تعاني من أعراض شديدة، يُرجى مراجعة مختص.
   </div>
 
-  <!-- 1. أعراض جسدية -->
-  <div class="awareness-card">
-    <h3>🩺 أعراض جسدية.. لا تعلم أن سببها نفسي!</h3>
-    <p>كثيراً ما نذهب لطبيب الباطنية ونفحص القلب والمعدة، والنتائج سليمة، لكن الألم مستمر. هذا يسمى "الجسدنة" (Somatization)، حيث يعبر الجسد عن الضغط النفسي الذي لا يستطيع العقل التعبير عنه.</p>
-    <ul>
-      <li><b>القولون العصبي:</b> انتفاخ وألم متكرر مرتبط بالتوتر.</li>
-      <li><b>الخفقان وضيق التنفس:</b> أعراض نوبات الهلع.</li>
-      <li><b>الصداع المزمن والتوتر العضلي:</b> شد الرقبة والكتفين.</li>
-      <li><b>الدوخة وطنين الأذن:</b> من القلق المزمن.</li>
-    </ul>
-    <div class="highlight-box">💡 الخلاصة: إذا فحصت جسدك ولم تجد سبباً طبياً، فربما يحتاج "عقلك" إلى رعاية، وليس جسدك فقط.</div>
+  <!-- 1. مفهوم الصحة النفسية -->
+  <div class="encyclopedia-section">
+    <div class="encyclopedia-header" onclick="toggleEncyclopedia(this)">
+      <span>1. ما هي الصحة النفسية وأهميتها؟</span>
+      <span>▼</span>
+    </div>
+    <div class="encyclopedia-content">
+      <p>الصحة النفسية ليست مجرد غياب المرض النفسي، بل هي حالة من الرفاهية يشعر فيها الإنسان بقدرته على التعامل مع ضغوط الحياة، والعمل بشكل منتج، والمساهمة في مجتمعه.</p>
+      <h4>لماذا هي مهمة؟</h4>
+      <ul>
+        <li><b>تؤثر على الجسد:</b> القلق المزمن يسبب أمراض القلب، القولون العصبي، وضعف المناعة.</li>
+        <li><b>تؤثر على العلاقات:</b> الشخص المضطرب نفسياً يعزل نفسه أو يتصرف بعدوانية.</li>
+        <li><b>تؤثر على الإنتاج:</b> الاكتئاب يقلل التركيز والدافعية.</li>
+      </ul>
+      <div class="highlight-box"><b>الخلاصة:</b> الاعتناء بصحتك النفسية هو اعتناء بصحتك الجسدية وعلاقاتك ومستقبلك.</div>
+    </div>
   </div>
 
-  <!-- 2. الوصمة -->
-  <div class="awareness-card">
-    <h3>🧠 كسر الوصمة: 3 خرافات شائعة</h3>
-    <ul>
-      <li><b>"العلاج النفسي للمجانين فقط":</b> خطأ. الأخصائي النفسي يعالج القلق، ضغوط العمل، مشاكل العلاقات، والأطفال، تماماً كطبيب الباطنية.</li>
-      <li><b>"الرجل القوي لا يبكي ولا يطلب مساعدة":</b> خطأ. كبت المشاعر يؤدي للانفجار أو الأمراض الجسدية. القوة الحقيقية هي الاعتراف بالألم وطلب الدعم.</li>
-      <li><b>"الصبر كافٍ لعلاج كل شيء":</b> خطأ. الصبر نعمة، لكنه ليس بديلاً عن العلاج. إذا كسرت يدك، فأنت تصبر وتذهب للطبيب معاً.</li>
-    </ul>
+  <!-- 2. الأمراض النفسية -->
+  <div class="encyclopedia-section">
+    <div class="encyclopedia-header" onclick="toggleEncyclopedia(this)">
+      <span>2. تعريف الأمراض النفسية وأنواعها وطرق العلاج</span>
+      <span>▼</span>
+    </div>
+    <div class="encyclopedia-content">
+      <p>المرض النفسي هو اضطراب في التفكير أو الشعور أو السلوك، يؤثر على حياة الشخص اليومية. <b>وهو ليس ضعفاً في الإيمان أو الشخصية، بل خلل في كيمياء الدماغ أو نتيجة صدمات.</b></p>
+      <h4>أهم الأنواع:</h4>
+      <ul>
+        <li><b>اضطرابات القلق:</b> مثل نوبات الهلع، والرهاب، والقلق العام.</li>
+        <li><b>اضطرابات المزاج:</b> مثل الاكتئاب، والاضطراب الوجداني ثنائي القطب.</li>
+        <li><b>اضطرابات الصدمة:</b> مثل اضطراب ما بعد الصدمة (PTSD).</li>
+        <li><b>اضطرابات الوسواس القهري:</b> أفكار متسلطة وسلوكيات قهرية.</li>
+      </ul>
+      <h4>طرق العلاج:</h4>
+      <ul>
+        <li><b>العلاج النفسي (الكلامي):</b> مثل العلاج المعرفي السلوكي (CBT) لتغيير الأفكار.</li>
+        <li><b>العلاج الدوائي:</b> يصفه الطبيب النفسي لتصحيح كيمياء الدماغ.</li>
+        <li><b>تغيير نمط الحياة:</b> الرياضة، النوم، الدعم الاجتماعي.</li>
+      </ul>
+    </div>
   </div>
 
-  <!-- 3. هل تعلم -->
-  <div class="awareness-card">
-    <h3>💡 هل تعلم؟ (حقائق نفسية سريعة)</h3>
-    <ul>
-      <li>البكاء يفرز هرمونات التوتر (الكورتيزول) ويهدئ الجهاز العصبي. البكاء ليس ضعفاً، بل آلية تنظيف.</li>
-      <li>العناق لمدة 20 ثانية يفرز هرمون "الأوكسيتوسين" (هرمون الحب والأمان)، ويقلل من ضغط الدم.</li>
-      <li>القلق يجعلك تتنفس من صدرك بسرعة. التنفس البطني (من البطن) يخدع عقلك بأنك هادئ.</li>
-      <li>الصدمة لا تنسى، بل تعالج. ذكرى الحرب قد تظل، لكنها يمكن أن تتحول من ذكرى مؤلمة إلى ذكرى تمنحك قوة.</li>
-    </ul>
+  <!-- 3. القلق والتوتر -->
+  <div class="encyclopedia-section">
+    <div class="encyclopedia-header" onclick="toggleEncyclopedia(this)">
+      <span>3. القلق، التوتر، والضغط النفسي</span>
+      <span>▼</span>
+    </div>
+    <div class="encyclopedia-content">
+      <p>القلق هو استجابة طبيعية للخطر، لكنه يصبح مرضاً عندما يكون مفرطاً ومستمراً ويعيق حياتك.</p>
+      <h4>أعراضه:</h4>
+      <ul>
+        <li>جسدية: خفقان، تعرق، رجفة، شد عضلي، دوخة.</li>
+        <li>فكرية: تفكير متسارع، توقع الأسوأ، صعوبة تركيز.</li>
+        <li>سلوكية: تجنب المواقف، التململ.</li>
+      </ul>
+      <h4>الضغط النفسي (Stress):</h4>
+      <p>هو ضغط خارجي (مثل الحرب، الفقد، البطالة). يختلف عن القلق (الداخلي).</p>
+      <h4>طرق التخلص:</h4>
+      <p>تمارين التنفس، تقنيات الاسترخاء، تفريغ المشاعر، والعلاج المعرفي. <a href="atanafas.html">ابدأ مسار أتنفس</a>.</p>
+    </div>
   </div>
 
-  <!-- زر التحدث مع مختص -->
-  <section class="block" style="text-align: center; background: rgba(16, 185, 129, 0.1); border-color: var(--primary);">
-    <h2>هل تحتاج للتحدث مع مختص؟</h2>
-    <p>أنت لست وحدك. فريق سند تعز (مختصان في علم النفس) هنا للاستماع إليك.</p>
-    <!-- استبدل الرقم 967771234567 برقمك الحقيقي -->
-    <a href="https://wa.me/967771234567" class="btn" style="margin-top: 15px; background: #25D366; color: #fff; font-size: 1.1em; padding: 15px 30px;">💬 تواصل معنا عبر واتساب</a>
-  </section>
+  <!-- 4. الاكتئاب -->
+  <div class="encyclopedia-section">
+    <div class="encyclopedia-header" onclick="toggleEncyclopedia(this)">
+      <span>4. الاكتئاب: أكثر من مجرد حزن</span>
+      <span>▼</span>
+    </div>
+    <div class="encyclopedia-content">
+      <p>الاكتئاب ليس حزناً عادياً، بل حالة مستمرة من فقدان الاهتمام والمتعة، تصحبها مشاعر ذنب وعزلة.</p>
+      <h4>أعراضه:</h4>
+      <ul>
+        <li>حزن مستمر لأكثر من أسبوعين.</li>
+        <li>فقدان الاهتمام بالأشياء التي كانت ممتعة.</li>
+        <li>تغيرات في الشهية والوزن والنوم.</li>
+        <li>تعب مستمر، وصعوبة في التركيز.</li>
+        <li>أفكار عن الموت أو الانتحار (حالة طوارئ).</li>
+      </ul>
+      <h4>العلاج:</h4>
+      <p>العلاج النفسي (CBT) والعلاج الدوائي والدعم الاجتماعي. <a href="ahzan.html">ابدأ مسار أحزن</a>.</p>
+    </div>
+  </div>
+
+  <!-- 5. الاحتراق الداخلي والخارجي -->
+  <div class="encyclopedia-section">
+    <div class="encyclopedia-header" onclick="toggleEncyclopedia(this)">
+      <span>5. الاحتراق الداخلي والخارجي للأسرة</span>
+      <span>▼</span>
+    </div>
+    <div class="encyclopedia-content">
+      <p><b>الاحتراق الداخلي (Burnout):</b> هو حالة من الإرهاق الجسدي والعاطفي نتيجة الضغط المستمر (مثل العمل أو الرعاية).</p>
+      <p><b>الاحتراق الخارجي للأسرة:</b> هو حالة من التوتر والانهيار التدريجي في العلاقات الأسرية، بسبب تراكم المشاكل والصدمات.</p>
+      <h4>علامات الاحتراق الأسري:</h4>
+      <ul>
+        <li>فقدان التواصل العاطفي بين أفراد الأسرة.</li>
+        <li>العنف اللفظي أو الصامت.</li>
+        <li>الشعور بأنك "تعيش مع غرباء".</li>
+      </ul>
+      <h4>طرق التخلص:</h4>
+      <p>التواصل المفتوح، طلب المساعدة الأسرية، وتقسيم المسؤوليات، والعودة للأنشطة المشتركة. لا تتردد في <a href="booking.html">طلب جلسة استشارية</a>.</p>
+    </div>
+  </div>
+
+  <!-- 6. الأطفال في الحرب -->
+  <div class="encyclopedia-section">
+    <div class="encyclopedia-header" onclick="toggleEncyclopedia(this)">
+      <span>6. التعامل مع الأطفال وقت الحروب</span>
+      <span>▼</span>
+    </div>
+    <div class="encyclopedia-content">
+      <p>الأطفال هم الفئة الأكثر تأثراً بالحروب، لأنهم لا يفهمون ما يحدث، ويشعرون بالخوف من فقدان الأمان.</p>
+      <h4>كيف تتعامل؟</h4>
+      <ul>
+        <li><b>لا تنكر الواقع:</b> لا تقل "ما في حرب" بينما هو يسمع الانفجارات. طمئنه: "نحن معاً، ونحن في مكان آمن الآن".</li>
+        <li><b>اللعب:</b> اللعب هو طريقة الطفل للتعبير. لا تمنعه. شاركه.</li>
+        <li><b>الروتين:</b> حافظ على مواعيد النوم والأكل والدراسة.</li>
+        <li><b>الحضن:</b> العناق يفرز الأوكسيتوسين (هرمون الأمان).</li>
+      </ul>
+      <div class="highlight-box">للمزيد، ابدأ <a href="arabi.html">مسار أربّي لدعم الأطفال</a>.</div>
+    </div>
+  </div>
+
+  <!-- 7. وقت القلق -->
+  <div class="encyclopedia-section">
+    <div class="encyclopedia-header" onclick="toggleEncyclopedia(this)">
+      <span>7. وقت القلق (كيف تتعامل مع القلق الحاد؟)</span>
+      <span>▼</span>
+    </div>
+    <div class="encyclopedia-content">
+      <p>عندما يهاجمك القلق فجأة (نوبة هلع)، لا تحاول الهروب، بل استخدم مهارات "التهدئة الفورية".</p>
+      <h4>خطوات فورية:</h4>
+      <ul>
+        <li><b>تثبيت الأرضية (5-4-3-2-1):</b> سمِّ 5 أشياء تراها، 4 تلمسها، إلخ.</li>
+        <li><b>التنفس المربع:</b> شهيق 4 ثوان، حبس 4، زفير 4، حبس 4.</li>
+        <li><b>الماء البارد:</b> اغسل وجهك بماء بارد، فهذا يهدئ العصب المبهم.</li>
+      </ul>
+      <div class="highlight-box">استخدم <a href="skills.html">صندوق المهارات</a> الموجود في المنصة في أي وقت.</div>
+    </div>
+  </div>
+
+  <!-- 8. وقت الفقدان -->
+  <div class="encyclopedia-section">
+    <div class="encyclopedia-header" onclick="toggleEncyclopedia(this)">
+      <span>8. وقت الفقدان (كيف تتعامل مع الحزن؟)</span>
+      <span>▼</span>
+    </div>
+    <div class="encyclopedia-content">
+      <p>الفقدان هو خسارة عزيز أو بيت أو حياة. الحزن عليه طبيعي، ولا يوجد وقت محدد للشفاء.</p>
+      <h4>كيف تتعامل؟</h4>
+      <ul>
+        <li><b>اسمح لنفسك بالحزن:</b> لا تكبت مشاعرك. البكاء تفريغ.</li>
+        <li><b>تجنب التجنب:</b> لا تدفن مشاعرك في العمل أو السوشيال ميديا.</li>
+        <li><b>طقوس التوديع:</b> إذا غابت الجنازة، اصنع طقساً رمزياً (رسالة، شمعة).</li>
+        <li><b>العودة للحياة:</b> لا تشعر بالذنب إذا ضحكت أو مارست حياتك.</li>
+      </ul>
+      <div class="highlight-box">اقرأ المزيد في <a href="ahzan.html">مسار أحزن</a>.</div>
+    </div>
+  </div>
+
 </main>
 
-<footer class="wrap"><p>سند تعز · <a href="emergency.html">صفحة الطوارئ</a></p><a href="admin.html" style="color: var(--text-muted); font-size: 0.8em;">لوحة التحكم</a>
+<footer class="wrap" style="text-align: center; padding: 30px 20px; border-top: 1px solid var(--border); margin-top: 40px;">
+  <p><b>سند تعز</b> · منصة يمنية للدعم النفسي الاجتماعي</p>
 </footer>
-<script src="assets/app.js"></script>
-<a href="https://wa.me/967771234567" class="floating-whatsapp" title="تحدث مع مختص">💬</a>
-<!-- المساعد الآلي -->
-<div class="chatbot-toggle" id="chatbotToggle" onclick="toggleChatbot()">🤖</div>
-<div class="chatbot-window" id="chatbotWindow">
-  <div class="chatbot-header">مساعد سند</div>
-  <div class="chatbot-messages" id="chatbotMessages">
-    <div class="bot-msg">مرحباً! أنا مساعدك في سند. كيف يمكنني مساعدتك اليوم؟ (أشعر بالقلق، لا أنام، أحتاج مساعدة)</div>
-  </div>
-  <div class="chatbot-input-area">
-    <input type="text" id="chatInput" placeholder="اكتب سؤالك..." onkeypress="handleChatEnter(event)">
-    <button onclick="sendChatMessage()">إرسال</button>
-  </div>
-</div>
+
 <script>
-  function toggleChatbot() {
-    document.getElementById('chatbotWindow').classList.toggle('show');
-  }
-  function handleChatEnter(e) {
-    if (e.key === 'Enter') sendChatMessage();
-  }
-  function sendChatMessage() {
-    const input = document.getElementById('chatInput');
-    const msg = input.value.trim();
-    if (!msg) return;
-    const container = document.getElementById('chatbotMessages');
-    const userDiv = document.createElement('div');
-    userDiv.className = 'user-msg';
-    userDiv.innerText = msg;
-    container.appendChild(userDiv);
-    input.value = '';
-    container.scrollTop = container.scrollHeight;
-    setTimeout(() => {
-      const botDiv = document.createElement('div');
-      botDiv.className = 'bot-msg';
-      if (msg.includes('قلق') || msg.includes('خوف') || msg.includes('توتر')) {
-        botDiv.innerHTML = 'أشعر بك. هل جربت تمرين التنفس المربع؟ <a href="skills.html">اضغط هنا لفتح صندوق المهارات</a>.';
-      } else if (msg.includes('نوم') || msg.includes('أرق')) {
-        botDiv.innerHTML = 'الأرق شائع في ظروفنا. ننصحك بمسار "أنام". <a href="anam.html">اضغط هنا لبدء المسار</a>.';
-      } else if (msg.includes('حزن') || msg.includes('فقد')) {
-        botDiv.innerHTML = 'الحزن ليس ضعفاً. قد يفيدك مسار "أحزن". <a href="ahzan.html">اضغط هنا</a>.';
-      } else if (msg.includes('مساعدة') || msg.includes('مختص')) {
-        botDiv.innerHTML = 'نحن هنا. يمكنك حجز جلسة مجانية مع مختص <a href="booking.html">من هنا</a>.';
-      } else {
-        botDiv.innerHTML = 'أنا هنا لأسمعك. يمكنك استكشاف <a href="library.html">المكتبة</a> أو <a href="quick_assessment.html">التقييم السريع</a>.';
-      }
-      container.appendChild(botDiv);
-      container.scrollTop = container.scrollHeight;
-    }, 1000);
+  function toggleEncyclopedia(header) {
+    const content = header.nextElementSibling;
+    content.classList.toggle('open');
+    const arrow = header.querySelector('span:last-child');
+    if (content.classList.contains('open')) {
+      arrow.innerText = '▲';
+    } else {
+      arrow.innerText = '▼';
+    }
   }
 </script>
-
+<script src="assets/app.js"></script>
 </body>
 </html>
