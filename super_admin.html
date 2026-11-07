@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>لوحة التحكم الشاملة · سند تعز</title>
+<link rel="stylesheet" href="assets/style.css?v=6">
+<style>
+  .admin-section { background: var(--surface); padding: 25px; border-radius: 20px; border: 1px solid var(--border); margin-bottom: 30px; }
+  .admin-section h2 { color: var(--primary); margin-bottom: 20px; border-right: 4px solid var(--accent); padding-right: 10px; }
+  .form-group { margin-bottom: 15px; }
+  .form-group label { display: block; margin-bottom: 5px; font-weight: bold; }
+  .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--border); background: var(--surface-hover); color: var(--text); font-family: inherit; }
+  .save-btn { background: var(--primary); color: white; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer; font-weight: bold; width: 100%; margin-top: 10px; }
+  .save-btn:hover { background: var(--accent); }
+  .item-list { margin-top: 15px; }
+  .item { display: flex; justify-content: space-between; align-items: center; padding: 10px; border-bottom: 1px solid var(--border); }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <h1 style="color: var(--primary); margin-bottom: 30px;">⚙️ لوحة التحكم الشاملة</h1>
+
+  <!-- 1. إدارة المقالات -->
+  <div class="admin-section">
+    <h2>📝 إدارة المقالات</h2>
+    <div class="form-group">
+      <label>عنوان المقال:</label>
+      <input type="text" id="articleTitle" placeholder="اكتب العنوان...">
+    </div>
+    <div class="form-group">
+      <label>محتوى المقال:</label>
+      <textarea id="articleContent" rows="3" placeholder="اكتب المحتوى..."></textarea>
+    </div>
+    <button class="save-btn" onclick="addArticle()">➕ إضافة مقال</button>
+    <div class="item-list" id="articlesList"></div>
+  </div>
+
+  <!-- 2. إدارة البودكاست -->
+  <div class="admin-section">
+    <h2>🎧 إدارة البودكاست</h2>
+    <div class="form-group">
+      <label>عنوان الحلقة:</label>
+      <input type="text" id="podcastTitle" placeholder="مثال: الحلقة 1 - القلق">
+    </div>
+    <div class="form-group">
+      <label>رابط الملف الصوتي (MP3):</label>
+      <input type="text" id="podcastUrl" placeholder="media/podcast1.mp3 أو رابط خارجي">
+    </div>
+    <button class="save-btn" onclick="addPodcast()">➕ إضافة حلقة</button>
+    <div class="item-list" id="podcastsList"></div>
+  </div>
+
+  <!-- 3. إدارة الإعلانات (الشريط المتحرك) -->
+  <div class="admin-section">
+    <h2>📢 إدارة الشريط المتحرك</h2>
+    <div class="form-group">
+      <label>النص الإعلاني:</label>
+      <input type="text" id="tickerText" placeholder="اكتب نص الإعلان هنا...">
+    </div>
+    <button class="save-btn" onclick="saveTicker()">💾 حفظ النص</button>
+  </div>
+
+  <!-- 4. إدارة الصور (تغيير صورة مسار) -->
+  <div class="admin-section">
+    <h2>🖼️ إدارة الصور</h2>
+    <p style="font-size:0.9em; color:var(--text-muted);">لتغيير صورة مسار، اكتب اسم الملف واختر المسار.</p>
+    <div class="form-group">
+      <label>اختر المسار:</label>
+      <select id="pathSelect">
+        <option value="atanafas">مسار أتنفّس</option>
+        <option value="ahzan">مسار أحزن</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>رابط الصورة الجديدة:</label>
+      <input type="text" id="imageUrl" placeholder="https://... أو media/image.jpg">
+    </div>
+    <button class="save-btn" onclick="saveImage()">🖼️ تحديث الصورة</button>
+  </div>
+
+  <!-- 5. إدارة نصوص المسارات -->
+  <div class="admin-section">
+    <h2>📝 إدارة نصوص المسارات (مثال: أتنفس)</h2>
+    <div class="form-group">
+      <label>عنوان الخطوة 1 (القلق):</label>
+      <input type="text" id="admin-qalaq-title" placeholder="عنوان الخطوة 1">
+    </div>
+    <div class="form-group">
+      <label>مقدمة الخطوة 1:</label>
+      <input type="text" id="admin-qalaq-lead" placeholder="مقدمة الخطوة 1">
+    </div>
+    <div class="form-group">
+      <label>عنوان الخطوة 2 (التنفس):</label>
+      <input type="text" id="admin-breath-title" placeholder="عنوان الخطوة 2">
+    </div>
+    <div class="form-group">
+      <label>مقدمة الخطوة 2:</label>
+      <input type="text" id="admin-breath-lead" placeholder="مقدمة الخطوة 2">
+    </div>
+    <button class="save-btn" onclick="savePathTexts()">💾 حفظ النصوص</button>
+  </div>
+  <a href="index.html" class="save-btn" style="display: block; text-align: center; text-decoration: none; background: var(--surface-hover); color: var(--text);">العودة للرئيسية</a>
+</main>
+
+<script>
+  // 1. إدارة المقالات
+  function getArticles() { return JSON.parse(localStorage.getItem('sana_articles') || '[]'); }
+  function addArticle() {
+    const title = document.getElementById('articleTitle').value;
+    const content = document.getElementById('articleContent').value;
+    if (!title || !content) return alert('يرجى ملء الحقول');
+    const articles = getArticles();
+    articles.push({ id: Date.now(), title, content });
+    localStorage.setItem('sana_articles', JSON.stringify(articles));
+    document.getElementById('articleTitle').value = '';
+    document.getElementById('articleContent').value = '';
+    renderArticles();
+  }
+  function renderArticles() {
+    const list = document.getElementById('articlesList');
+    const articles = getArticles();
+    list.innerHTML = articles.map(a => `<div class="item"><span>${a.title}</span><button onclick="deleteArticle(${a.id})" style="background:var(--danger-br);color:white;border:none;padding:5px 10px;border-radius:5px;cursor:pointer;">حذف</button></div>`).join('');
+  }
+  function deleteArticle(id) {
+    let articles = getArticles().filter(a => a.id !== id);
+    localStorage.setItem('sana_articles', JSON.stringify(articles));
+    renderArticles();
+  }
+
+  // 2. إدارة البودكاست
+  function getPodcasts() { return JSON.parse(localStorage.getItem('sana_podcasts') || '[]'); }
+  function addPodcast() {
+    const title = document.getElementById('podcastTitle').value;
+    const url = document.getElementById('podcastUrl').value;
+    if (!title || !url) return alert('يرجى ملء الحقول');
+    const podcasts = getPodcasts();
+    podcasts.push({ id: Date.now(), title, url });
+    localStorage.setItem('sana_podcasts', JSON.stringify(podcasts));
+    document.getElementById('podcastTitle').value = '';
+    document.getElementById('podcastUrl').value = '';
+    renderPodcasts();
+  }
+  function renderPodcasts() {
+    const list = document.getElementById('podcastsList');
+    const podcasts = getPodcasts();
+    list.innerHTML = podcasts.map(p => `<div class="item"><span>${p.title}</span><button onclick="deletePodcast(${p.id})" style="background:var(--danger-br);color:white;border:none;padding:5px 10px;border-radius:5px;cursor:pointer;">حذف</button></div>`).join('');
+  }
+  function deletePodcast(id) {
+    let podcasts = getPodcasts().filter(p => p.id !== id);
+    localStorage.setItem('sana_podcasts', JSON.stringify(podcasts));
+    renderPodcasts();
+  }
+
+  // 3. إدارة الشريط المتحرك
+  function saveTicker() {
+    const text = document.getElementById('tickerText').value;
+    localStorage.setItem('sana_ticker', text);
+    alert('تم حفظ النص الإعلاني!');
+  }
+
+  // 4. إدارة الصور
+  function saveImage() {
+    const path = document.getElementById('pathSelect').value;
+    const url = document.getElementById('imageUrl').value;
+    if (!url) return alert('أدخل رابط الصورة');
+    localStorage.setItem(`sana_img_${path}`, url);
+    alert('تم تحديث الصورة!');
+  }
+
+  // تحميل البيانات عند فتح الصفحة
+  document.addEventListener('DOMContentLoaded', () => {
+    renderArticles();
+    renderPodcasts();
+    const ticker = localStorage.getItem('sana_ticker');
+    if (ticker) document.getElementById('tickerText').value = ticker;
+  });
+</script>
+<script src="assets/app.js"></script>
+</body>
+</html>
+<script>
+  function savePathTexts() {
+    const qTitle = document.getElementById('admin-qalaq-title').value;
+    const qLead = document.getElementById('admin-qalaq-lead').value;
+    const bTitle = document.getElementById('admin-breath-title').value;
+    const bLead = document.getElementById('admin-breath-lead').value;
+    
+    if (qTitle) localStorage.setItem('sana_txt_qalaq_title', qTitle);
+    if (qLead) localStorage.setItem('sana_txt_qalaq_lead', qLead);
+    if (bTitle) localStorage.setItem('sana_txt_breath_title', bTitle);
+    if (bLead) localStorage.setItem('sana_txt_breath_lead', bLead);
+    
+    alert('تم حفظ نصوص المسار بنجاح!');
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    if (localStorage.getItem('sana_txt_qalaq_title')) document.getElementById('admin-qalaq-title').value = localStorage.getItem('sana_txt_qalaq_title');
+    if (localStorage.getItem('sana_txt_qalaq_lead')) document.getElementById('admin-qalaq-lead').value = localStorage.getItem('sana_txt_qalaq_lead');
+    if (localStorage.getItem('sana_txt_breath_title')) document.getElementById('admin-breath-title').value = localStorage.getItem('sana_txt_breath_title');
+    if (localStorage.getItem('sana_txt_breath_lead')) document.getElementById('admin-breath-lead').value = localStorage.getItem('sana_txt_breath_lead');
+  });
+</script>

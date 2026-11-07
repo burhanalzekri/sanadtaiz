@@ -1,0 +1,21 @@
+  <!-- 5. إدارة نصوص المسارات -->
+  <div class="admin-section">
+    <h2>📝 إدارة نصوص المسارات (مثال: أتنفس)</h2>
+    <div class="form-group">
+      <label>عنوان الخطوة 1 (القلق):</label>
+      <input type="text" id="admin-qalaq-title" placeholder="عنوان الخطوة 1">
+    </div>
+    <div class="form-group">
+      <label>مقدمة الخطوة 1:</label>
+      <input type="text" id="admin-qalaq-lead" placeholder="مقدمة الخطوة 1">
+    </div>
+    <div class="form-group">
+      <label>عنوان الخطوة 2 (التنفس):</label>
+      <input type="text" id="admin-breath-title" placeholder="عنوان الخطوة 2">
+    </div>
+    <div class="form-group">
+      <label>مقدمة الخطوة 2:</label>
+      <input type="text" id="admin-breath-lead" placeholder="مقدمة الخطوة 2">
+    </div>
+    <button class="save-btn" onclick="savePathTexts()">💾 حفظ النصوص</button>
+  </div>

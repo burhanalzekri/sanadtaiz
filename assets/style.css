@@ -445,3 +445,146 @@ body.sidebar-collapsed .main-content {
     padding-right: 15px !important;
   }
 }
+
+/* =========================================
+   تصميم التنبيهات المخصصة (Toast)
+   ========================================= */
+
+.custom-toast {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-100px);
+  background: var(--surface);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  padding: 15px 25px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2), 0 0 20px var(--accent-glow);
+  z-index: 10000;
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  font-weight: bold;
+  font-size: 1em;
+  color: var(--text);
+  min-width: 300px;
+  max-width: 90vw;
+}
+
+.custom-toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+.custom-toast.success {
+  border-right: 5px solid var(--primary);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2), 0 0 20px var(--primary-glow);
+}
+.custom-toast.error {
+  border-right: 5px solid var(--danger-br);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2), 0 0 20px rgba(220,38,38,0.3);
+}
+.custom-toast.info {
+  border-right: 5px solid var(--accent);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2), 0 0 20px var(--accent-glow);
+}
+
+.toast-icon {
+  font-size: 1.5em;
+}
+
+/* =========================================
+   تصميم النافذة المنبثقة (Custom Modal)
+   ========================================= */
+
+.custom-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.custom-modal-overlay.show {
+  opacity: 1;
+}
+
+.custom-modal-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 40px 30px;
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3), 0 0 30px var(--accent-glow);
+  transform: scale(0.8) translateY(20px);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.custom-modal-overlay.show .custom-modal-box {
+  transform: scale(1) translateY(0);
+}
+
+.custom-modal-box.success {
+  border-top: 5px solid var(--primary);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3), 0 0 30px var(--primary-glow);
+}
+.custom-modal-box.error {
+  border-top: 5px solid var(--danger-br);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3), 0 0 30px rgba(220,38,38,0.3);
+}
+.custom-modal-box.info {
+  border-top: 5px solid var(--accent);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3), 0 0 30px var(--accent-glow);
+}
+
+.custom-modal-icon {
+  font-size: 3em;
+  margin-bottom: 15px;
+  display: inline-block;
+  animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+  0% { transform: scale(0); }
+  80% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+.custom-modal-message {
+  font-size: 1.1em;
+  color: var(--text);
+  margin-bottom: 25px;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.custom-modal-btn {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 12px;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 5px 15px var(--primary-glow);
+}
+
+.custom-modal-btn:hover {
+  background: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px var(--accent-glow);
+}
