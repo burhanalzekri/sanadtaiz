@@ -5,6 +5,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>سند تعز — لوحة التحكم</title>
 <link rel="stylesheet" href="assets/style.css?v=5">
+<style>
+  /* تنسيق قوائم المعاينة داخل البطاقات */
+  .preview-list {
+    margin-top: 10px;
+    padding-right: 15px;
+    list-style-type: disc;
+    font-size: 0.85em;
+    color: var(--text-muted);
+    text-align: right;
+  }
+  .preview-list li {
+    margin-bottom: 3px;
+  }
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+</style>
 </head>
 <body>
 
@@ -54,50 +73,67 @@
     <strong>تنويه:</strong> هذه المنصة تقدّم تثقيفاً ودعماً نفسياً أوّلياً، وليست بديلاً عن العلاج الطبي. <a href="emergency.html">صفحة الطوارئ</a>.
   </div>
 
-  <!-- 1. المسارات العلاجية (8 مسارات) -->
+  <!-- 1. المسارات العلاجية -->
   <div class="section-header">
     <h2>المسارات العلاجية</h2>
-    <p>خطوات عملية مبنية على العلاج المعرفي السلوكي (CBT)</p>
+    <p>رحلات منظمة مبنية على العلاج المعرفي السلوكي</p>
   </div>
   <div class="grid">
     <a class="card has-image" href="atanafas.html">
       <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=800&auto=format&fit=crop');"></div>
-      <div class="card-content"><h3>مسار أتنفّس</h3><p>لإدارة القلق والتوتر.</p></div>
-    </a>
-    <a class="card has-image" href="anam.html">
-      <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?q=80&w=800&auto=format&fit=crop');"></div>
-      <div class="card-content"><h3>مسار أنام</h3><p>لاستعادة النوم بعد الأرق.</p></div>
+      <div class="card-content">
+        <h3>مسار أتنفّس</h3>
+        <p>لإدارة القلق والتوتر.</p>
+        <ul class="preview-list">
+          <li>فهم القلق</li>
+          <li>التنفس البطني</li>
+          <li>فحص الأفكار</li>
+        </ul>
+      </div>
     </a>
     <a class="card has-image" href="ahzan.html">
       <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?q=80&w=800&auto=format&fit=crop');"></div>
-      <div class="card-content"><h3>مسار أحزن</h3><p>للتعامل مع الفقد والنزوح.</p></div>
+      <div class="card-content">
+        <h3>مسار أحزن</h3>
+        <p>للتعامل مع الفقد والنزوح.</p>
+        <ul class="preview-list">
+          <li>موجات الحزن</li>
+          <li>تفريغ المشاعر</li>
+          <li>طقوس التوديع</li>
+        </ul>
+      </div>
     </a>
-    <a class="card has-image" href="arabi.html">
-      <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=800&auto=format&fit=crop');"></div>
-      <div class="card-content"><h3>مسار أربّي</h3><p>لدعم الأطفال في الأزمات.</p></div>
-    </a>
-    <a class="card has-image" href="asmod.html">
-      <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1476610182048-b716b8518aae?q=80&w=800&auto=format&fit=crop');"></div>
-      <div class="card-content"><h3>مسار أصمد</h3><p>للتعامل مع صدمة الحرب.</p></div>
-    </a>
-    <a class="card has-image" href="salam.html">
+  </div>
+  <div style="text-align: center; margin-top: 15px;">
+    <a href="library.html" class="btn ghost">عرض جميع المسارات (8 مسارات) ←</a>
+  </div>
+
+  <!-- 2. الموسوعة النفسية -->
+  <div class="section-header" style="margin-top: 50px;">
+    <h2>الموسوعة النفسية</h2>
+    <p>كل ما تحتاج معرفته عن الصحة النفسية والأمراض</p>
+  </div>
+  <div class="grid">
+    <a class="card has-image" href="awareness.html">
       <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1499209974431-9dddcece7f88?q=80&w=800&auto=format&fit=crop');"></div>
-      <div class="card-content"><h3>مسار أتصالح</h3><p>للتعافي من ذنب الناجي.</p></div>
-    </a>
-    <a class="card has-image" href="ghadab.html">
-      <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1500673922987-e212871fec22?q=80&w=800&auto=format&fit=crop');"></div>
-      <div class="card-content"><h3>مسار أهدّئ غضبي</h3><p>للتحكم في الغضب والتهيج.</p></div>
-    </a>
-    <a class="card has-image" href="anazih.html">
-      <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1506744626753-eda818c6cce5?q=80&w=800&auto=format&fit=crop');"></div>
-      <div class="card-content"><h3>مسار أنزح</h3><p>للتكيف مع النزوح.</p></div>
+      <div class="card-content">
+        <h3>ادخل الموسوعة</h3>
+        <p>توعية شاملة ومبسطة.</p>
+        <ul class="preview-list">
+          <li>ما هي الصحة النفسية؟</li>
+          <li>الأمراض النفسية وعلاجها</li>
+          <li>القلق والاكتئاب</li>
+          <li>الاحتراق الأسري</li>
+          <li>الأطفال في الحروب</li>
+        </ul>
+      </div>
     </a>
   </div>
 
-  <!-- 2. أدوات التقييم -->
+  <!-- 3. أدوات التقييم -->
   <div class="section-header" style="margin-top: 50px;">
     <h2>أدوات التقييم</h2>
-    <p>اكتشف حالتك النفسية بعلم وموضوعية.</p>
+    <p>اكتشف حالتك النفسية بعلم وموضوعية</p>
   </div>
   <div class="mini-grid">
     <a href="quick_assessment.html" class="mini-card" style="border-color: var(--accent);"><span class="icon">🧠</span><h4>تقييم سريع</h4></a>
@@ -107,27 +143,7 @@
     <a href="wellbeing.html" class="mini-card"><span class="icon">🌱</span><h4>مقياس الرفاهية</h4></a>
   </div>
 
-  <!-- 3. المكتبة والمحتوى التوعوي -->
-  <div class="section-header" style="margin-top: 50px;">
-    <h2>المكتبة والتوعية</h2>
-    <p>محتوى علمي موثق لكسر الوصمة وفهم الذات.</p>
-  </div>
-  <div class="grid">
-    <a class="card has-image" href="awareness.html">
-      <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1499209974431-9dddcece7f88?q=80&w=800&auto=format&fit=crop');"></div>
-      <div class="card-content"><h3>الموسوعة النفسية</h3><p>الصحة النفسية، الأمراض، وطرق التعامل.</p></div>
-    </a>
-    <a class="card has-image" href="articles.html">
-      <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1517436073-3b1b1167a7f2?q=80&w=800&auto=format&fit=crop');"></div>
-      <div class="card-content"><h3>مقالات توعوية</h3><p>5 مقالات سريعة لكسر الوصمة.</p></div>
-    </a>
-    <a class="card has-image" href="skills.html">
-      <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=800&auto=format&fit=crop');"></div>
-      <div class="card-content"><h3>صندوق المهارات</h3><p>تمارين فورية للحظات الضيق.</p></div>
-    </a>
-  </div>
-
-  <!-- 4. الدعم البشري والطوارئ -->
+  <!-- 4. الدعم البشري -->
   <div class="section-header" style="margin-top: 50px;">
     <h2>الدعم البشري</h2>
     <p>نحن هنا للاستماع إليك ومساعدتك.</p>

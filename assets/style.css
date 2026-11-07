@@ -752,3 +752,159 @@ body {
 .banner-cta a {
   white-space: nowrap;
 }
+
+/* =========================================
+   تحسين تنسيق عرض الصور في البطاقات (Pro Max)
+   ========================================= */
+
+.card-image {
+  width: 100%;
+  height: 220px; /* ارتفاع ثابت ومتناسق */
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px 20px 0 0; /* حواف علوية دائرية */
+  transition: transform 0.5s ease;
+}
+
+/* إضافة طبقة تدرج لدمج الصورة مع نص البطاقة */
+.card-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, var(--surface) 0%, transparent 60%);
+}
+
+/* تأثير التكبير عند التمرير */
+.card:hover .card-image {
+  transform: scale(1.05);
+}
+
+/* تحسين تخطيط محتوى البطاقة */
+.card-content {
+  padding: 20px;
+  background: var(--surface);
+  border-radius: 0 0 20px 20px;
+  position: relative;
+  z-index: 2;
+  margin-top: -20px; /* سحب المحتوى للأعلى قليلاً فوق الصورة لدمجه */
+}
+
+/* تحسين عرض الصورة في الهيدر (Hero Image) */
+.hero-image {
+  width: 100%;
+  height: 250px;
+  border-radius: 24px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  box-shadow: 0 15px 35px -10px var(--shadow-color);
+  margin-bottom: 30px;
+  overflow: hidden;
+}
+.hero-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, var(--bg) 0%, transparent 50%);
+  border-radius: 24px;
+}
+
+/* =========================================
+   تحويل البطاقات والصور إلى شكل دائري بارز (3D Capsule)
+   ========================================= */
+
+.card {
+  border-radius: 40px; /* حواف دائرية جداً */
+  overflow: hidden;
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: 
+    0 15px 35px -5px var(--shadow-color), 
+    0 5px 15px -5px rgba(0,0,0,0.1), /* ظل إضافي للعمق */
+    inset 0 0 20px rgba(255,255,255,0.05); /* توهج داخلي خفيف */
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s;
+}
+
+/* تأثير البروز عند التمرير */
+.card:hover {
+  transform: translateY(-12px) scale(1.02); /* يرتفع للأعلى ويتكبر قليلاً */
+  border-color: var(--accent);
+  box-shadow: 
+    0 25px 50px -12px var(--shadow-hover), /* ظل أقوى */
+    0 0 30px var(--accent-glow); /* توهج لوني */
+}
+
+/* جعل الصورة دائرية ومندمجة */
+.card-image {
+  border-radius: 40px 40px 0 0; /* حواف عليا دائرية */
+  height: 220px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  transition: transform 0.5s ease;
+}
+
+/* لمعان زجاجي يمر فوق البطاقة عند التمرير */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 50%; height: 100%;
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent);
+  transform: skewX(-25deg);
+  transition: 0.7s;
+  z-index: 10;
+  pointer-events: none;
+}
+.card:hover::before {
+  left: 150%;
+}
+
+/* تحسين محتوى البطاقة */
+.card-content {
+  padding: 25px 20px;
+  border-radius: 0 0 40px 40px; /* حواف سفلى دائرية */
+  background: var(--surface);
+  position: relative;
+  z-index: 2;
+  margin-top: -15px; /* سحب المحتوى فوق الصورة */
+}
+
+/* الصورة الرئيسية (Hero Image) */
+.hero-image {
+  border-radius: 50px; /* دائرة كاملة */
+  height: 250px;
+  box-shadow: 0 20px 40px -10px var(--shadow-color);
+  transition: 0.4s;
+}
+.hero-image:hover {
+  transform: scale(1.02);
+}
+
+/* بطاقات التقييم المصغرة */
+.mini-card {
+  border-radius: 30px; /* كبسولة */
+  padding: 20px 15px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 20px var(--shadow-color);
+  transition: 0.3s;
+}
+.mini-card:hover {
+  transform: translateY(-8px) scale(1.05);
+  border-color: var(--accent);
+  box-shadow: 0 15px 30px var(--shadow-hover), 0 0 20px var(--accent-glow);
+}
+
+/* الأزرار الدائرية */
+.btn-3d {
+  border-radius: 50px; /* أزرار كبسولة دائرية */
+}
+
+/* الحاوية الرئيسية للصفحة */
+.wrap {
+  padding: 0 15px; /* إضافة مساحة جانبية للبطاقات */
+}
