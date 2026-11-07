@@ -4,217 +4,74 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>مقالات توعوية · سند تعز</title>
-<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/style.css?v=6">
 <style>
-  .article-card {
-    background: var(--surface); border: 1px solid var(--border); border-radius: 20px;
-    margin-bottom: 20px; overflow: hidden; box-shadow: 0 10px 25px -5px var(--shadow-color);
-    backdrop-filter: blur(10px); transition: 0.4s;
-  }
-  .article-card:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: 0 15px 35px -10px var(--shadow-hover); }
+  .article-card { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; margin-bottom: 20px; overflow: hidden; box-shadow: 0 10px 25px -5px var(--shadow-color); }
   .article-head { padding: 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
   .article-head h3 { color: var(--text); font-size: 1.2em; margin: 0; }
-  .article-head .tag { font-size: 0.8em; color: var(--primary); background: rgba(16,185,129,0.1); padding: 3px 10px; border-radius: 15px; border: 1px solid var(--primary-glow); }
+  .article-head .tag { font-size: 0.8em; color: var(--primary); background: var(--primary-glow); padding: 3px 10px; border-radius: 15px; }
   .article-body { display: none; padding: 0 20px 20px; color: var(--text-muted); border-top: 1px solid var(--border); }
   .article-body.open { display: block; animation: fadeIn 0.3s; }
-  .article-body p { margin-top: 15px; }
-  .article-body ul { margin-top: 10px; padding-right: 20px; }
-  .article-body li { margin-bottom: 8px; }
 </style>
 </head>
 <body>
-<header class="topbar">
-  <div class="wrap">
-    <div class="brand"><span class="logo">س</span> سند تعز</div>
-    <nav class="nav">
-      <a href="index.html">الرئيسية</a>
-      <div class="dropdown">
-        <a href="#" style="cursor: pointer;">المسارات ▼</a>
-        <div class="dropdown-content">
-          <a href="atanafas.html">أتنفّس (القلق)</a>
-          <a href="anam.html">أنام (الأرق)</a>
-          <a href="ahzan.html">أحزن (الفقد)</a>
-          <a href="arabi.html">أربّي (الأطفال)</a>
-          <a href="asmod.html">أصمد (الصدمة)</a>
-          <a href="salam.html">أتصالح (الذنب)</a>
-          <a href="ghadab.html">أهدّئ غضبي (الغضب)</a>
-          <a href="anazih.html">أنزح (النزوح)</a>
-        </div>
-      </div>
-      <div class="dropdown">
-        <a href="#" style="cursor: pointer;">التقييمات ▼</a>
-        <div class="dropdown-content">
-          <a href="gad7.html">مقياس القلق GAD-7</a>
-          <a href="phq9.html">مقياس الاكتئاب PHQ-9</a>
-          <a href="pcl5.html">مقياس الصدمة PCL-5</a>
-          <a href="wellbeing.html">مقياس الرفاهية WHO-5</a>
-        </div>
-      </div>
-      <a href="skills.html">صندوق المهارات</a>
-      <a href="library.html">المكتبة</a>
-      <a href="awareness.html">التوعية</a>
-      <a href="booking.html" style="color: #25D366; font-weight: bold;">احجز جلستك</a>
-      <a href="emergency.html" style="color: var(--danger-br);">الطوارئ</a>
-      <button id="themeToggle" class="theme-btn">🌙</button>
-</nav>
-  </div>
-</header>
-
 <main class="wrap">
   <section class="hero">
     <h1>مقالات توعوية</h1>
     <p>نكسر الوصمة، ونفهم أنفسنا أكثر · قراءة 2-3 دقائق</p>
   </section>
 
-  <div class="disclaimer">
-    <strong>تنويه:</strong> هذه المقالات للتثقيف النفسي، وليست بديلاً عن التشخيص أو العلاج.
-  </div>
-
-  <!-- مقال 1 -->
-  <div class="article-card">
-    <div class="article-head" onclick="toggleArticle(this)">
-      <h3>حقيقة أم خرافة: طلب المساعدة النفسية يعني "الجنون"؟</h3>
-      <span class="tag">خرافة</span>
-    </div>
-    <div class="article-body">
-      <p>في مجتمعنا، قد يتردد الشخص قبل زيارة أخصائي نفسي خوفاً من كلمة "مجنون". لكن الحقيقة العلمية عكس ذلك تماماً.</p>
-      <p><b>الحقيقة:</b> الأخصائي النفسي هو طبيب للعقل والسلوك، تماماً كطبيب القلب للقلب. عندما تشعر بألم في صدرك تذهب للطبيب، وعندما تشعر بألم نفسي (قلق، حزن، خوف) تذهب لأخصائي نفسي.</p>
-      <p>طلب المساعدة ليس دليلاً على الضعف أو الجنون، بل هو <b>دليل على الوعي والقوة</b>. أنت تعترف بأن هناك مشكلة وتسعى لحلها، وهذا ما يفعله الأقوياء.</p>
-      <p>الاعتراف بالألم هو أول خطوة نحو الشفاء.</p>
-    </div>
-  </div>
-
-  <!-- مقال 2 -->
-  <div class="article-card">
-    <div class="article-head" onclick="toggleArticle(this)">
-      <h3>كيف أدعم صديقاً أو قريباً يمرّ بضيق؟</h3>
-      <span class="tag">مهارات</span>
-    </div>
-    <div class="article-body">
-      <p>كثيراً ما نريد مساعدة من نحب، لكننا لا نعرف ماذا نقول. قد نقول جملة (غير مقصودة) تزيد الطين بلة، مثل: "اصبر"، "غيرك أسوأ منك"، "الحمد لله".</p>
-      <p><b>ما الذي يحتاجه الشخص فعلاً؟</b></p>
-      <ul>
-        <li><b>الإنصات الفعّال:</b> أن تسمعه دون مقاطعته ودون إصدار أحكام. أن تكون "أذناً" لا "قاضياً".</li>
-        <li><b>التحقق من المشاعر:</b> قل له: "أفهم أن هذا صعب جداً عليك". هذه الجملة البسيطة تعني له الكثير.</li>
-        <li><b>تقديم دعم عملي:</b> بدلاً من "قل لي ماذا تحتاج؟"، قدم له شيئاً محدداً: "هل تريد أن نجلس معاً؟"، "هل أساعدك في هذا الأمر؟".</li>
-        <li><b>لا تقلل من مشاعره:</b> تجنب جمل مثل "لا تفكر في الأمر".</li>
-      </ul>
-      <p>أحياناً، مجرد وجودك بجانبه بصمت ودعم، هو أفضل علاج.</p>
-    </div>
-  </div>
-
-  <!-- مقال 3 -->
-  <div class="article-card">
-    <div class="article-head" onclick="toggleArticle(this)">
-      <h3>الرجال والدعم النفسي: كسر الوصمة</h3>
-      <span class="tag">خاص بالرجال</span>
-    </div>
-    <div class="article-body">
-      <p>تربّينا على أن "الرجل لا يبكي"، وأن "الرجل القوي يتحمل". هذه الأفكار، رغم أنها تبدو وكأنها تبني شخصية قوية، إلا أنها تقتل الرجال بصمت من الداخل.</p>
-      <p><b>الحقيقة:</b> الرجل إنسان، يفرح ويحزن ويخاف ويتعب. كبت المشاعر لا يلغيها، بل يحولها إلى غضب، أو أمراض جسدية (قرحة، ضغط)، أو عزلة وانفصال عن العائلة.</p>
-      <p>القوة الحقيقية ليست في كتمان الألم، بل في الاعتراف به وطلب المساعدة. الرجل الذي يطلب المساعدة هو رجل واعٍ وشجاع، يحمي نفسه وعائلته من الانهيار.</p>
-      <p>صحتك النفسية هي جزء من رجولتك، فلا تخجل منها.</p>
-    </div>
-  </div>
-
-  <!-- مقال 4 -->
-  <div class="article-card">
-    <div class="article-head" onclick="toggleArticle(this)">
-      <h3>ذنب الناجي: لماذا أشعر بالذنب وأنا حي؟</h3>
-      <span class="tag">صدمة</span>
-    </div>
-    <div class="article-body">
-      <p>بعد الحروب والكوارث، يشعر كثير من الناجين بالذنب لأنهم أحياء، بينما فقدوا أحباءهم. يتساءلون: "لماذا أنا؟"، "لماذا لم أُصَب أنا؟".</p>
-      <p><b>هذا يسمى "ذنب الناجي" (Survivor's Guilt).</b> هو شعور مؤلم جداً، لكنه ليس منطقياً. أنت لم تختر أن تنجو، ولم تكن السبب فيما حدث للآخرين.</p>
-      <p><b>كيف تتعامل معه؟</b></p>
-      <ul>
-        <li>اعترف بأن هذه المشاعر طبيعية، لكنها ليست حقيقة.</li>
-        <li>لا تلوم نفسك على ما ليس بيدك.</li>
-        <li>تذكر أن العيش حاملاً ذكراهم هو تكريم لهم، وليس خيانة.</li>
-      </ul>
-      <p>أن تعيش وتزدهر هو أفضل رد على الفقد.</p>
-    </div>
-  </div>
-
-  <!-- مقال 5 -->
-  <div class="article-card">
-    <div class="article-head" onclick="toggleArticle(this)">
-      <h3>متى ألجأ للمختص النفسي؟ (علامات واضحة)</h3>
-      <span class="tag">إرشاد</span>
-    </div>
-    <div class="article-body">
-      <p>ليس كل ضيق يحتاج مختصاً، فالحياة فيها ألم طبيعي نتحمله ونتجاوزه. لكن هناك علامات واضحة تخبرك أنك تحتاج يداً خبيرة:</p>
-      <ul>
-        <li>استمرار الحزن أو القلق أو الخوف لأكثر من شهر، دون تحسن.</li>
-        <li>تأثير الأعراض على عملك أو دراستك أو علاقاتك.</li>
-        <li>صعوبة شديدة في النوم والأكل.</li>
-        <li>أفكار متكررة بإيذاء النفس، أو الشعور بأن الحياة لا معنى لها.</li>
-        <li>اضطرابات جسدية مستمرة (خفقان، تعرق، آلام) بعد الفحوصات الطبية.</li>
-      </ul>
-      <p>إذا لاحظت هذه العلامات، فأنت لست مجنوناً، أنت فقط بحاجة لدعم متخصص. <a href="emergency.html">ولا تتردد في زيارة صفحة الطوارئ إذا كان هناك خطر مباشر.</a></p>
-    </div>
+  <div id="articlesContainer">
+    <!-- سيتم تحميل المقالات هنا ديناميكياً -->
   </div>
 </main>
 
-<footer class="wrap"><p>سند تعز · <a href="emergency.html">صفحة الطوارئ</a> | <a href="support.html" style="color: var(--accent); font-weight: bold;">💖 ادعم سند</a></p><a href="admin.html" style="color: var(--text-muted); font-size: 0.8em;">لوحة التحكم</a>
-</footer>
 <script>
+  // المقالات الثابتة (الافتراضية)
+  const staticArticles = [
+    { id: 's1', title: 'حقيقة أم خرافة: طلب المساعدة النفسية يعني "الجنون"؟', content: 'في مجتمعنا، قد يتردد الشخص قبل زيارة أخصائي نفسي خوفاً من كلمة "مجنون". لكن الحقيقة العلمية عكس ذلك تماماً. طلب المساعدة ليس دليلاً على الضعف، بل هو دليل على الوعي والقوة.', tag: 'خرافة' },
+    { id: 's2', title: 'كيف أدعم صديقاً أو قريباً يمرّ بضيق؟', content: 'كثيراً ما نريد مساعدة من نحب، لكننا لا نعرف ماذا نقول. ما يحتاجه الشخص فعلاً هو الإنصات الفعّال، التحقق من المشاعر، وتقديم دعم عملي بدلاً من النصائح الجاهزة.', tag: 'مهارات' },
+    { id: 's3', title: 'الرجال والدعم النفسي: كسر الوصمة', content: 'تربّينا على أن "الرجل لا يبكي". هذه الأفكار تقتل الرجال بصمت من الداخل. القوة الحقيقية ليست في كتمان الألم، بل في الاعتراف به وطلب المساعدة.', tag: 'خاص بالرجال' }
+  ];
+
+  // دالة لجلب المقالات من الذاكرة
+  function getDynamicArticles() {
+    const stored = localStorage.getItem('sana_articles');
+    return stored ? JSON.parse(stored) : [];
+  }
+
+  // دمج المقالات وعرضها
+  function renderArticles() {
+    const dynamicArticles = getDynamicArticles();
+    const allArticles = [...staticArticles, ...dynamicArticles];
+    const container = document.getElementById('articlesContainer');
+    
+    if (allArticles.length === 0) {
+      container.innerHTML = '<p>لا توجد مقالات حالياً.</p>';
+      return;
+    }
+
+    container.innerHTML = allArticles.map((a, index) => `
+      <div class="article-card">
+        <div class="article-head" onclick="toggleArticle(this)">
+          <h3>${a.title}</h3>
+          <span class="tag">${a.tag || 'جديد'}</span>
+        </div>
+        <div class="article-body">
+          <p>${a.content}</p>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // فتح/إغلاق المقال
   function toggleArticle(header) {
     const body = header.nextElementSibling;
     body.classList.toggle('open');
   }
+
+  document.addEventListener('DOMContentLoaded', renderArticles);
 </script>
 <script src="assets/app.js"></script>
-<a href="https://wa.me/967771234567" class="floating-whatsapp" title="تحدث مع مختص">💬</a>
-<!-- المساعد الآلي -->
-<div class="chatbot-toggle" id="chatbotToggle" onclick="toggleChatbot()">🤖</div>
-<div class="chatbot-window" id="chatbotWindow">
-  <div class="chatbot-header">مساعد سند</div>
-  <div class="chatbot-messages" id="chatbotMessages">
-    <div class="bot-msg">مرحباً! أنا مساعدك في سند. كيف يمكنني مساعدتك اليوم؟ (أشعر بالقلق، لا أنام، أحتاج مساعدة)</div>
-  </div>
-  <div class="chatbot-input-area">
-    <input type="text" id="chatInput" placeholder="اكتب سؤالك..." onkeypress="handleChatEnter(event)">
-    <button onclick="sendChatMessage()">إرسال</button>
-  </div>
-</div>
-<script>
-  function toggleChatbot() {
-    document.getElementById('chatbotWindow').classList.toggle('show');
-  }
-  function handleChatEnter(e) {
-    if (e.key === 'Enter') sendChatMessage();
-  }
-  function sendChatMessage() {
-    const input = document.getElementById('chatInput');
-    const msg = input.value.trim();
-    if (!msg) return;
-    const container = document.getElementById('chatbotMessages');
-    const userDiv = document.createElement('div');
-    userDiv.className = 'user-msg';
-    userDiv.innerText = msg;
-    container.appendChild(userDiv);
-    input.value = '';
-    container.scrollTop = container.scrollHeight;
-    setTimeout(() => {
-      const botDiv = document.createElement('div');
-      botDiv.className = 'bot-msg';
-      if (msg.includes('قلق') || msg.includes('خوف') || msg.includes('توتر')) {
-        botDiv.innerHTML = 'أشعر بك. هل جربت تمرين التنفس المربع؟ <a href="skills.html">اضغط هنا لفتح صندوق المهارات</a>.';
-      } else if (msg.includes('نوم') || msg.includes('أرق')) {
-        botDiv.innerHTML = 'الأرق شائع في ظروفنا. ننصحك بمسار "أنام". <a href="anam.html">اضغط هنا لبدء المسار</a>.';
-      } else if (msg.includes('حزن') || msg.includes('فقد')) {
-        botDiv.innerHTML = 'الحزن ليس ضعفاً. قد يفيدك مسار "أحزن". <a href="ahzan.html">اضغط هنا</a>.';
-      } else if (msg.includes('مساعدة') || msg.includes('مختص')) {
-        botDiv.innerHTML = 'نحن هنا. يمكنك حجز جلسة مجانية مع مختص <a href="booking.html">من هنا</a>.';
-      } else {
-        botDiv.innerHTML = 'أنا هنا لأسمعك. يمكنك استكشاف <a href="library.html">المكتبة</a> أو <a href="quick_assessment.html">التقييم السريع</a>.';
-      }
-      container.appendChild(botDiv);
-      container.scrollTop = container.scrollHeight;
-    }, 1000);
-  }
-</script>
-
 </body>
 </html>

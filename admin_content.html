@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>إدارة المحتوى · سند تعز</title>
+<link rel="stylesheet" href="assets/style.css?v=6">
+<style>
+  .admin-panel { background: var(--surface); padding: 25px; border-radius: 20px; border: 1px solid var(--border); margin-bottom: 30px; }
+  .admin-panel h2 { color: var(--primary); margin-bottom: 20px; }
+  .form-group { margin-bottom: 15px; }
+  .form-group label { display: block; margin-bottom: 5px; font-weight: bold; }
+  .form-group input, .form-group textarea { width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--border); background: var(--surface-hover); color: var(--text); font-family: inherit; }
+  .article-item { background: var(--surface-hover); padding: 15px; border-radius: 12px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--border); }
+  .article-item button { background: var(--danger-br); color: white; border: none; padding: 5px 10px; border-radius: 6px; cursor: pointer; }
+  .article-item button.edit { background: var(--primary); }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <h1 style="color: var(--primary); margin-bottom: 30px;">⚙️ إدارة محتوى المنصة</h1>
+  
+  <!-- نموذج إضافة مقال -->
+  <div class="admin-panel">
+    <h2>➕ إضافة مقال جديد</h2>
+    <div class="form-group">
+      <label>عنوان المقال:</label>
+      <input type="text" id="articleTitle" placeholder="مثال: كيف تتعامل مع القلق؟">
+    </div>
+    <div class="form-group">
+      <label>محتوى المقال:</label>
+      <textarea id="articleContent" rows="4" placeholder="اكتب نص المقال هنا..."></textarea>
+    </div>
+    <button class="btn" onclick="addArticle()" style="width: 100%;">حفظ المقال</button>
+  </div>
+
+  <!-- قائمة المقالات الحالية -->
+  <div class="admin-panel">
+    <h2>📚 المقالات الحالية</h2>
+    <div id="articlesList">
+      <!-- سيتم تحميل المقالات هنا -->
+    </div>
+  </div>
+</main>
+
+<script>
+  // دالة لجلب المقالات من الذاكرة
+  function getArticles() {
+    const stored = localStorage.getItem('sana_articles');
+    return stored ? JSON.parse(stored) : [];
+  }
+
+  // دالة لحفظ المقالات في الذاكرة
+  function saveArticles(articles) {
+    localStorage.setItem('sana_articles', JSON.stringify(articles));
+    renderArticles();
+  }
+
+  // إضافة مقال
+  function addArticle() {
+    const title = document.getElementById('articleTitle').value;
+    const content = document.getElementById('articleContent').value;
+    if (!title || !content) { alert('يرجى ملء جميع الحقول'); return; }
+
+    const articles = getArticles();
+    articles.push({ id: Date.now(), title: title, content: content });
+    saveArticles(articles);
+    
+    document.getElementById('articleTitle').value = '';
+    document.getElementById('articleContent').value = '';
+    alert('تم إضافة المقال بنجاح!');
+  }
+
+  // حذف مقال
+  function deleteArticle(id) {
+    if (!confirm('هل أنت متأكد من حذف هذا المقال؟')) return;
+    let articles = getArticles();
+    articles = articles.filter(a => a.id !== id);
+    saveArticles(articles);
+  }
+
+  // عرض المقالات
+  function renderArticles() {
+    const list = document.getElementById('articlesList');
+    const articles = getArticles();
+    if (articles.length === 0) {
+      list.innerHTML = '<p style="color: var(--text-muted);">لا توجد مقالات مضافة بعد.</p>';
+      return;
+    }
+    list.innerHTML = articles.map(a => `
+      <div class="article-item">
+        <div>
+          <strong style="color: var(--primary);">${a.title}</strong>
+          <p style="font-size: 0.85em; color: var(--text-muted); margin: 0;">${a.content.substring(0, 50)}...</p>
+        </div>
+        <button onclick="deleteArticle(${a.id})">حذف</button>
+      </div>
+    `).join('');
+  }
+
+  // تشغيل العرض عند التحميل
+  document.addEventListener('DOMContentLoaded', renderArticles);
+</script>
+<script src="assets/app.js"></script>
+</body>
+</html>
