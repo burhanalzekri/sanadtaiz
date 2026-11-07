@@ -4,30 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>سند تعز — لوحة التحكم</title>
-<link rel="stylesheet" href="assets/style.css?v=5">
-<style>
-  /* تنسيق قوائم المعاينة داخل البطاقات */
-  .preview-list {
-    margin-top: 10px;
-    padding-right: 15px;
-    list-style-type: disc;
-    font-size: 0.85em;
-    color: var(--text-muted);
-    text-align: right;
-  }
-  .preview-list li {
-    margin-bottom: 3px;
-  }
-  .card-content {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-  }
-</style>
+<link rel="stylesheet" href="assets/style.css?v=6">
 </head>
 <body>
 
-<div class="modal-bg" id="consentModal">
+<!-- نافذة الموافقة (مخفية افتراضياً، تظهر عبر JS إذا لم يوافق المستخدم) -->
+<div class="modal-bg" id="consentModal" style="display:none;">
   <div class="modal" role="dialog" aria-modal="true">
     <h2>أهلاً بك في سند تعز</h2>
     <p>قبل أن تبدأ، نحب أن تعرف:</p>
@@ -41,21 +23,9 @@
   </div>
 </div>
 
-<header class="topbar">
-  <div class="wrap">
-    <div class="brand"><span class="logo">س</span> سند تعز</div>
-    <nav class="nav">
-      <a href="index.html" class="active">الرئيسية</a>
-      <a href="library.html">المكتبة</a>
-      <a href="awareness.html">الموسوعة</a>
-      <button id="themeToggle" class="theme-btn">🌙</button>
-    </nav>
-  </div>
-</header>
-
 <main class="wrap">
   
-  <!-- قسم الترحيب (Hero) -->
+  <!-- قسم الترحيب -->
   <section class="hero-3d-container">
     <div class="hero-3d-glow"></div>
     <div class="hero-3d-card capsule">
@@ -104,27 +74,37 @@
     </a>
   </div>
   <div style="text-align: center; margin-top: 15px;">
-    <a href="library.html" class="btn ghost">عرض جميع المسارات (8 مسارات) ←</a>
+    <a href="library.html" class="btn ghost" style="display:inline-block; padding:10px 20px; border:1px solid var(--primary); border-radius:10px; color:var(--primary);">عرض جميع المسارات (8 مسارات) ←</a>
   </div>
 
-  <!-- 2. الموسوعة النفسية -->
+  <!-- 2. الموسوعة والمقالات (بجانب بعضهما) -->
   <div class="section-header" style="margin-top: 50px;">
-    <h2>الموسوعة النفسية</h2>
+    <h2>المحتوى التوعوي</h2>
     <p>كل ما تحتاج معرفته عن الصحة النفسية والأمراض</p>
   </div>
-    <a class="card has-image" href="articles.html"><div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1499209974431-9dddcece7f88?q=80&w=800&auto=format&fit=crop');"></div><div class="card-content"><h3>مقالات توعوية</h3><p>5 مقالات سريعة لكسر الوصمة.</p><ul class="preview-list"><li>حقيقة مقابل خرافة</li><li>الرجال والدعم</li><li>ذنب الناجي</li></ul></div></a>
   <div class="grid">
     <a class="card has-image" href="awareness.html">
       <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1499209974431-9dddcece7f88?q=80&w=800&auto=format&fit=crop');"></div>
       <div class="card-content">
-        <h3>ادخل الموسوعة</h3>
+        <h3>الموسوعة النفسية</h3>
         <p>توعية شاملة ومبسطة.</p>
         <ul class="preview-list">
           <li>ما هي الصحة النفسية؟</li>
           <li>الأمراض النفسية وعلاجها</li>
           <li>القلق والاكتئاب</li>
           <li>الاحتراق الأسري</li>
-          <li>الأطفال في الحروب</li>
+        </ul>
+      </div>
+    </a>
+    <a class="card has-image" href="articles.html">
+      <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1517436073-3b1b1167a7f2?q=80&w=800&auto=format&fit=crop');"></div>
+      <div class="card-content">
+        <h3>مقالات توعوية</h3>
+        <p>5 مقالات سريعة لكسر الوصمة.</p>
+        <ul class="preview-list">
+          <li>حقيقة مقابل خرافة</li>
+          <li>الرجال والدعم</li>
+          <li>ذنب الناجي</li>
         </ul>
       </div>
     </a>
@@ -152,14 +132,14 @@
     <h2>أنت لست وحدك.. خطوة واحدة تكفي.</h2>
     <p>ابدأ رحلتك نحو السلام النفسي الآن. الدعم متاح ومجاني للجميع.</p>
     <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
-      <a href="booking.html" class="btn" style="background: white; color: var(--primary); padding: 12px 25px;">احجز جلسة</a>
-      <a href="emergency.html" class="btn" style="background: var(--danger-br); color: white; padding: 12px 25px;">صفحة الطوارئ</a>
+      <a href="booking.html" class="btn" style="background: white; color: var(--primary); padding: 12px 25px; border-radius:10px; font-weight:bold;">احجز جلسة</a>
+      <a href="emergency.html" class="btn" style="background: var(--danger-br); color: white; padding: 12px 25px; border-radius:10px; font-weight:bold;">صفحة الطوارئ</a>
     </div>
   </div>
 
 </main>
 
-<footer class="wrap" style="text-align: center; padding: 30px 20px; border-top: 1px solid var(--border); margin-top: 40px;">
+<footer class="wrap" style="text-align: center; padding: 30px 20px; border-top: 1px solid var(--border); margin-top: 40px; padding-right: 20px !important;">
   <p><b>سند تعز</b> · منصة يمنية للدعم النفسي الاجتماعي</p>
   <p style="font-size: 0.9em; color: var(--text-muted);">صُنع بحب لأهل تعز واليمن 🇾🇪</p>
 </footer>
